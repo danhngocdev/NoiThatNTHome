@@ -1,0 +1,241 @@
+﻿@using DVG.WIS.Utilities
+@{
+    ViewBag.Title = "Quản lý tài khoản";
+}
+<div class="animated fadeIn" ng-controller="UsersController" ng-init="Init()">
+    <div class="card clearfix">
+        <div class="card-header">
+            <button type="button" class="btn btn-sm btn-secondary pull-right" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+                Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+            </button>
+        </div>
+        <div class="card-body  search-form collapse">
+            <form ng-model="Search" class="row">
+                <div class="form-group col-md-4">
+                    <label>Từ khóa</label>
+                    <input type="text" ng-keypress="keypressAction($event)" class="form-control" name="Search.Keyword" ng-model="Search.Keyword" placeholder="Tên hoặc tài khoản đăng nhập">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Loại tài khoản</label>
+                    <select class="form-control required input-sm" ng-init="ListAccountType.CurrentType = option[0]" ng-options="option.Value as option.Text for option in ListAccountType.ListStatus" ng-model="ListAccountType.CurrentType" ng-change="doSearch()">
+                        <option value="" class="" selected="selected">--Lựa chọn--</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>&nbsp;</label>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" ng-class="CurrentFormStatus == FormStatusEnums.List? 'col-lg-12' : 'col-lg-6'">
+            <div class="clearfix">
+                <div class="float-left">
+                    Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                </div>
+                <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                    <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                        <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                    </div>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Danh sách tài khoản
+                    <button type="button" class="btn btn-primary btn-sm float-right" ng-click="getUserById(0)">Tạo mới +</button>
+                </div>
+                <div class="card-block">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th ng-if="CurrentFormStatus == FormStatusEnums.List">Tên</th>
+                                <th>Tài khoản</th>
+                                <th ng-if="CurrentFormStatus == FormStatusEnums.List">Email</th>
+                                <th class="text-center">Ngày Tạo</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th class="text-center">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in ListData track by $index" ng-if="ListData">
+                                <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                                <td ng-if="CurrentFormStatus == FormStatusEnums.List">{{item.FullName}}</td>
+                                <td>{{item.UserName}}</td>
+                                <td ng-if="CurrentFormStatus == FormStatusEnums.List">{{item.Email}}</td>
+                                <td class="text-center">{{item.CreatedDateStr}}</td>
+                                <td class="text-center">
+                                    <span ng-show="item.Status == UsersStatus.Active" class="badge badge-success">{{item.StatusBack}}</span>
+                                    <span ng-show="item.Status == UsersStatus.Lock" class="badge badge-danger">{{item.StatusBack}}</span>
+                                    <span ng-show="item.Status == UsersStatus.Deleted" class="badge badge-default">{{item.StatusBack}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-primary icon-pencil" data-animation="false" data-toggle="tooltip" ng-click="getUserById(item.UserId)" type="button" title="Sửa"></button>
+                                    @*<button class="btn btn-sm btn-secondary fa fa-eraser" data-animation="false" data-toggle="tooltip" ng-click="clearCacheAuthen(item.UserId)" type="button" title="Xóa cache phân quyền người dùng"></button>*@
+                                    <button ng-if="item.Status != UsersStatus.Lock" class="btn btn-sm btn-danger icon-lock" data-animation="false" data-toggle="tooltip" ng-click="updateStatus(item.UserId, item.Status)" type="button" title="Khóa tài khoản"></button>
+                                    <button ng-if="item.Status == UsersStatus.Lock" class="btn btn-sm btn-success icon-lock-open" data-animation="false" data-toggle="tooltip" ng-click="updateStatus(item.UserId, item.Status)" type="button" title="Mở khóa tài khoản"></button>
+                                    <button class="btn btn-sm btn-warning icon-key" data-animation="false" data-toggle="tooltip" ng-click="openResetPassword(item.UserId, item.FullName, item.Email)" type="button" title="Đặt lại mật khẩu"></button>
+                                </td>
+                            </tr>
+                            <tr ng-if="ListData == null || ListData.length == 0">
+                                <td colspan="8">
+                                    <p class="text-center">Không có bản ghi nào</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="float-left">
+                    Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                </div>
+                <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                    <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                        <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-6 nga-fast nga-slide-right" ng-show="CurrentFormStatus != FormStatusEnums.List">
+            <div class="card" ng-show="CurrentFormStatus == FormStatusEnums.CreateOrUpdate">
+                <div class="card-header">
+                    <strong ng-if="UsersActionModel.UserId > 0">Cập nhật thông tin tài khoản</strong>
+                    <strong ng-if="UsersActionModel.UserId == 0 || UsersActionModel.UserId == null">Thêm mới tài khoản</strong>
+                </div>
+                <div class="card-block">
+                    <form class="container" name="formUpdateCate">
+                        <div class="form-group">
+                            <label>Tên đăng nhập <span class="text-danger">*</span></label>
+                            <input type="text" ng-pattern="PatternUserName" ng-if="UsersActionModel.UserId == 0 || UsersActionModel.UserId == null" id="txtUserName" name="txtUserName" required="required" class="form-control" ng-model="UsersActionModel.UserName" maxlength="255">
+                            <span ng-if="UsersActionModel.UserId > 0" class="form-control bg-gray-light">{{UsersActionModel.UserName}}</span>
+                            <div ng-show="formUpdateCate.txtUserName.$error.pattern">
+                                <span class="text-danger">Tên đăng nhập phải từ 3 ký tự trở lên và không được chứa ký tự đặc biệt và chữ có dấu.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nhóm quyền <span class="text-danger">*</span></label>
+                            <select class="form-control required" required="required" ng-init="ListAuthGroupType.CurrentType = option[0]" ng-options="option.Id as option.Name for option in ListAuthGroupType.ListAuthGroup" ng-model="ListAuthGroupType.CurrentType">
+                                <option value="" class="" selected="selected">--Lựa chọn--</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Họ và Tên <span class="text-danger">*</span></label>
+                            <input type="text" id="txFullName" name="txtFullName" required="required" class="form-control" ng-model="UsersActionModel.FullName" maxlength="255">
+                            <div data-ng-if="UsersActionModel.FullName == '' || UsersActionModel.FullName == null">
+                                <span class="text-danger">Không được để trống</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email <span class="text-danger">*</span></label>
+                            <input type="text" id="txtEmail" name="txtEmail" ng-pattern="PatternEmail" required="required" class="form-control" ng-model="UsersActionModel.Email" maxlength="100">
+                            <div class="" ng-show="formUpdateCate.txtEmail.$error.pattern">
+                                <span class="text-danger">Email không đúng định dạng</span>
+                            </div>
+                            <div data-ng-if="!formUpdateCate.txtEmail.$error.pattern && (UsersActionModel.Email == '' || UsersActionModel.Email == null)">
+                                <span class="text-danger">Không được để trống</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày sinh</label>
+                            <input type="text" id="txtDob" name="txtDob" class="form-control datepicker-short" ng-model="UsersActionModel.BirthdayStr">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            <input type="text" ng-pattern="PatternPhone" id="txtPhoneNumber" name="txtPhoneNumber" class="form-control" ng-model="UsersActionModel.Mobile">
+                            <div ng-show="formUpdateCate.txtPhoneNumber.$error.pattern">
+                                <span class="text-danger">Số điện thoại phải là số và từ 9 đến 12 số</span>
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            <label>Giới tính</label>
+                            <div class="col-12">
+                                <label class="custom-control custom-radio">
+                                    <input id="rdoMale" type="radio" class="custom-control-input" name="Gender" checked="checked">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Nam</span>
+                                </label>
+                                <label class="custom-control custom-radio">
+                                    <input id="rdoFeMale" name="Gender" type="radio" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Nữ</span>
+                                </label>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="txtAddress" name="txtAddress" class="form-control" ng-model="UsersActionModel.Address" maxlength="255">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 col-form-label">Ảnh đại diện</label>
+                            @*<div class="col-md-9">
+                                    <div class="col-sm-12">
+                                        <div class="position-relative">
+                                            <img class="avatar-sq-90" id="avatarUsers" ng-if="UsersActionModel.Avatar != '' && UsersActionModel.Avatar != null" ng-src="{{UsersActionModel.Avatar}}" ng-alt="avatar" ng-model="UsersActionModel.Avatar" />
+                                            <img class="avatar-sq-90" id="avatarUsers" ng-if="UsersActionModel.Avatar == '' || UsersActionModel.Avatar == null" ng-src="/Content/images/no-image.png" ng-alt="avatar" ng-model="UsersActionModel.Avatar" />
+                                            <button type="button" class="btn btn-sm btn-primary position-absolute bottom-0 left-0" ng-click="selectAvatar()"><i class="fa fa-upload"></i></button>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="col-md-9">
+                                <input type="button" class="btn btn-success btn-sm w-90px" value="Tải ảnh lên" ng-click="selectAvatar()">
+                                <div class="form-control avatar-sq avatar-sq-90 avatar-view" ng-if="UsersActionModel.Avatar != '' && UsersActionModel.Avatar != null">
+                                    <img id="avatarTopic" class="img-responsive" ng-src="{{UsersActionModel.Avatar}}" ng-alt="{{UsersActionModel.Avatar}}" ng-model="UsersActionModel.Avatar" />
+                                    <div class="avatar-controll" ng-if="UsersActionModel.Avatar != '' && UsersActionModel.Avatar != null">
+                                        <a href="javascript:void(0)" ng-click="deleteAvatar()"><i class="fa fa-trash-o"></i></a>
+                                    </div>
+                                </div>
+                                <div class="form-control avatar-sq avatar-sq-90 avatar-view" ng-if="UsersActionModel.Avatar == '' || UsersActionModel.Avatar == null" ng-click="selectAvatar()">
+                                    <img id="avatarTopic" class="img-responsive" ng-src="{{UsersActionModel.Avatar}}" ng-alt="{{UsersActionModel.Avatar}}" ng-model="UsersActionModel.Avatar" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateCate.$invalid" ng-if="UsersActionModel != null && UsersActionModel.UserId > 0" ng-click="doUpdate()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                    <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateCate.$invalid" ng-if="UsersActionModel == null || UsersActionModel.UserId == 0 || UsersActionModel.UserId == null" ng-click="doUpdate()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                    <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                </div>
+            </div>
+            <div class="card" ng-show="CurrentFormStatus == FormStatusEnums.ChangePass">
+                <div class="card-header">
+                    <strong>Đặt lại mật khẩu</strong>
+                </div>
+                <div class="card-block">
+                    <form class="container" id="formResetPassword" name="formResetPassword" ng-model="ResetPassWordModel">
+                        <div class="form-group ">
+                            <label>Họ và Tên</label>
+                            <input type="text" class="form-control" ng-model="ResetPassWordModel.FullName" disabled>
+                        </div>
+                        <div class="form-group ">
+                            <label>Email</label>
+                            <input type="text" class="form-control" ng-model="ResetPassWordModel.Email" disabled>
+                        </div>
+                        <div class="form-group ">
+                            <label>Mật khẩu</label>
+                            <div class="input-group">
+                                <input type="text" id="txtResetPass" name="txtResetPass" required="required" class="form-control" ng-model="ResetPassWordModel.NewPassword" maxlength="255" ng-minlength="6">
+                                <span class="input-group-append">
+                                    <button class="btn btn-primary" type="button" ng-click="autoGeneratePassword()">Auto</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="button" class="btn btn-sm btn-primary" ng-disabled="formResetPassword.$invalid" ng-click="resetPassword()"><i class="fa fa-dot-circle-o"></i> Đổi mật khẩu</button>
+                    <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/Users")
+}
+

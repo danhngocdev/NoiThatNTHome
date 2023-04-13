@@ -1,0 +1,69 @@
+﻿@using System.Web.Optimization
+@using DVG.WIS.Utilities
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>Xác thực Google code</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    @Styles.Render("~/WIS/styles/Template")
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <form class="app flex-row align-items-center" name="OTPForm" ng-controller="GoogleCodeController" ng-init="init(@NewtonJson.Serialize(Model))">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-group mb-0">
+                        <div class="card p-4">
+                            <div class="card-block">
+                                <h1>Tin xe</h1>
+                                <p class="text-muted">Nhập google code để tạo phiên làm việc của bạn</p>
+                                <div ng-if="GGQRUrl" class="input-group">
+                                    <img style="width: 250px; height: 250px;" class="img-responsive" ng-src="{{GGQRUrl}}" ng-model="GGQRUrl" />
+                                </div>
+                                <div ng-if="GGQRUrl" class="text-primary  mb-2">Đây là mã QR lần đầu đăng nhập. Xin hãy sử dụng google authenticator để quét.</div>
+                                <div class="text-danger" ng-hide="OTPForm.Model_otp.$valid">
+                                    Google code không hợp lệ
+                                </div>
+                                <div class="input-group mb-4">
+                                    <span class="input-group-addon">
+                                        <i class="icon-social-google"></i>
+                                    </span>
+                                    <input id="otp" type="text" class="form-control" placeholder="OTP" name="Model_otp" ng-model="Model.otp" ng-keypress="ShortSubmitVerify($event)" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary px-4" ng-click="doVerify()" ng-disabled="!OTPForm.$valid">Xác thực</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-inverse card-primary py-5 d-md-down-none" style="width:44%">
+                            <div class="card-block text-center">
+                                <div>
+                                    <h2>CMS Tin xe</h2>
+                                    <p>Phiên bản 2.0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @Scripts.Render("~/WIS/scripts/Jquery")
+    @Scripts.Render("~/WIS/scripts/Tether")
+    @Scripts.Render("~/WIS/scripts/Bootstrap")
+    @Scripts.Render("~/WIS/scripts/Angular")
+    @Scripts.Render("~/WIS/scripts/AngularPlugin")
+    @Scripts.Render("~/WIS/scripts/Template")
+    @Scripts.Render("~/WIS/scripts/AngularCustomize")
+    @Scripts.Render("~/WIS/scripts/External")
+    @Scripts.Render("~/WIS/scripts/GoogleCode")
+</body>
+</html>

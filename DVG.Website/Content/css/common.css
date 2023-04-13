@@ -1,0 +1,629 @@
+
+:root {
+    --primary-color: #a08858;
+}
+
+.full-width .ubermenu-nav,
+.container,
+.row {
+    max-width: 1170px
+}
+
+.row.row-collapse {
+    max-width: 1140px
+}
+
+.row.row-small {
+    max-width: 1162.5px
+}
+
+.row.row-large {
+    max-width: 1200px
+}
+
+body.framed,
+body.framed header,
+body.framed .header-wrapper,
+body.boxed,
+body.boxed header,
+body.boxed .header-wrapper,
+body.boxed .is-sticky-section {
+    max-width: 1200pxpx
+}
+
+.header-main {
+    height: 100px
+}
+
+#logo img {
+    max-height: 100px
+}
+
+#logo {
+    width: 180px;
+}
+
+.header-bottom {
+    min-height: 44px
+}
+
+.header-top {
+    min-height: 38px
+}
+
+.has-transparent+.page-title:first-of-type,
+.has-transparent+#main>.page-title,
+.has-transparent+#main>div>.page-title,
+.has-transparent+#main .page-header-wrapper:first-of-type .page-title {
+    padding-top: 180px;
+}
+
+.header.show-on-scroll,
+.stuck .header-main {
+    height: 70px !important
+}
+
+.stuck #logo img {
+    max-height: 70px !important
+}
+
+.header-bottom {
+    background-color: #107cde
+}
+
+.stuck .header-main .nav>li>a {
+    line-height: 50px
+}
+
+.header-bottom-nav>li>a {
+    line-height: 16px
+}
+
+@media (max-width: 549px) {
+    .header-main {
+        height: 70px
+    }
+
+    #logo img {
+        max-height: 70px
+    }
+}
+
+/* Color */
+.accordion-title.active,
+.has-icon-bg .icon .icon-inner,
+.logo a,
+.primary.is-underline,
+.primary.is-link,
+.badge-outline .badge-inner,
+.nav-outline>li.active>a,
+.nav-outline>li.active>a,
+.cart-icon strong,
+[data-color='primary'],
+.is-outline.primary {
+    color: #a08858;
+}
+
+/* Color !important */
+[data-text-color="primary"] {
+    color: #a08858 !important;
+}
+
+/* Background Color */
+[data-text-bg="primary"] {
+    background-color: #a08858;
+}
+
+/* Background */
+.scroll-to-bullets a,
+.featured-title,
+.label-new.menu-item>a:after,
+.nav-pagination>li>.current,
+.nav-pagination>li>span:hover,
+.nav-pagination>li>a:hover,
+.has-hover:hover .badge-outline .badge-inner,
+button[type="submit"],
+.button.wc-forward:not(.checkout):not(.checkout-button),
+.button.submit-button,
+.button.primary:not(.is-outline),
+.featured-table .title,
+.is-outline:hover,
+.has-icon:hover .icon-label,
+.nav-dropdown-bold .nav-column li>a:hover,
+.nav-dropdown.nav-dropdown-bold>li>a:hover,
+.nav-dropdown-bold.dark .nav-column li>a:hover,
+.nav-dropdown.nav-dropdown-bold.dark>li>a:hover,
+.is-outline:hover,
+.tagcloud a:hover,
+.grid-tools a,
+input[type='submit']:not(.is-form),
+.box-badge:hover .box-text,
+input.button.alt,
+.nav-box>li>a:hover,
+.nav-box>li.active>a,
+.nav-pills>li.active>a,
+.current-dropdown .cart-icon strong,
+.cart-icon:hover strong,
+.nav-line-bottom>li>a:before,
+.nav-line-grow>li>a:before,
+.nav-line>li>a:before,
+.banner,
+.header-top,
+.slider-nav-circle .flickity-prev-next-button:hover svg,
+.slider-nav-circle .flickity-prev-next-button:hover .arrow,
+.primary.is-outline:hover,
+.button.primary:not(.is-outline),
+input[type='submit'].primary,
+input[type='submit'].primary,
+input[type='reset'].button,
+input[type='button'].primary,
+.badge-inner {
+    background-color: #a08858;
+}
+
+/* Border */
+.nav-vertical.nav-tabs>li.active>a,
+.scroll-to-bullets a.active,
+.nav-pagination>li>.current,
+.nav-pagination>li>span:hover,
+.nav-pagination>li>a:hover,
+.has-hover:hover .badge-outline .badge-inner,
+.accordion-title.active,
+.featured-table,
+.is-outline:hover,
+.tagcloud a:hover,
+blockquote,
+.has-border,
+.cart-icon strong:after,
+.cart-icon strong,
+.blockUI:before,
+.processing:before,
+.loading-spin,
+.slider-nav-circle .flickity-prev-next-button:hover svg,
+.slider-nav-circle .flickity-prev-next-button:hover .arrow,
+.primary.is-outline:hover {
+    border-color: #a08858
+}
+
+.nav-tabs>li.active>a {
+    border-top-color: #a08858
+}
+
+.widget_shopping_cart_content .blockUI.blockOverlay:before {
+    border-left-color: #a08858
+}
+
+.woocommerce-checkout-review-order .blockUI.blockOverlay:before {
+    border-left-color: #a08858
+}
+
+/* Fill */
+.slider .flickity-prev-next-button:hover svg,
+.slider .flickity-prev-next-button:hover .arrow {
+    fill: #a08858;
+}
+
+/* Background Color */
+[data-icon-label]:after,
+.secondary.is-underline:hover,
+.secondary.is-outline:hover,
+.icon-label,
+.button.secondary:not(.is-outline),
+.button.alt:not(.is-outline),
+.badge-inner.on-sale,
+.button.checkout,
+.single_add_to_cart_button,
+.current .breadcrumb-step {
+    background-color: #c0a36b;
+}
+
+[data-text-bg="secondary"] {
+    background-color: #c0a36b;
+}
+
+/* Color */
+.secondary.is-underline,
+.secondary.is-link,
+.secondary.is-outline,
+.stars a.active,
+.star-rating:before,
+.woocommerce-page .star-rating:before,
+.star-rating span:before,
+.color-secondary {
+    color: #c0a36b
+}
+
+/* Color !important */
+[data-text-color="secondary"] {
+    color: #c0a36b !important;
+}
+
+/* Border */
+.secondary.is-outline:hover {
+    border-color: #c0a36b
+}
+
+body {
+    font-size: 100%;
+}
+
+@media screen and (max-width: 549px) {
+    body {
+        font-size: 100%;
+    }
+}
+
+body {
+    font-family: "Roboto", sans-serif
+}
+
+body {
+    font-weight: 0
+}
+
+body {
+    color: #3c3c3c
+}
+
+.nav>li>a {
+    font-family: "Roboto", sans-serif;
+}
+
+.nav>li>a {
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-font,
+.off-canvas-center .nav-sidebar.nav-vertical>li>a {
+    font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-font,
+.banner h1,
+.banner h2 {
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-font {
+    color: #242424;
+}
+
+.alt-font {
+    font-family: "Dancing Script", sans-serif;
+}
+
+.alt-font {
+    font-weight: 400 !important;
+}
+
+.header:not(.transparent) .header-bottom-nav.nav>li>a {
+    color: #ffffff;
+}
+
+.header:not(.transparent) .header-bottom-nav.nav>li>a:hover,
+.header:not(.transparent) .header-bottom-nav.nav>li.active>a,
+.header:not(.transparent) .header-bottom-nav.nav>li.current>a,
+.header:not(.transparent) .header-bottom-nav.nav>li>a.active,
+.header:not(.transparent) .header-bottom-nav.nav>li>a.current {
+    color: #c0a36b;
+}
+
+.header-bottom-nav.nav-line-bottom>li>a:before,
+.header-bottom-nav.nav-line-grow>li>a:before,
+.header-bottom-nav.nav-line>li>a:before,
+.header-bottom-nav.nav-box>li>a:hover,
+.header-bottom-nav.nav-box>li.active>a,
+.header-bottom-nav.nav-pills>li>a:hover,
+.header-bottom-nav.nav-pills>li.active>a {
+    color: #FFF !important;
+    background-color: #c0a36b;
+}
+
+a {
+    color: #272727;
+}
+
+a:hover {
+    color: #c0a36b;
+}
+
+.tagcloud a:hover {
+    border-color: #c0a36b;
+    background-color: #c0a36b;
+}
+
+.products.has-equal-box-heights .box-image {
+    padding-top: 63%;
+}
+
+@media screen and (min-width: 550px) {
+    .products .box-vertical .box-image {
+        min-width: 400px !important;
+        width: 400px !important;
+    }
+}
+
+.page-title-small+main .product-container>.row {
+    padding-top: 0;
+}
+
+button[name='update_cart'] {
+    display: none;
+}
+
+/* Custom CSS */
+.grecaptcha-badge {
+    opacity: 0;
+}
+
+@media screen and (max-width: 549px) {
+    .nz-dathang {
+        width: 100% !important
+    }
+}
+
+.label-new.menu-item>a:after {
+    content: "Mới";
+}
+
+.label-hot.menu-item>a:after {
+    content: "Nóng bức";
+}
+
+.label-sale.menu-item>a:after {
+    content: "Buôn bán";
+}
+
+.label-popular.menu-item>a:after {
+    content: "Phổ biến";
+}
+@media only screen and (max-width:767px) {
+    .content {
+        height: 134px !important;
+    }
+    .icon-angle-down {
+        display: none !important;
+    }
+
+    .sub-menu.nav-sidebar-ul.children {
+        margin-bottom: unset !important;
+
+    }
+
+    .nav .sub-menu {
+        background: unset !important;
+    }
+
+    .flickity-slider img {
+        width: 100% !important;
+        height: auto !important;
+
+    }
+
+    .area_article img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .c9 {
+        left: 80% !important;
+    }
+
+    .article-inner img {
+        width: 100% !important;
+        
+        height: auto !important;
+        
+    }
+
+    .conten32 {
+        max-width: 50% !important;
+    }
+
+    .sub-menu.nav-sidebar-ul.children {
+        MARGIN-BOTTOM: 31PX;
+        TOP: 20PX;
+    }
+
+    .sub-menu.nav-sidebar-ul.children li {
+        border-bottom: unset !important;
+    }
+
+    .wide-nav2 {
+        display: none !important;
+    }
+
+    #wide-nav3 {
+        display: block !important;
+    }
+
+    /*.box-text-products {
+       height: 95px !important;
+   }*/
+    .price-wrapper .price {
+        margin-top: 13px;
+    }
+
+    .icon-inner {
+        width: 20px !important;
+    }
+
+    .icon-box-text {
+        padding: unset !important;
+    }
+
+    .icon-box-text h3 {
+        font-size: 0.5em !important;
+    }
+
+    .icon-box-text p {
+        font-size: 0.6em !important;
+    }
+
+    .content10 {
+        padding: 8px !important;
+    }
+
+    .ss2.row1 .col .col-inner {
+        border: 1px solid red !important;
+    }
+
+    .header-button {
+        display: none !important;
+    }
+}
+
+/*@media only screen and (max-width:1023px){
+        #wide-nav2 {
+            display: none;
+        }
+    }*/
+.nav-small .nav>li>a,
+.nav.nav-small>li>a {
+    color: rgba(102, 102, 102, 0.85);
+    font-weight: unset;
+}
+
+.product-title {
+    font-size: 15px;
+}
+.lienhe {
+    background-color: #b9e6ff;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+
+.icon-angle-down {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+/* Ẩn các slider */
+.mySlides {
+    display: none;
+}
+
+/* Định dạng nội dung Caption */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* định dạng các chấm chuyển đổi các slide */
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
+
+/* khi được hover, active đổi màu nền */
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+/* Thêm hiệu ứng khi chuyển đổi các slide */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 6s;
+    animation-name: fade;
+    animation-duration: 6s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+img.wp-smiley,
+img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}
+.col-border {
+    padding: 15px;
+    border-width: 0.705px;
+    border-color: #dedede;
+    border-style: solid;
+}
+.icon-close:before {
+    content: "\e90f";
+}
+
+.btn-promotion {
+    padding-bottom: 10px;
+    /* padding: 10px; */
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: center;
+    /* justify-items: center; */
+    /* flex-basis: auto; */
+}

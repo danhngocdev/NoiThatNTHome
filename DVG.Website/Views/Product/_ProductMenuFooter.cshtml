@@ -1,0 +1,14 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<ProductFEListModel>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.Link" title="@item.Name">@item.Name</a>
+            </li>
+        }
+    </ul>
+}

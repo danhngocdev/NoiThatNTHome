@@ -1,0 +1,74 @@
+﻿<bundle name="12345">
+
+	<styles>
+		<style name="~/commonStyle">
+			<items>
+				<item>
+					<path>~/Content/css/fontello.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/header-footer.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+			</items>
+		</style>
+
+		<style name="~/styleForHomepage">
+			<items>
+				<item>
+					<path>~/Content/css/homepage.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+			</items>
+		</style>
+
+		<style name="~/styleForProductDetail">
+			<items>
+				<item>
+					<path>~/Content/css/productDetail.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+			</items>
+		</style>
+
+	</styles>
+
+	<scripts>
+		<script name="~/scriptsCommon">
+			<items>
+				<item>
+					<path>~/Scripts/Lib/jquery-1.11.3.min.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Scripts/Lib/jquery.validate.min.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Scripts/Lib/jquery.validate.unobtrusive.min.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Scripts/initpage.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Scripts/main.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Scripts/home.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Scripts/notifies.js</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+
+			</items>
+		</script>
+
+	</scripts>
+
+</bundle>

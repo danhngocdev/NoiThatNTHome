@@ -1,0 +1,61 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@model OrderModel
+
+<div class="infor">
+    <h3 class="heading">Thông tin nhận hàng</h3>
+    @using (Html.BeginForm("PaymentPost", "Cart", FormMethod.Post, new { @class = "form-cart" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Name, new { @placeholder = "Họ và tên *", @class = "form-control" })
+            <span class="error">
+                @Html.ValidationMessageFor(x => x.Name)
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Address, new { @placeholder = "Địa chỉ", @class = "form-control" })
+            <span class="error">
+                @Html.ValidationMessageFor(x => x.Address)
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Số điện thoại *", @class = "form-control" })
+            <span class="error">
+                @Html.ValidationMessageFor(x => x.Phone)
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Email, new { @placeholder = "Địa chỉ email *", @class = "form-control" })
+            <span class="error">
+                @Html.ValidationMessageFor(x => x.Email)
+            </span>
+        </div>
+        <div class="form-group">
+
+        </div>
+        <div class="form-group">
+            <label>Ghi chú</label>
+            @Html.TextAreaFor(x => x.Note, new { cols = 20, @class = "form-control text-area", @placeholder = "Ghi chú", rows = "4" })
+        </div>
+        <div class="thanhtoan">
+            <label>Hình thức thanh toán</label>
+            <label class="radio-check">
+                <input type="radio" name="PaymentType" value="@PaymentTypeEnum.COD.GetHashCode()" checked="checked">
+                <span class="ft-name">Thanh toán khi nhận hàng</span>
+            </label>
+            <label class="radio-check">
+                <input type="radio" name="PaymentType" value="@PaymentTypeEnum.ATM.GetHashCode()" >
+                <span class="ft-name">Thanh toán chuyển khoản qua ATM</span>
+            </label>
+        </div>
+        <button type="submit" style="cursor:pointer;"> Đặt hàng</button>
+    }
+</div>
+
+
+<style>
+    .text-area {
+        height: 150px !important;
+    }
+</style>

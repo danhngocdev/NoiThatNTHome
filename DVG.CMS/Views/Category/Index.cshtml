@@ -1,0 +1,210 @@
+﻿@using DVG.WIS.Utilities
+@{
+    ViewBag.Title = "Quản lý chuyên mục";
+}
+<div class="animated fadeIn" ng-controller="CategoryController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="card clearfix">
+        <div class="card-header">
+            <button type="button" class="btn btn-sm btn-secondary pull-right" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+                Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+            </button>
+        </div>
+        <div class="card-body search-form collapse">
+            <form ng-model="Search" class="row">
+                <div class="form-group col-md-3">
+                    <label>Loại tin</label>
+                    <select class="form-control" ng-init="Search.NewsType = option[0]" ng-options="option.Id as option.Name for option in InitModel.ListNewsType" ng-model="Search.NewsType" ng-change="onChangeData()">
+                        <option value="" class="" selected="selected">--Lựa chọn--</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Từ khóa</label>
+                    <input type="text" ng-keypress="keypressAction($event)" class="form-control" name="Search.Keyword" ng-model="Search.Keyword" placeholder="Từ khóa">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Chuyên mục cha</label>
+                    <select class="form-control" ng-init="Search.ParentId = option[0]" ng-options="option.Id as option.Name for option in InitModel.ListCateParrent | filter: {Type : Search.NewsType}" ng-model="Search.ParentId" ng-change="onChangeData()">
+                        <option value="" class="" selected="selected">--Lựa chọn--</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>&nbsp;</label>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" ng-class="CurrentFormStatus == FormStatusEnums.List? 'col-lg-12' : 'col-lg-6'">
+            <div class="clearfix">
+                <div class="float-left">
+                    Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                </div>
+                <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                    <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                        <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                    </div>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Danh sách danh mục
+                    <button type="button" class="btn btn-primary btn-sm float-right" ng-click="InitCreateOrUpdate()">Tạo mới +</button>
+                </div>
+                <div class="card-block">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Tên chuyên mục</th>
+                               @* <th>Loại tin</th>*@
+                                <th>Thứ tự</th>
+                                <th class="text-center" ng-if="CurrentFormStatus == FormStatusEnums.List">Ngày tạo</th>
+                                @*<th ng-if="CurrentFormStatus == FormStatusEnums.List">Số bài</th>*@
+                                <th class="text-center">Trạng thái</th>
+                                <th class="text-center">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in ListData track by $index" ng-if="ListData">
+                                <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                                <td>
+                                    <a href="@Url.Action("Index", "News")?newsType={{item.Type}}&cateId={{item.Id}}" class="tree-node-{{item.Level}} pull-left">
+                                        <span ng-show="item.Level > 0" class="tree-node-icon"></span>
+                                        <span>{{item.Name}}</span>
+                                    </a>
+                                </td>
+                                @*<td>{{item.NewsTypeName}}</td>*@
+                                <td>
+                                    <input type="text" class="form-control w-25" ng-if="item.Status != CategoryStatus.Delete && item.Status != CategoryStatus.Lock" ng-focus="getCurrentOrder(item.SortOrder)" ng-blur="onchangeOrder(this)" ng-model="item.SortOrder" />
+                                </td>
+                                <td ng-if="CurrentFormStatus == FormStatusEnums.List" class="text-center">{{item.CreatedDateStr}}</td>
+                               @* <td ng-if="CurrentFormStatus == FormStatusEnums.List">{{item.CountNews}}</td>*@
+                                <td class="text-center">
+                                    <span ng-show="item.Status == CategoryStatus.Normal" class="badge badge-success">{{item.StatusName}}</span>
+                                    <span ng-show="item.Status == CategoryStatus.Lock" class="badge badge-danger">{{item.StatusName}}</span>
+                                    <span ng-show="item.Status == CategoryStatus.Delete" class="badge badge-default">{{item.StatusName}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <button ng-if="item.Status != CategoryStatus.Delete" class="btn btn-sm btn-primary icon-pencil" data-toggle="tooltip" ng-click="getCategoryById(item.EncryptCateId)" type="button" title="Sửa"></button>
+                                    <button ng-if="item.Status != CategoryStatus.Delete && item.Status != CategoryStatus.Lock" class="btn btn-sm btn-warning icon-lock" data-toggle="tooltip" ng-click="lockCategory(this)" type="button" title="Khóa chuyên mục"></button>
+                                    <button ng-if="item.Status != CategoryStatus.Delete && item.Status == CategoryStatus.Lock" class="btn btn-sm btn-success icon-lock-open" data-toggle="tooltip" ng-click="unlockCategory(this)" type="button" title="Mở khóa chuyên mục"></button>
+                                    <button ng-if="item.Status != CategoryStatus.Delete" class="btn btn-sm btn-danger icon-trash" data-toggle="tooltip" ng-click="deleteCategory(this)" type="button" title="Xóa"></button>
+                                </td>
+                            </tr>
+                            <tr ng-if="ListData == null || ListData.length == 0">
+                                <td colspan="8">
+                                    <p class="text-center">Không có bản ghi nào</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="float-left">
+                    Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                </div>
+                <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                    <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                        <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-6 nga-fast nga-slide-right" ng-show="CurrentFormStatus != FormStatusEnums.List">
+            <div class="card" ng-show="CurrentFormStatus == FormStatusEnums.CreateOrUpdate">
+                <div class="card-header">
+                    <strong ng-if="Category.Id > 0">Cập nhật thông tin chuyên mục</strong>
+                    <strong ng-if="Category.Id == 0 || Category.Id == null">Thêm mới chuyên mục</strong>
+                    <div class="float-right">
+                        <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateCate.$invalid" ng-if="Category != null && Category.Id > 0" ng-click="updateCategory()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                        <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateCate.$invalid" ng-if="Category == null || Category.Id == 0 || Category.Id == null" ng-click="updateCategory()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                        <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="container" name="formUpdateCate">
+                        <div class="form-group row">
+                            <label>Loại chuyên mục <span class="text-danger">*</span></label>
+                            <select class="form-control required" required="required" ng-init="Category.Type = option[0]" ng-options="option.Id as option.Name for option in InitModel.ListNewsType" ng-model="Category.Type" ng-change="getListCategory()">
+                                <option value="" class="" selected="selected">--Lựa chọn--</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label>Chuyên mục cha</label>
+                            <select id="txtTopicList" class="form-control" ng-init="ParrentCategory.CurrentCategory = option[0]" ng-options="option.Id as option.Name for option in ParrentCategory.ListCategory" ng-model="ParrentCategory.CurrentCategory" ng-change="onChangeData()">
+                                <option value="" class="" selected="selected">--Lựa chọn--</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label>Tên chuyên mục <span class="text-danger">*</span></label>
+                            <input type="text" id="txtCateName" name="txtCateName" required="required" class="form-control" ng-model="Category.Name" ng-maxlength="255">
+                            <div ng-show="formUpdateCate.txtCateName.$error.required">
+                                <span class="text-danger">Vui lòng nhập tên chuyên mục.</span>
+                            </div>
+                            <div ng-show="formUpdateCate.txtCateName.$error.maxlength">
+                                <span class="text-danger">Tên chuyên mục không được quá 300 ký tự.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label>Thứ tự</label>
+                            <div class="input-group">
+                                <input type="text" id="txtOrder" name="txtOrder" class="form-control" ng-model="Category.SortOrder">
+                                <div class="input-group-append ml-3">
+                                    <label class="custom-control custom-checkbox">
+                                        <input id="txtAllowComment" type="checkbox" class="custom-control-input" ng-model="Category.AllowComment">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Cho phép bình luận</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label>Mô tả</label>
+                            <div class="w-100">
+                                <textarea id="editComment" class="ckeditor ckeditor-short"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label>Tiêu đề hiển thị trên google</label>
+                            <div class="input-group">
+                                <input type="text" id="txtMetaTitle" name="txtMetaTitle" class="form-control" ng-model="Category.MetaTitle">
+                                <div class="input-group-append">
+                                    <span class="input-group-text ml-3"> Còn lại <span id="metaTitleLimit">58</span>/58</span>
+                                </div>
+                            </div>
+                            <div id="metaTitleLimitMessenger" style="display: none"><em class="text-danger">Để SEO hiệu quả,bạn nên để 58 ký tự là tốt nhất</em></div>
+                        </div>
+                        <div class="form-group row">
+                            <label>Mô tả hiển thị trên Google</label>
+                            <div class="input-group">
+                                <textarea ng-model="Category.MetaDescription" id="txtMetaDesc" rows="5" class="form-control"></textarea>
+                                <div class="input-group-append">
+                                    <span class="input-group-text ml-3"> Còn lại <span id="metaDesLimit">150</span>/150</span>
+                                </div>
+                            </div>
+                            <div class="w-100 vsc"><em style="color: Gray">Hãy SÁNG TẠO 1 mô tả thú vị, nhiều điểm nhấn sẽ thu hút nhiều click</em></div>
+                            @*<input type="text" id="txtExtension2" style="display:none" />*@
+                            <div id="metaDesLimitMessenger" style="display: none"><em class="text-danger">Để SEO hiệu quả,bạn nên để 150 ký tự là tốt nhất</em></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateCate.$invalid" ng-if="Category != null && Category.Id > 0" ng-click="updateCategory()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                    <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateCate.$invalid" ng-if="Category == null || Category.Id == 0 || Category.Id == null" ng-click="updateCategory()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                    <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/Category")
+}
+
+

@@ -1,0 +1,61 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@using DVG.WIS.Local;
+@model CustomerFEModel
+<div class="bg-popup" onclick="common.closePopup()"></div>
+<div id="popupContact">
+    <span class="close-modal" onclick="common.closePopup()">
+        x
+    </span>
+    <div class="container">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="head-image">
+                @*@Html.Action("BannerByPosition", "Banner", new { pageId = BannerPageEnum.HomePage.GetHashCode(), positionId = BannerPositionEnum.Sticky.GetHashCode() })*@
+                <img src="~/Content/images/img-popup.png" />
+            </div>
+
+            <div class="main-form">
+                <h1 class="heading-tt">
+                    Hãy kết nối với chúng tôi để nhận cơ hội<br />
+                    kinh doanh thành công
+                </h1>
+                @using (Html.BeginForm("Register", "Customer", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Name, new { @placeholder = Resource.FullName, @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </span>
+                    </div>
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(x => x.Address, new { @placeholder = Resource.Address, @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Address)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Phone, new { @placeholder = Resource.Phone, @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Phone)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = Resource.Email, @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Description, new { cols = 20, @class = "form-control txt-area", @placeholder = Resource.Content, rows = "4" })
+                    </div>
+                    <div id="lblMessage" class="error"></div>
+                    <div class="form-group mg-auto text-center box-btn">
+                        <button type="submit" class="btn-send-popup">Gửi</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Lib/jquery.validate.unobtrusive.min.js"></script>

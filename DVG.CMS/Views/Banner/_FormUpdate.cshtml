@@ -1,0 +1,126 @@
+﻿<div class="card-header">
+    <strong ng-if="BannerModel.Id > 0">Cập nhật thông tin banner</strong>
+    <strong ng-if="BannerModel.Id == 0 || BannerModel.Id == null">Thêm mới banner</strong>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateBanner.$invalid" ng-if="BannerModel != null || BannerModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateBanner.$invalid" ng-if="BannerModel == null || BannerModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+        <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+    </div>
+</div>
+<div class="card-body">
+    <form role="form" name="formUpdateBanner">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">
+                        Tên Banner <span class="required">*</span>
+                    </label>
+                    <input type="text" id="txtName" required class="form-control" ng-model="BannerModel.Name">
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">
+                        Mô tả <span class="required">*</span>
+                    </label>
+                    <input required type="text" id="txtTitle" class="form-control" ng-model="BannerModel.Title">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">
+                        Nền tảng <span class="required">*</span>
+                    </label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListPlatform" ng-model="BannerModel.Platform"></select>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">
+                        Trạng thái <span class="required">*</span>
+                    </label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListStatus" ng-model="BannerModel.Status"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label ">
+                        Link banner
+                    </label>
+                    <input type="text" id="txtTargetLink" class="form-control" ng-model="BannerModel.TargetLink">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @*<label class="col-md-3 col-form-label">Ảnh đại diện</label>
+        <div class="col-md-9">
+            <input type="button" class="btn btn-success btn-sm w-90px" value="Tải ảnh lên" ng-click="selectAvatar()">
+            <div class="avt-banner form-control avatar-sq avatar-view" ng-if="BannerModel.Embed != '' && BannerModel.Embed != null">
+                <img id="avatarTopic" class="img-responsive" ng-src="{{BannerModel.Embed}}" ng-alt="{{BannerModel.Embed}}" ng-model="BannerModel.Embed" />
+                <div class="avatar-controll" ng-if="BannerModel.Embed != '' && BannerModel.Embed != null">
+                    <a href="javascript:void(0)" ng-click="deleteAvatar()"><i class="fa fa-trash-o"></i></a>
+                </div>
+            </div>
+            <div class="avt-banner" ng-if="BannerModel.Embed == '' || BannerModel.Embed == null" ng-click="selectAvatar()">
+                <img id="avatarTopic" class="img-responsive" ng-src="{{BannerModel.Embed}}" ng-alt="{{BannerModel.Embed}}" ng-model="BannerModel.Embed" />
+            </div>
+        </div>*@
+            <div class="row">
+                <div class="col-sm-6">
+                    <label> Ảnh đại diện (<small>Tối thiểu 230x160</small>)</label>
+                    <div>
+                        <button type="button" class="btn btn-info btn-sm" ng-click="selectAvatar()">
+                            <i class="fa fa-upload"></i>Tải lên
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="deleteAvatar()">
+                            <i class="fa fa-trash"></i>Xoá
+                        </button>
+                        <div class="mt-1">
+                            <div >
+                                <img style="display: block;max-width: 100%;height: auto;" id="avatarTopic" src="{{BannerModel.Embed}}" title="Click xem ảnh gốc" ng-click="selectAvatar()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">
+                        Hiển thị từ
+                    </label>
+                    <input type="text" id="txtFromDate"  class="form-control datepicker-short" ng-model="BannerModel.FromDateStr" ng-init="DatePickerInit()">
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">
+                        Hiển thị tới
+                    </label>
+                    <input type="text" id="txtUntilDate"  class="form-control datepicker-short" ng-model="BannerModel.UntilDateStr" ng-init="DatePickerInit()">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label ">
+                        Trang hiển thị <span class="required">*</span>
+                    </label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListPage" ng-model="BannerModel.PageId"></select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">
+                        Vị trí hiển thị <span class="required">*</span>
+                    </label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListPosition" ng-model="BannerModel.Position"></select>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="card-footer text-right">
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateBanner.$invalid" ng-if="BannerModel != null || BannerModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateBanner.$invalid" ng-if="BannerModel == null || BannerModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+    <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+</div>

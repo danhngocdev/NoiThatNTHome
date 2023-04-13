@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" CodeBehind="FileAction.ashx.cs" Class="DVG.WIS.CMS.FileManager.Handler.FileAction" %>

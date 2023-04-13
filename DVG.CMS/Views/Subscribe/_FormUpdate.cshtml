@@ -1,0 +1,82 @@
+﻿<div class="card-header">
+    <strong ng-if="CarModelDetailModel.Id > 0">Cập nhật thông tin dòng xe</strong>
+    <strong ng-if="CarModelDetailModel.Id == 0 || CarModelDetailModel.Id == null">Thêm mới dòng xe</strong>
+    <div class="pull-right">
+        <button class="btn btn-primary btn-sm" ng-click="backtolist()"><i class="fa fa-close"></i> Quay lại</button>
+    </div>
+</div>
+<div class="card-block">
+    <form role="form" name="formUpdateSubscribe">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2">
+                        Email đăng ký
+                    </label>
+                    <div class="item col-md-4">
+                        <input required ng-pattern="PatternEmail" ng-readonly="EditItem.Id > 0" type="text" ng-model="EditItem.Email" class="form-control" name="txtEmail" maxlength="200">
+                        <div class="" ng-show="formUpdateSubscribe.txtEmail.$error.pattern">
+                            <span class="text-red">Email không đúng định dạng</span>
+                        </div>
+                        <div data-ng-if="!formUpdateSubscribe.txtEmail.$error.pattern && (EditItem.Email == '' || EditItem.Email == null)">
+                            <span class="text-red">Không được để trống</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2">
+                        Hình thức nhận tin
+                    </label>
+                    <div class="item col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="EditItem.AllOfType" ng-value="true" name="rdoAllOfType" disabled> Nhận tất cả bản tin
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="EditItem.AllOfType" ng-value="false" name="rdoAllOfType" disabled> Chỉ nhận bản tin với tiêu chí
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="!EditItem.AllOfType">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <caption>Danh sách tiêu chí đăng ký nhận bản tin</caption>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Loại tin</th>
+                        <th>Chuyên mục</th>
+                        <th>Hãng xe</th>
+                        <th>Mẫu xe</th>
+                        <th>Dáng xe</th>
+                        <th>Phân khúc xe</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in EditItem.ListDetail track by $index">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.NewsTypeName}}</td>
+                        <td>{{item.CateName}}</td>
+                        <td>{{item.BrandName}}</td>
+                        <td>{{item.ModelName}}</td>
+                        <td>{{item.StyleName}}</td>
+                        <td>{{item.SegmentName}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="card-footer text-right">
+    <button class="btn btn-primary btn-sm" ng-click="backtolist()"><i class="fa fa-close"></i> Quay lại</button>
+</div>

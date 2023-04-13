@@ -1,0 +1,171 @@
+﻿@using DVG.WIS.Utilities
+@{
+    ViewBag.Title = "Quản lý tin tức";
+}
+<div ng-controller="NewsController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="animated fadeIn">
+        <div class="card clearfix" ng-if="!IsPreviewForm">
+            <div class="card-header">
+                <div ng-show="AutoSave.HasDraft" class="pull-left"><b>Đang tồn tại bản nháp chưa lưu</b> <i ng-if="AutoSave.Title.length > 0">: {{AutoSave.Title}}</i>. Bạn có muốn <a target="_blank" href='/News/UpdateNews?{{AutoSave.Params}}autosave=true'>tiếp tục</a> soạn thảo hoặc <a href="javascript:void();" ng-click="doRemoveAutoSave()">xóa</a> bản nháp?</div>
+                <button type="button" class="btn btn-sm btn-secondary pull-right mt-1" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+                    Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </button>
+            </div>
+            <div class="card-body search-form collapse">
+                <form ng-model="Search" class="row">
+                    <div class="form-group col-md-3">
+                        <label>Từ khóa</label>
+                        <input type="text" ng-keypress="keypressAction($event)" class="form-control" name="Search.Keyword" ng-model="Search.Keyword" placeholder="ID - Tiêu đề - Sapo">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Chuyên mục</label>
+                        <select class="form-control" ng-init="Search.CategoryId == 0 ? Search.CategoryId = option[0] : ''" ng-options="option.Id as option.Name for option in Search.ListCategory" ng-model="Search.CategoryId" ng-change="CateChange()">
+                            <option value="" class="" selected="selected">--Lựa chọn--</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Trạng thái</label>
+                        <select class="form-control" ng-init="Search.Status = option[0]" ng-options="option.Id as option.Name for option in Search.ListStatus" ng-model="Search.Status" ng-change="doSearch()">
+                            <option value="" class="" selected="selected">--Lựa chọn--</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label>&nbsp;</label>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" ng-if="!IsPreviewForm">
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> @ViewBag.Title
+                        <a class="btn btn-primary btn-sm float-right" href="@Url.Action("UpdateNews", "News")" target="_blank">Tạo mới +</a>
+                        @*<button class="btn btn-sm btn-success fa fa-file-excel-o float-right mr-1" id="btnOpenExportExcel" data-target="#modalExportExcel" data-toggle="modal" ng-click="openExportExcel()"> Báo cáo công việc</button>*@
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center" style="width: 70%">Thông tin</th>
+                                    <th class="text-center" style="width: 30%">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ListData track by $index" ng-if="ListData" ng-class="item.EncryptNewsId == ViewDataModel.EncryptNewsId ? 'selected' : ''">
+                                    <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                                    <td>
+                                        <div class="col-md-2 col-sm-2 col-xs-12 float-left">
+                                            <!-- Current avatar -->
+                                            <div class="profile_img avatar-sq avatar-sq-90 avatar-view">
+                                                <a ng-click="getNewsById(item.EncryptNewsId)" class="fl avatarindex block">
+                                                    <img class="img-responsive" ng-src="{{item.AvatarStr}}" alt="{{item.AvatarStr}}">
+                                                </a>
+                                            </div>
+                                            <!-- end of image -->
+                                        </div>
+                                        <div class="col-md-10 col-sm-10 col-xs-12 float-left">
+                                            <h6 class="tile_info">
+                                                <a href="javascript:void(0)" ng-click="getNewsById(item.EncryptNewsId)">{{item.Title}}</a>&nbsp;&nbsp;
+                                                @*<a ng-if="item.IsPublished && !item.IsBomb" href="{{item.UrlFullPath}}" target="_blank"><i class="fa fa-share" data-toggle="tooltip" title="Xem trên trang người dùng"></i></a>*@
+                                            </h6>
+                                            <div ng-if="item.IsBomb" class="invalid-date">
+                                                <div class="row">
+                                                    <div class="col-md-6">ID: {{item.IdStr}}</div>
+                                                    <div class="col-md-6">Trạng thái: <span class="badge badge-info">{{item.StatusName}}</span></div>
+                                                    <div class="col-md-6">Người tạo: {{item.CreatedBy}}</div>
+                                                    <div class="col-md-6">Người sửa cuối: {{item.ModifiedBy}}</div>
+                                                </div>
+                                                <div class="row sub-info">
+                                                    <div class="col-md-6">Ngày tạo: {{item.CreatedDateStr}}</div>
+                                                    <div class="col-md-6">Ngày sửa cuối: {{item.ModifiedDateStr}}</div>
+                                                </div>
+                                                <div class="row sub-info">
+                                                    <div ng-if="item.IsPublished" class="col-md-6 text-danger">Ngày xuất bản: <b>{{item.PublishedDateStr}} <i class="fa fa-bomb"></i></b></div>
+                                                </div>
+                                              
+                                            </div>
+                                            <div ng-if="!item.IsBomb">
+                                                <div class="row">
+                                                    <div class="col-md-6">ID: {{item.IdStr}}</div>
+                                                    <div class="col-md-6">Trạng thái: <span class="badge badge-info">{{item.StatusName}}</span></div>
+                                                    <div class="col-md-6">Người tạo: {{item.CreatedBy}}</div>
+                                                    <div class="col-md-6">Người sửa cuối: {{item.ModifiedBy}}</div>
+                                                </div>
+                                                <div class="row sub-info">
+                                                    <div class="col-md-6">Ngày tạo: {{item.CreatedDateStr}}</div>
+                                                    <div class="col-md-6">Ngày sửa cuối: {{item.ModifiedDateStr}}</div>
+                                                </div>
+                                                <div class="row sub-info">
+                                                    <div class="col-md-6" ng-class="item.IsPublished ? 'text-success': ''">Ngày xuất bản: <b>{{item.PublishedDateStr}}</b></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>
+                                            <button class="btn btn-sm btn-success" ng-if="StatusOfNewsPermission.IsPublish && 
+                                                    (item.StatusOfNews.IsPendingApproved || item.StatusOfNews.IsUnPublished)" ng-click="doPublish(item.EncryptNewsId)" type="button">
+                                                <i class="icon-control-play"></i> Xuất bản
+                                            </button>
+                                            @*<button class="btn btn-sm btn-info" ng-if="
+                                                StatusOfNewsPermission.IsPendingApprove" ng-click="doPendingApprove(item.EncryptNewsId)" type="button">
+                                                <i class="icon-arrow-up-circle"></i> Gửi duyệt
+                                            </button>*@
+                                            <button class="btn btn-sm btn-danger" ng-if="item.IsPublished" ng-click="doUnPublish(item.EncryptNewsId)" type="button" data-animation="false" data-toggle="tooltip" title="Gỡ bài">
+                                                <i class="icon-ban"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" ng-if="StatusOfNewsPermission.IsDelete && (item.StatusOfNews.IsPendingApproved || item.StatusOfNews.IsUnPublished)" ng-click="doDelete(item.EncryptNewsId)" type="button" data-animation="false" data-toggle="tooltip" title="Xóa bài">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </span>
+                                        @*<button class="btn btn-sm btn-warning icon-eye" data-animation="false" data-toggle="tooltip" ng-click="getNewsById(item.EncryptNewsId)" type="button" title="Xem"></button>*@
+                                        <a class="btn btn-sm btn-primary icon-pencil" ng-if="!item.StatusOfNews.IsDeleted" data-animation="false" data-toggle="tooltip" title="Sửa" target="_blank" href="@Url.Action("UpdateNews", "News")?newsId={{item.EncryptNewsId}}"></a>
+                                    </td>
+                                </tr>
+                                <tr ng-if="ListData == null || ListData.length == 0">
+                                    <td colspan="3">
+                                        <p class="text-center">Không có bản ghi nào</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        @{Html.RenderPartial("_Preview");}
+        @*@{Html.RenderPartial("_AutoSaveConfirm");}*@
+    </div>
+    <div>
+        @*@{Html.RenderPartial("_ExportExcel");}*@
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/News")
+}

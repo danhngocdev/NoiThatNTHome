@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DVG.WIS.Encrypt.EncryptService" CodeBehind="EncryptService.svc.cs" %>

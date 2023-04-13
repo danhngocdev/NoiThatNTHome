@@ -1,0 +1,47 @@
+﻿@using DVG.WIS.Local;
+@using DVG.WIS.PublicModel;
+@model List<NewsInListModel>
+
+@if (Model != null && Model.Any())
+{
+    <div id="news" class="wow fadeInUp" data-wow-duration="1s">
+        <div class="container">
+            <div class="title-head title-head-news">
+                <h2 class="f-bold title-head-text">@Resource.CompanyNews</h2>
+                <a class="view-all-index f-bold" href="@Resource.CompanyNewsAlias">@Resource.ViewAll</a>
+            </div>
+            <div class="news-content">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="os-post-item">
+                                <div class="os-post-image">
+                                    <div class="entry-thumbnail">
+                                        <a href="@item.Url" title="@item.Title" class="entry-thumbnail_overlay">
+                                            <img class="img-responsive" src="@item.GetAvatar("/crop/300x300/")">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="os-post-content">
+                                    <a class="os-post-title f-bold" title="@item.Title" href="@item.Url">
+                                        @item.Title
+                                    </a>
+                                    <div class="date">@item.PublishedDateStr</div>
+                                    <div class="sapo-news">
+                                        <p class="mg-top-10">
+                                            @item.Sapo
+                                        </p>
+                                    </div>
+                                    <a class="more" href="@item.Url" title="@item.Title">@Resource.ViewMore</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

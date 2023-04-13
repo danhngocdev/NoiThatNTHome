@@ -1,0 +1,67 @@
+﻿<div class="card-header">
+    <strong ng-if="OrderModel.Id > 0">Cập nhật thông tin đơn hàng</strong>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateOrder.$invalid" ng-if="OrderModel != null || OrderModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateOrder.$invalid" ng-if="OrderModel == null || OrderModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+        <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+    </div>
+</div>
+<div class="card-body">
+    <div ng-repeat="subItem in OrderDetailModel track by $index">
+        <div class="form-group border-bottom">
+            <div class="row">
+                <div class="col-md-7">
+                    <p>Sản phẩm: {{subItem.Product.Name}}</p>
+                    <p>Mã sản phẩm: {{subItem.Product.Code}}</p>
+                    <p>Giá tiền: {{subItem.PriceStr}}</p>
+                    <p>Số lượng: {{subItem.Quantity}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label">
+                    Trạng thái đơn <span class="required">*</span>
+                </label>
+                <select required class="form-control" ng-options="option.Id as option.Name for option in SearchModel.ListStatus" ng-model="OrderModel.OrderStatus"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="control-label">
+                    Loại thanh toán <span class="required">*</span>
+                </label>
+                <select required class="form-control" ng-options="option.Id as option.Name for option in SearchModel.ListPaymentType" ng-model="OrderModel.PaymentType"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="control-label">
+                    Trạng thái thanh toán <span class="required">*</span>
+                </label>
+                <select required class="form-control" ng-options="option.Id as option.Name for option in SearchModel.ListPaymentStatus" ng-model="OrderModel.PaymentStatus"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">
+                    Khách hàng note:
+                </label>
+                <textarea id="txtDescription" rows="4" class="form-control" required contenteditable="true" ng-model="OrderModel.CustomerNote">
+                </textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">
+                    Admin note:
+                </label>
+                <textarea id="txtDescription" rows="4" class="form-control" required contenteditable="true" ng-model="OrderModel.AdminNote">
+                </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-footer text-right">
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateOrder.$invalid" ng-if="OrderModel != null || OrderModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateOrder.$invalid" ng-if="OrderModel == null || OrderModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+    <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+</div>

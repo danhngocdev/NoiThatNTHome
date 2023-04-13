@@ -1,0 +1,29 @@
+﻿<div class="col-md-12 nga-fast nga-slide-up" ng-if="IsPreviewForm">
+    <div class="card">
+        <div class="card-header">
+            <strong>{{News.Title}}</strong>
+            <div class="float-right">
+                <a class="btn btn-sm btn-primary" ng-if="!News.StatusOfNews.IsDeleted" href="@Url.Action("UpdateNews", "News")?newsId={{News.EncryptNewsId}}" target="_blank"><i class="fa fa-pencil"></i> Sửa</a>
+                <button type="reset" class="btn btn-sm btn-default" ng-click="canclePreview()"><i class="fa fa-ban"></i> Hủy</button>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="box-header with-border">
+                <div class="box-title">
+                    <h2 class="text-wrap no-mg-top">{{News.Title}}</h2>
+                    <div class="clearfix"></div>
+                    <h2 class="no-mg-top">
+                        <small>Ngày tạo: {{News.CreatedDateStr}} - Nguồn: {{News.Soure}}</small>
+                    </h2>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-body overflow_hidden" ng-bind-html="trustedHtml(News.Description)">
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <a class="btn btn-sm btn-primary" ng-if="!News.StatusOfNews.IsDeleted" href="@Url.Action("UpdateNews", "News")?newsId={{News.EncryptNewsId}}" target="_blank"><i class="fa fa-pencil"></i> Sửa</a>
+            <button type="reset" class="btn btn-sm btn-default" ng-click="canclePreview()"><i class="fa fa-ban"></i> Hủy</button>
+        </div>
+    </div>
+</div>

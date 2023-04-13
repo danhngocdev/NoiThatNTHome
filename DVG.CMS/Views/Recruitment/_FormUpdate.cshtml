@@ -1,0 +1,46 @@
+﻿<div class="card-header">
+    <strong ng-if="RecruitmentModel.Id > 0">Cập nhật thông tin tuyển dụng</strong>
+    <strong ng-if="RecruitmentModel.Id == 0 || RecruitmentModel.Id == null">Thêm mới thông tin</strong>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateRecruitment.$invalid" ng-if="RecruitmentModel != null || RecruitmentModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateRecruitment.$invalid" ng-if="RecruitmentModel == null || RecruitmentModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+        <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+    </div>
+</div>
+<div class="card-body">
+    <form role="form" name="formUpdateRecruitment">
+        <div class="form-group">
+            <label>Vị trí tuyển dụng <span class="text-danger">*</span></label>
+            <input type="text" id="txtPosition" name="txtPosition" required="required" class="form-control" ng-model="RecruitmentModel.Position" maxlength="255">
+            <div data-ng-if="RecruitmentModel.Position == '' || RecruitmentModel.Position == null">
+                <span class="text-danger">Không được để trống</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Trạng thái <span class="text-danger">*</span></label>
+            <select id="txtStatus" required name="txtStatus" class="form-control" ng-init="RecruitmentModel.Status = option[0]" ng-options="option.Id as option.Name for option in RecruitmentStatus" ng-model="RecruitmentModel.Status">
+                <option value="" class="">--Lựa chọn--</option>
+                @*<option value="1" class="">Hoạt động</option>
+                <option value="2" class="" >Không hoạt động</option>*@
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Địa điểm làm việc <span class="text-danger">*</span></label>
+            <input type="text" id="txtAddress" name="txtAddress" required="required" class="form-control" ng-model="RecruitmentModel.Address" maxlength="500">
+        </div>
+        <div class="form-group">
+            <label>Thời gian hết hạn: <span class="text-danger">*</span></label>
+            <input type="text" id="txtEndDateStr" name="txtEndDateStr" class="form-control datepicker-short" ng-model="RecruitmentModel.EndDateStr" ng-init="DatePickerInit()">
+        </div>
+        <div class="form-group">
+            <label>Mô tả công việc <span class="text-danger">*</span></label>
+            <div id="txtDescription" class="editor-inline ck-inline-simple" contenteditable="true" ng-model="RecruitmentModel.Description">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="card-footer text-right">
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateRecruitment.$invalid" ng-if="RecruitmentModel != null || RecruitmentModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateRecruitment.$invalid" ng-if="RecruitmentModel == null || RecruitmentModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+    <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+</div>

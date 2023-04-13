@@ -1,0 +1,78 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Local;
+@using DVG.WIS.Entities;
+@model List<NewsInListModel>
+@{ var pagingInfo = (Pagings)ViewBag.PagingInfo; }
+<div id="content" class="blog-wrapper page-wrapper furniture-video" style="padding-bottom:unset">
+
+    <div class="row row-features ">
+        <div class="col large-12">
+            <div class="col-inner">
+                <h3 class="hot">
+                    <span>@ViewBag.Title</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row category-page-row">
+    @Html.Raw(ViewBag.DescCate)
+    <div class="col large-12">
+        <div class="shop-container">
+            <div class="products row row-small large-columns-4 medium-columns-2 small-columns-2 has-shadow row-box-shadow-1 row-box-shadow-2-hover has-equal-box-heights equalize-box">
+
+                @foreach (var item in Model)
+                {
+    <div class="product-small col has-hover product type-product" style="padding-bottom:30px;">
+        <div class="col-inner">
+            @*
+                <div class="badge-container absolute right top z-1">
+                   sss
+                </div>
+                <div class="badge-container absolute left top z-1">
+                </div>
+            *@
+            <div class="product-small box ">
+                <div class="box-image">
+                    <div class="image-fade_in_back">
+                        <a href="@item.Url">
+                            <img width="400" height="267" src="https://noithatngocchau.vn:443/Uploads/Product/tu-bep-melamin-Anh-dong-thai-binh-gia-lam-01.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="@item.Title" loading="lazy">
+                        </a>
+                    </div>
+
+                </div>
+                <a href="@item.Url">
+                </a>
+                <div class="box-text box-text-products text-center grid-style-2">
+                    <a href="@item.Url">
+                    </a>
+                    <div class="title-wrapper">
+                        <a href="@item.Url"></a>
+                        <h2 class="name product-title" style="height: 42px;">
+                            <a href="@item.Url">@item.Title</a>
+                        </h2>
+                    </div>
+                    @*<div class="price-wrapper" style="height: 27.6406px;">
+                        <span class="price">
+                            <del>
+                                <span class="woocommerce-Price-amount amount">@item.PricePromotion<span class="woocommerce-Price-currencySymbol"></span></span>
+                            </del>
+                            <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span></span></ins>
+                        </span>
+                    </div>*@
+                    <div class="cart-wrapper"></div>
+                </div>
+                <!-- box-text -->
+            </div>
+            <!-- box -->
+        </div>
+        <!-- .col-inner -->
+    </div> <!-- col -->}
+
+            </div><!-- row -->
+
+
+        </div><!-- shop container -->
+    </div>
+</div>
+

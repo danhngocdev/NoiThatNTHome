@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About2002" xml:space="preserve">
+    <value>Thành lập công ty ThanhThanhDat</value>
+  </data>
+  <data name="About2005" xml:space="preserve">
+    <value>Mở Nhà máy chế biến gỗ xuất khẩu và trồng rừng Quỳnh Thiện</value>
+  </data>
+  <data name="About2007" xml:space="preserve">
+    <value>Nhà máy chế biến gỗ xuất khẩu và làng nghề Phổ Hải</value>
+  </data>
+  <data name="About2008" xml:space="preserve">
+    <value>Nhà máy chế biến gỗ dăm xuất khẩu Quảng Phú</value>
+  </data>
+  <data name="About2010" xml:space="preserve">
+    <value>Thành lập xí nghiệp trồng rừng, trồng 2.500 ha rừng tại Quỳ Châu, Nghệ An</value>
+  </data>
+  <data name="About2012" xml:space="preserve">
+    <value>Nhà máy gỗ tiêu dùng và xuất khẩu Kỳ Anh, Hà Tĩnh và Cẩm Thuỷ, Thanh Hoá</value>
+  </data>
+  <data name="About2013" xml:space="preserve">
+    <value>Đưa nhà máy chế biến gỗ xuất khẩu Nghi Sơn 2 vào hoạt động sản xuất</value>
+  </data>
+  <data name="About2016" xml:space="preserve">
+    <value>Thành lập Công ty Cổ phần gỗ MDF Thanh Thành Đạt Vũ Quang</value>
+  </data>
+  <data name="About2017" xml:space="preserve">
+    <value>Thành lập Công ty TNHH một thành viên Lâm sản Quảng Trị và Công ty Cổ phần gỗ Okal Quảng Bình</value>
+  </data>
+  <data name="About2018" xml:space="preserve">
+    <value>Đầu tư kinh doanh cụm công nghiệp Xuân Lĩnh, Huyện Nghi Xuân</value>
+  </data>
+  <data name="About2019" xml:space="preserve">
+    <value>Thành lập nhà máy cơ khí và nhà máy keo Thanh Thành Đạt</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Giới thiệu</value>
+  </data>
+  <data name="AboutUsAlias" xml:space="preserve">
+    <value>/gioi-thieu</value>
+  </data>
+  <data name="AboutUsContent" xml:space="preserve">
+    <value>Công ty CP Gỗ MDF Thanh Thành Đạt là đơn vị thành viên của Tổng Công ty Thanh Thành Đạt ra đời năm 2016.  Bằng bản lĩnh dám khác biệt, sự sáng tạo mạnh mẽ và sự tinh tế trong cách nhìn và hành động, MDF Thanh Thành Đạt JSC tiên phong khai mở những giá trị mới, thiết thực cùng các ý tưởng độc đáo tạo nên thương hiệu của chính mình. Đồng thời, với mục tiêu hàng đầu là hướng đến nền công nghiệp xanh, sản xuất gỗ thân thiện và bảo vệ môi trường, MDF Thanh Thành Đạt JSC cam kết sẽ sáng tạo ra những sản phẩm vừa đáp ứng nhu cầu, thị hiếu của khách hàng, vừa an toàn, bảo vệ rừng và môi trường sống của toàn cầu.</value>
+  </data>
+  <data name="AboutUsDesc" xml:space="preserve">
+    <value>Giới thiệu - Công ty Cổ phần Gỗ MDF Thanh Thành Đạt  - Lịch sử hình thành và phát triển</value>
+  </data>
+  <data name="AboutUsHome" xml:space="preserve">
+    <value>Với nhiều năm kinh nghiệm trên thị trường sản xuất gỗ công nghiệp MDF, HDF, chế biến gỗ nội thất cùng công nghệ mới được cải tiến liên tục, MDF Thanh Thành Đạt JSC sẽ đem đến cho đối tác những sản phẩm tốt nhất cũng như những giải pháp chuyên biệt cho quý khách hàng để cùng phát triển bền vững.</value>
+  </data>
+  <data name="AboutUsText" xml:space="preserve">
+    <value>MDF Thanh Thành Đạt JSC</value>
+  </data>
+  <data name="AboutUsTitle" xml:space="preserve">
+    <value>Giới thiệu - Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Địa chỉ*</value>
+  </data>
+  <data name="Blogs" xml:space="preserve">
+    <value>Blogs</value>
+  </data>
+  <data name="BlogsAlias" xml:space="preserve">
+    <value>/tin-tuc/blogs</value>
+  </data>
+  <data name="BlogsDesc" xml:space="preserve">
+    <value>Mô tả blogs</value>
+  </data>
+  <data name="BlogsTitle" xml:space="preserve">
+    <value>Blogs | Công ty TNHH Thanhthanhdat</value>
+  </data>
+  <data name="Career" xml:space="preserve">
+    <value>Tuyển dụng</value>
+  </data>
+  <data name="CareerAlias" xml:space="preserve">
+    <value>/tuyen-dung</value>
+  </data>
+  <data name="CareerDesc" xml:space="preserve">
+    <value>Việc làm tuyển dụng ứng tuyển tại Công ty Cổ phần Gỗ MDF Thanh Thành Đạt. Cơ hội việc làm trong ngành sản xuất và chế biến gỗ tại Nghệ An, Hà Tĩnh</value>
+  </data>
+  <data name="CareerTitle" xml:space="preserve">
+    <value>Tuyển dụng | Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="Certification" xml:space="preserve">
+    <value>Chứng nhận</value>
+  </data>
+  <data name="CompanyAddress" xml:space="preserve">
+    <value>Nhà máy: Cụm công nghiệp huyện Vũ Quang, xã Thọ Điền, huyện Vũ Quang, tỉnh Hà Tĩnh</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Công ty Cổ phần Gỗ MDF Thanh Thành Đạt</value>
+  </data>
+  <data name="CompanyNameDetail" xml:space="preserve">
+    <value>Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="CompanyNews" xml:space="preserve">
+    <value>Tin tức doanh nghiệp</value>
+  </data>
+  <data name="CompanyNewsAlias" xml:space="preserve">
+    <value>/tin-tuc/tin-tuc-doanh-nghiep</value>
+  </data>
+  <data name="CompanyNewsDesc" xml:space="preserve">
+    <value>Mô tả tin tức doanh nghiệp</value>
+  </data>
+  <data name="CompanyNewsTitle" xml:space="preserve">
+    <value>Tin tức doanh nghiệp | Công ty TNHH Thanhthanhdat</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Liên hệ</value>
+  </data>
+  <data name="ContactAlias" xml:space="preserve">
+    <value>/lien-he</value>
+  </data>
+  <data name="ContactDesc" xml:space="preserve">
+    <value>Cụm công nghiệp huyện Vũ Quang, Xã Sơn Thọ, Huyện Vũ Quang, Hà Tĩnh. Điện thoại: 02383536373.</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Thông tin liên hệ</value>
+  </data>
+  <data name="ContactInfomation" xml:space="preserve">
+    <value>Thông tin liên hệ</value>
+  </data>
+  <data name="ContactSucess" xml:space="preserve">
+    <value>Gửi liên hệ thành công</value>
+  </data>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Liên hệ | Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Liên hệ với chúng tôi</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="DevelopmentHistory" xml:space="preserve">
+    <value>Lịch sử phát triển</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Địa chỉ email*</value>
+  </data>
+  <data name="FeaturedNews" xml:space="preserve">
+    <value>Tin tức nổi bật</value>
+  </data>
+  <data name="FeaturedProduct" xml:space="preserve">
+    <value>Sản phẩm nổi bật</value>
+  </data>
+  <data name="FoundersNote" xml:space="preserve">
+    <value>Tầm nhìn</value>
+  </data>
+  <data name="FoundersNoteContent" xml:space="preserve">
+    <value>Tầm nhìn của Công ty là trở thành doanh nghiệp hàng đầu tại Việt Nam trong lĩnh vực chế biến Lâm sản, với sản phẩm chủ lực được sản xuất từ gỗ rừng trồng làm chủ lực, tạo thế phát triển bền vững. Bên cạnh đó không ngừng phấn đấu tạo ra những sản phẩm và dịch vụ chất lượng cao đáp ứng nhu cầu của xã hội. MDF Thanh Thành Đạt JSC cũng chú trọng chăm sóc và phát triển nguồn nhân lực cả về vật chất lẫn tinh thần nhằm khuyến khích cán bộ công nhân viên tạo ra nhiều giá trị mới cho Công ty nói riêng và toàn xã hội nói chung</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Họ và tên*</value>
+  </data>
+  <data name="GeneralInformation" xml:space="preserve">
+    <value>Thông tin chung</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="HomeAlias" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="HomeDesc" xml:space="preserve">
+    <value>Công ty Cổ phần Gỗ MDF Thanh Thành Đạt là công ty chuyên sản xuất gỗ MDF công nghiệp với dây chuyển sản xuất hiện đại và nhiều năm kinh nghiệm trên thị trường</value>
+  </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="InputEmailForSubcribe" xml:space="preserve">
+    <value>Nhập email của bạn để đăng ký nhận thông tin mới nhất từ Công ty cổ phần gỗ MDF Thanh Thành Đạt</value>
+  </data>
+  <data name="JoinNow" xml:space="preserve">
+    <value>Tham gia ngay</value>
+  </data>
+  <data name="JoinUs" xml:space="preserve">
+    <value>Tham gia cùng chúng tôi</value>
+  </data>
+  <data name="JoinUsTitle" xml:space="preserve">
+    <value>Tại Công ty Cổ phần Gỗ MDF Thanh Thành Đạt, tất cả các nhân viên đều được bồi dưỡng và khuyến khích phát triển bằng những đánh giá công bằng và đảm bảo tính cạnh tranh, minh bạch.</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Tin tức</value>
+  </data>
+  <data name="NewsAlias" xml:space="preserve">
+    <value>/tin-tuc</value>
+  </data>
+  <data name="NewsDesc" xml:space="preserve">
+    <value>Tin tức chính thức mới nhất từ Công ty Cổ phần Gỗ MDF Thanh Thành Đạt</value>
+  </data>
+  <data name="NewsTitle" xml:space="preserve">
+    <value>Tin tức | Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="OfficeAddress" xml:space="preserve">
+    <value>VP giao dịch: Tòa nhà Thanh Thành Đạt, số 34, đường Nguyễn Sỹ Sách, Thành phố Vinh, tỉnh Nghệ An</value>
+  </data>
+  <data name="OurLeaders" xml:space="preserve">
+    <value>Lãnh đạo công ty</value>
+  </data>
+  <data name="OurLeadersContent" xml:space="preserve">
+    <value>Mục tiêu của Công ty cổ phần gỗ MDF Thanh Thành Đạt là thành doanh nghiệp hàng đầu về sản xuất gỗ công nghiệp, góp phần nhiều hơn nữa cho sự phát triển cộng đồng và đất nước.&lt;/br&gt;
+Chúng tôi luôn hoạt động theo tôn chỉ: Sáng tạo, ý chí làm nên những giá trị mới &lt;/br&gt;&lt;/br&gt;
+&lt;b&gt;Tổng giám đốc&lt;/b&gt;: Ông Trần Quang Luận.</value>
+  </data>
+  <data name="OurPartner" xml:space="preserve">
+    <value>Đối tác của chúng tôi</value>
+  </data>
+  <data name="OurProducts" xml:space="preserve">
+    <value>Sản phẩm của chúng tôi</value>
+  </data>
+  <data name="OurProductsTitle" xml:space="preserve">
+    <value>Các sản phẩm chính của chúng tôi bao gồm ván gỗ công nghiệp MDF và ván gỗ công nghiệp HDF. Được sản xuất trên dây chuyền hiện đại, sản phẩm của MDF Thanh Thành Đạt JSC đáp ứng được các nhu cầu và mục đích sử dụng khác nhau.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Số điện thoại*</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Sản phẩm</value>
+  </data>
+  <data name="ProductAlias" xml:space="preserve">
+    <value>/san-pham</value>
+  </data>
+  <data name="ProductDesc" xml:space="preserve">
+    <value>Sản phẩm - Công ty Cổ phần Gỗ MDF Thanh Thành Đạt đạt tiêu chuẩn quốc tế, với quy mô sản xuất lớn nhất Bắc Miền Trunng Việt Nam, nhà máy gỗ MDF đặt tại Vũ Quang, Hà Tĩnh</value>
+  </data>
+  <data name="ProductDetailMeta" xml:space="preserve">
+    <value>của công ty ThanhThanhDat là sản phẩm ván gỗ MDF công nghiệp phù hợp với mọi mục đích sử dụng</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>Sản phẩm | Công ty Cổ phần Gỗ MDF Thanh Thành Đạt -  MDF THADACO JSC</value>
+  </data>
+  <data name="Recruitment" xml:space="preserve">
+    <value>Ứng tuyển</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi đi</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>Tiêu chuẩn</value>
+  </data>
+  <data name="TechSpecification" xml:space="preserve">
+    <value>Tải bảng TC chất lượng</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="VACANCIES" xml:space="preserve">
+    <value>Vị trí tuyển dụng</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="ViewLess" xml:space="preserve">
+    <value>Thu gọn</value>
+  </data>
+  <data name="ViewMore" xml:space="preserve">
+    <value>Xem thêm</value>
+  </data>
+  <data name="WoodMDF" xml:space="preserve">
+    <value>Gỗ công nghiệp MDF</value>
+  </data>
+  <data name="WoodMDFContent" xml:space="preserve">
+    <value>Được sản xuất trên dây chuyền hiện đại nhập khẩu từ Ý, ván gỗ công nghiệp của Thanh Thành Đạt đảm bảo được tiêu chuẩn về độ mịn và độ bền, phù hợp với mọi mục đích sử dụng</value>
+  </data>
+</root>

@@ -1,0 +1,50 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<NewsInListModel>
+
+@if (Model != null && Model.Any())
+{
+
+<section class="section ss7" style="padding:0px">
+    <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+    </div>
+    <div class="section-content relative">
+        <div class="container section-title-container">
+            <h3 class="section-title section-title-center">
+                <b></b><span class="section-title-main">
+                    Tin Tức
+                </span><b></b><a href="Cong-trinh.html" target="">
+                    Xem chi tiết<i class="fas fa-angle-right"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="row row-idea half-columns large-columns-4 medium-columns-3 small-columns-2 slider row-slider slider-nav-reveal slider-nav-push">
+            @foreach (var item in Model)
+            {
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="@item.Url"
+                   class="plain">
+                    <div class="box box-default box-text-bottom box-blog-post has-hover">
+                        <div class="box-image">
+                            <div class="image-cover"
+                                 style="padding-top:75%; background-image:url(@item.GetAvatar("crop/370x270/")); background-size: cover;background-position: center center;">
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">
+                                    @item.Title
+                                </h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt "></p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>}
+            <button class="flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous" disabled=""><svg class="flickity-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button><button class="flickity-button flickity-prev-next-button next" type="button" aria-label="Next" disabled=""><svg class="flickity-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>
+
+        </div>
+    </div>
+</section>}

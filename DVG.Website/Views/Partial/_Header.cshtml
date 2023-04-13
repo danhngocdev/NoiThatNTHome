@@ -1,0 +1,151 @@
+﻿@using DVG.WIS.Core;
+
+<header id="header" class="header has-sticky sticky-jump">
+    <div class="header-wrapper">
+        <div id="masthead" class="header-main hide-for-sticky">
+            <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+                <!-- Logo -->
+                <div id="logo" class="flex-col logo" style="width: 397px; ">
+                    <!-- Header logo -->
+                    <a href="/" title="Nội thất NT Home" rel="home">
+                        <img
+                             src="/Content/images/logonthome.jpg"
+                             class="header_logo header-logo" alt="NỘI THẤT NT HOME" />
+                    </a>
+                </div>
+                <!-- Mobile Left Elements -->
+                <div class="flex-col show-for-medium flex-left">
+                    <ul class="mobile-nav nav nav-left ">
+                        <li class="nav-icon has-icon">
+                            <a href="#" data-open="#main-menu" data-pos="left" data-bg="main-menu-overlay"
+                               data-color="" class="is-small" aria-label="Menu" aria-controls="main-menu"
+                               aria-expanded="false">
+                                <i class="fas fa-bars"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Left Elements -->
+                <div class="flex-col hide-for-medium flex-left flex-grow">
+                    <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
+                        <li class="header-search-form search-form html relative has-icon">
+                            <div class="header-search-form-wrapper">
+                                <div class="searchform-wrapper ux-search-box relative is-normal">
+                                    <form role="search" method="get" class="searchform"
+                                          action="">
+                                        <div class="flex-row relative">
+                                            <div class="flex-col flex-grow">
+                                                <input type="search" class="search-field mb-0" id="keywordSearch" value=""
+                                                       placeholder="Từ khóa tìm kiếm" />
+                                                @*<input type="hidden" name="post_type" value="product" />*@
+                                            </div>
+                                            <!-- .flex-col -->
+                                            <div class="flex-col">
+                                                <button id="btn-search" type="submit"
+                                                        class="ux-search-submit submit-button button icon mb-0 btn--black">
+                                                    Tìm kiếm
+                                                </button>
+                                            </div>
+                                            <!-- .flex-col -->
+                                        </div>
+                                        <!-- .flex-row -->
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Right Elements -->
+                <div class="flex-col hide-for-medium flex-right">
+                    <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
+                        <li class="html header-button-2">
+                            <div class="header-button">
+                                <a href="tel:0975254324" class="button alert is-shade"
+                                   style="border-radius:99px;">
+                                    <span>
+                                        0975254324
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Mobile Right Elements -->
+                <div class="flex-col show-for-medium flex-right">
+                    <ul class="mobile-nav nav nav-right ">
+                        <li class="html header-button-2">
+                            <div class="header-button">
+                                <a href="tel:0975254324" class="button alert is-shade"
+                                   style="border-radius:99px;">
+                                    <span>
+                                        0975254324
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- .header-inner -->
+            <!-- Header divider -->
+            <div class="container">
+                <div class="top-divider full-width"></div>
+            </div>
+        </div>
+        <!-- .header-main -->
+        <div id="wide-nav3" class="header-bottom wide-nav nav-dark" style="display: none;">
+            <div class="flex-row container">
+                <div class="flex-col show-for-medium flex-grow">
+                    <ul class="nav header-bottom-nav nav-center mobile-nav  nav-uppercase">
+                        <li class="header-search-form search-form html relative has-icon">
+                            <div class="header-search-form-wrapper">
+                                <div class="searchform-wrapper ux-search-box relative is-normal">
+                                    <form role="search" method="get" class="searchform"
+                                          action="">
+                                        <div class="flex-row relative">
+                                            <div class="flex-col flex-grow">
+                                                <input type="search" class="search-field mb-0" id="keywordSearch" value=""
+                                                       placeholder="Từ khóa tìm kiếm" />
+                                                @*<input type="hidden" name="post_type" value="product" />*@
+                                            </div>
+                                            <!-- .flex-col -->
+                                            <div class="flex-col">
+                                                <button id="btn-search" type="submit"
+                                                        class="ux-search-submit submit-button secondary button icon mb-0 btn--black">
+                                                    Tìm kiếm
+                                                </button>
+                                            </div>
+                                            <!-- .flex-col -->
+                                        </div>
+                                        <!-- .flex-row -->
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="wide-nav" class="header-bottom wide-nav nav-dark wide-nav2">
+            <div class="flex-row container">
+                <div class="wrapper">
+                    <ul class="nav">
+                        <li style="height:43px; line-height:43px; background-color:#13488a;color: white; padding-right: 7px; padding-left:7px;">
+                            <i class="fas fa-bars"></i> Danh mục sản phẩm
+                        </li>
+                        @Html.Action("MenuTop", "Menu")
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-bg-container fill">
+            <div class="header-bg-image fill"></div>
+            <div class="header-bg-color fill"></div>
+        </div>
+    </div>
+</header>
+
+
+
+

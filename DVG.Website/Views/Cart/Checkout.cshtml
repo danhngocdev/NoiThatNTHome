@@ -1,0 +1,96 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core;
+@using DVG.WIS.Utilities;
+@model List<CartModel>
+@section styles{
+    @Styles.Render("~/styleForAll")
+}
+@{
+    double totalMoney = Model.Sum(x => x.Total);
+}
+<div class="main">
+    <div class="cart" id="cartPage">
+        <div class="container">
+            <h3 class="heading">
+                Giỏ hàng
+            </h3>
+            <div class="left-cart">
+                <div class="cart-header">
+                    <div class="row">
+                        <div class="label-remove"></div>
+                        <div class="label-product">Sản phẩm</div>
+                        <div class="label-price">Giá tiền</div>
+                        <div class="label-quantity">Số lượng</div>
+                        <div class="label-total">Tổng</div>
+                    </div>
+                </div>
+                <div class="cart-body">
+                    @foreach (var item in Model)
+                    {
+                        var link = CoreUtils.BuildURL("{0}/{1}-pid{2}", ConstUrl.Product, StringUtils.UnicodeToUnsignCharAndDash(item.Product.Name), item.ProductId);
+                        double price = item.Product.Price;
+                        if (item.Product.PricePromotion > 0)
+                        {
+                            price = item.Product.PricePromotion.Value;
+                        }
+                        <div class="row-cart">
+                            <div class="cart-remove">
+                                <a href="javascript:main.removeCart('@item.ProductId')">
+                                    <i class="icon-trash-empty"></i>
+                                </a>
+                            </div>
+                            <div class="cart-product">
+                                <a href="@link">
+                                    <img class="cart-image" src="@CoreUtils.BuildCropAvatar(item.Product.Avatar, string.Empty, "crop/90x90/")" alt="">
+                                </a>
+                                <div class="cart-meta">
+                                    <div class="cart-title">
+                                        <a href="@link">@item.Product.Name</a>
+                                    </div>
+                                    <div class="cart-size">Dung tích: @item.Product.Capacity</div>
+                                </div>
+                            </div>
+                            <div class="cart-price"><span class="money">@string.Format("{0:#,##0} VND", @price)</span></div>
+                            <div class="cart-quantity">
+                                <div class="cart-qty" data-price="@price" data-productid="@item.ProductId">
+                                    <input type="button" class="cart-qty-minus" value="-" data-productid="@item.ProductId">
+                                    <input class="cart-qty-input" type="text" data-productid="@item.ProductId" value="@item.Quantity">
+                                    <input type="button" class="cart-qty-plus" value="+" data-productid="@item.ProductId">
+                                </div>
+                            </div>
+                            <div class="cart-total"><span class="money" data-total="@item.Total" data-productid="@item.ProductId">@string.Format("{0:#,##0} VND", item.Total)</span></div>
+                        </div>
+                    }
+
+                </div>
+                <div class="cart-footer">
+                    <div class="row">
+                        <div class="subtotal-title">Tổng</div>
+                        <div class="subtotal" id="subtotal">@string.Format("{0:#,##0} VND", totalMoney)</div>
+                    </div>
+                </div>
+                <div class="button-cart">
+                    <a href="/" class="cart-continue">Tiếp tục mua hàng</a>
+                </div>
+                <div class="rules">
+                    <h3 class="heading">Quy định tính thời gian và phí vận chuyển:</h3>
+                    <p class="desc">Chúng tôi miễn phí vận chuyển trên toàn quốc với đơn hàng trên 500.000vnđ.</p>
+                    <p class="desc">Đối với khách hàng tại Hà Nội và TP.HCM: Chúng tôi sẽ chuyển hàng ngay lập tức đến đúng địa chỉ của bạn (chỉ mất 30 phút đến 2h đồng hồ).</p>
+                    <p class="desc">Đối với khách hàng tại tỉnh thành khác: Chúng tôi sẽ chuyển hàng đến tận địa chỉ nhà bạn trong khoàng thời gian tối đa 36h đồng hồ theo đường Bưu điện hoặc gửi xe khách, xe chuyển hàng... Sau khi nhận hàng bạn sẽ mới thanh toán cho nhân viên giao hàng của chúng tôi.</p>
+                    <p class="desc">Đối với khách hàng chọn sản phẩm làm quà tặng: Khách hàng chuyển khoản trước cho chúng tôi vào một trong những chi nhánh ngân hàng sau đây, sau khi nhận được thanh toán, chúng tôi sẽ chuyển hàng nhanh nhất đến tay khách hàng được bạn tặng quà.</p>
+                </div>
+                <div class="bank">
+                    <p class="desc">
+                        Tên chủ tài khoản: <strong>Berry More</strong>
+                        <br>
+                        Nội dung (ghi chú):  Mã đơn hàng - ghi chú
+                    </p>
+                </div>
+            </div>
+            <div class="right-cart">
+                @Html.Action("Payment","Cart")
+            </div>
+        </div>
+    </div>
+
+</div>

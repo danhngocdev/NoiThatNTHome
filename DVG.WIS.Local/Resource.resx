@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About2002" xml:space="preserve">
+    <value>Establishment of Thanhthanhdat company</value>
+  </data>
+  <data name="About2005" xml:space="preserve">
+    <value>Quynh Thien processing exported wood factory introduction</value>
+  </data>
+  <data name="About2007" xml:space="preserve">
+    <value>Pho Hai processing exported wood factory introduction</value>
+  </data>
+  <data name="About2008" xml:space="preserve">
+    <value>Establishment of Quang Phu woodchip processing factory for export</value>
+  </data>
+  <data name="About2010" xml:space="preserve">
+    <value>New Plantation Factory, invest in 2.500 ha forest in Quynh Chau, Nghe An</value>
+  </data>
+  <data name="About2012" xml:space="preserve">
+    <value>Export and Consumer Wood Processing Factory in Ky Anh, Ha Tinh province and Cam Thuy, Thanh Hoa</value>
+  </data>
+  <data name="About2013" xml:space="preserve">
+    <value>New Exported Wood Processing Factory Nghi Son 2 introduction</value>
+  </data>
+  <data name="About2016" xml:space="preserve">
+    <value>
+Establishment of Thanh Thanh Dat Vu Quang MDF Joint Stock Company</value>
+  </data>
+  <data name="About2017" xml:space="preserve">
+    <value>Establishment of Quang Tri Forest Products Co., Ltd. and Okal Quang Binh Wood Joint Stock Company</value>
+  </data>
+  <data name="About2018" xml:space="preserve">
+    <value>Invested in Xuan Linh industrial cluster, Nghi Xuan district</value>
+  </data>
+  <data name="About2019" xml:space="preserve">
+    <value>Establishment of Thanh Thanh Dat mechanical and glue factory</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="AboutUsAlias" xml:space="preserve">
+    <value>/en/about-us</value>
+  </data>
+  <data name="AboutUsContent" xml:space="preserve">
+    <value>MDF Thanh Thanh Dat Joint Stock Company born in 2016 is a member unit of Thanh Thanh Dat Corporation. With the courage to be different, the strong creativity and sophistication in the view and action, MDF Thanh Thanh Dat JSC pioneered to open new, practical values ​​and unique ideas to create our own brand. At the same time, with the top goal being towards green industry, friendly wood production and environmental protection, MDF Thanh Thanh Dat JSC is committed to creating products that meet the needs of customers, safe and secure, protect our living environment</value>
+  </data>
+  <data name="AboutUsDesc" xml:space="preserve">
+    <value>Thanh Thanh Dat MDF company - Our vision is becoming the top leading unit in wood panel industry in Vietnam</value>
+  </data>
+  <data name="AboutUsHome" xml:space="preserve">
+    <value>With so many experienced years in MDF HDF production field and the continuously innovative technology, MDF ThanhThanhDat JSC guarantee to bring the best product and customized solution to ourr customer. This will help us to have a sustainable future together.</value>
+  </data>
+  <data name="AboutUsText" xml:space="preserve">
+    <value>MDF THADACO JSC</value>
+  </data>
+  <data name="AboutUsTitle" xml:space="preserve">
+    <value>About | MDF THADACO JSC</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address*</value>
+  </data>
+  <data name="Blogs" xml:space="preserve">
+    <value>Blogs</value>
+  </data>
+  <data name="BlogsAlias" xml:space="preserve">
+    <value>/en/news/blogs</value>
+  </data>
+  <data name="BlogsDesc" xml:space="preserve">
+    <value>Blogs desc</value>
+  </data>
+  <data name="BlogsTitle" xml:space="preserve">
+    <value>Blogs | Thanhthanhdat Panel Limited Comany</value>
+  </data>
+  <data name="Career" xml:space="preserve">
+    <value>Career</value>
+  </data>
+  <data name="CareerAlias" xml:space="preserve">
+    <value>/en/career</value>
+  </data>
+  <data name="CareerDesc" xml:space="preserve">
+    <value>Jobs at ThanhThanhDat MDF + Finds job at ThanhThanhDat MDF factory company</value>
+  </data>
+  <data name="CareerTitle" xml:space="preserve">
+    <value>Career | MDF THADACO JSC</value>
+  </data>
+  <data name="Certification" xml:space="preserve">
+    <value>Certification</value>
+  </data>
+  <data name="CompanyAddress" xml:space="preserve">
+    <value>Factory Address: Vu Quang District Industrial Cluster, Tho Dien, Vu Quang District, Ha Tinh Province.</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>THANH THANH DAT COMPANY LIMITED</value>
+  </data>
+  <data name="CompanyNameDetail" xml:space="preserve">
+    <value>MDF THADACO JSC</value>
+  </data>
+  <data name="CompanyNews" xml:space="preserve">
+    <value>Company News</value>
+  </data>
+  <data name="CompanyNewsAlias" xml:space="preserve">
+    <value>/en/news/company-news</value>
+  </data>
+  <data name="CompanyNewsDesc" xml:space="preserve">
+    <value>Company news desc</value>
+  </data>
+  <data name="CompanyNewsTitle" xml:space="preserve">
+    <value>Company News | Thanhthanhdat Panel Limited Comany</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ContactAlias" xml:space="preserve">
+    <value>/en/contact</value>
+  </data>
+  <data name="ContactDesc" xml:space="preserve">
+    <value>Vietnam - Vinh city. ThanhThanhDat Company. 34 Nguyen Si Sach Road, Vinh city. Tel: 02383536373; Email: ...</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Contact information</value>
+  </data>
+  <data name="ContactInfomation" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="ContactSucess" xml:space="preserve">
+    <value>Gửi liên hệ thành công</value>
+  </data>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Contact | MDF Thadaco JSC</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="DevelopmentHistory" xml:space="preserve">
+    <value>Development History</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email*</value>
+  </data>
+  <data name="FeaturedNews" xml:space="preserve">
+    <value>Popular News</value>
+  </data>
+  <data name="FeaturedProduct" xml:space="preserve">
+    <value>Popular Products</value>
+  </data>
+  <data name="FoundersNote" xml:space="preserve">
+    <value>Founder's Note</value>
+  </data>
+  <data name="FoundersNoteContent" xml:space="preserve">
+    <value>Our company's vision is to become the leading enterprise in Vietnam in the field of forest product processing, with the main product produced from plantation timber as the key, creating a sustainable development. Besides constantly striving to create high quality products and services to meet the needs of society. MDF Thanh Thanh Dat JSC also focuses on caring and developing human resources both physically and mentally to encourage employees to create new values ​​for the Company in particular and the society in general.</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Fullname*</value>
+  </data>
+  <data name="GeneralInformation" xml:space="preserve">
+    <value>General information</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HomeAlias" xml:space="preserve">
+    <value>/en</value>
+  </data>
+  <data name="HomeDesc" xml:space="preserve">
+    <value>Thanh Thanh Dat is a company specialized in manufacturing industrial MDF with modern production lines and years of experience in the market</value>
+  </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>MDF Thanh Thanh Dat Wood Joint Stock Company - MDF THADACO JSC</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="InputEmailForSubcribe" xml:space="preserve">
+    <value>Enter your email to subscribe to receive the latest information from Thanhthanhdat</value>
+  </data>
+  <data name="JoinNow" xml:space="preserve">
+    <value>Join now</value>
+  </data>
+  <data name="JoinUs" xml:space="preserve">
+    <value>Join with us</value>
+  </data>
+  <data name="JoinUsTitle" xml:space="preserve">
+    <value>At MDF ThanhThanhDat JSC wood panel company, all employee will be nourished and encouraged to develop by fair and transparent still competitve perfomance review process.</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="NewsAlias" xml:space="preserve">
+    <value>/en/news</value>
+  </data>
+  <data name="NewsDesc" xml:space="preserve">
+    <value>Latest news ThanhThanhDat Company Updating</value>
+  </data>
+  <data name="NewsTitle" xml:space="preserve">
+    <value>
+News | MDF Thadaco JSC</value>
+  </data>
+  <data name="OfficeAddress" xml:space="preserve">
+    <value>Office Address: ThanhThanhDat Building, No 34, Nguyen Sy Sach Street, Vinh City, Nghe An</value>
+  </data>
+  <data name="OurLeaders" xml:space="preserve">
+    <value>Founder's note</value>
+  </data>
+  <data name="OurLeadersContent" xml:space="preserve">
+    <value>The goal of Thanh Thanh Dat MDF Joint Stock Company is to become a leading enterprise in industrial wood production, contributing more to the development of the community and the country. &lt;/br&gt;
+We always operate according to the principle: Creativity, the will to create new values &lt;/br&gt;
+Chairman: Mr. Tran Quang Luan</value>
+  </data>
+  <data name="OurPartner" xml:space="preserve">
+    <value>Our partner</value>
+  </data>
+  <data name="OurProducts" xml:space="preserve">
+    <value>Our Products</value>
+  </data>
+  <data name="OurProductsTitle" xml:space="preserve">
+    <value>Our main product including industrial wood panel MDF and HDF. Being produced with modern production line, our product will meet all your requirment and serve different uses in daily life.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone*</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="ProductAlias" xml:space="preserve">
+    <value>/en/product</value>
+  </data>
+  <data name="ProductDesc" xml:space="preserve">
+    <value>Medium density fiberboard (MDF) is a highly useful wood-based panel with good machinability. MDF has a consistent structure and density and a very smooth ...</value>
+  </data>
+  <data name="ProductDetailMeta" xml:space="preserve">
+    <value>Thanh Thanh Dat Medium density fiberboard (MDF) is a highly useful wood-based panel with good machinability. MDF has a consistent structure and density and a very smooth ...</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>Products | MDF THADACO JSC</value>
+  </data>
+  <data name="Recruitment" xml:space="preserve">
+    <value>Recruitment</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="TechSpecification" xml:space="preserve">
+    <value>Tech specification doc</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="VACANCIES" xml:space="preserve">
+    <value>VACANCIES</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>View all</value>
+  </data>
+  <data name="ViewLess" xml:space="preserve">
+    <value>View less</value>
+  </data>
+  <data name="ViewMore" xml:space="preserve">
+    <value>View more</value>
+  </data>
+  <data name="WoodMDF" xml:space="preserve">
+    <value>Industrial Wood MDF</value>
+  </data>
+  <data name="WoodMDFContent" xml:space="preserve">
+    <value>Manufactured on modern lines imported from Italy, industrial wooden of Thanh Thanh Dat ensure standards of smoothly and durability suitable for all purposes of use.</value>
+  </data>
+</root>

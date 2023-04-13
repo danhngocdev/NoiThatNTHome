@@ -1,0 +1,57 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@model List<BannerFEModel>
+
+@if (Model != null && Model.Any())
+{
+    var isPromotion = Model.Where(x => x.Position == BannerPositionEnum.Mid1.GetHashCode()).Any();
+    if (isPromotion)
+    {
+        <div class="promotion-slide" id="promotionSlide">
+            <div class="container">
+                <div class="promotion-box swiper-container">
+                    <div class="promotion-scroll swiper-wrapper">
+                        @foreach (var item in Model)
+                        {
+                            var link = !string.IsNullOrEmpty(item.TargetLink) ? item.TargetLink : "javascript:void(0)";
+                            <div class="promotion-item swiper-slide">
+                                <div class="ube-banner-effect-flash">
+                                    <div class="ube-banner-image">
+                                        <a href="@link" title="@item.Title">
+                                            <img src="@item.Embed" alt="@item.Title" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <span class="next-slide navigation">
+                        <i class="icon-right-open-big"></i>
+                    </span>
+                    <span class="previous-slide navigation">
+                        <i class="icon-left-open-big"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model[0].Position == BannerPositionEnum.Sticky.GetHashCode())
+    {
+        <div class="div-register">
+            <span class="close-modal" onclick="common.closeRegister()">
+                x
+            </span>
+            <a href="javascript:void(0)" class="contact-popup">
+                <img src="@Model[0].Embed" alt="@Model[0].Title" />
+            </a>
+        </div>
+    }
+    else
+    {
+        var item = Model[0];
+        <a href="@item.TargetLink">
+            <img src="@item.Embed" alt="@item.Title" />
+        </a>
+    }
+}

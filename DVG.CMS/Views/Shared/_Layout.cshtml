@@ -1,0 +1,82 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@using DVG.WIS.Core
+@using DVG.WIS.Utilities
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    @Styles.Render("~/WIS/styles/JqueryUi")
+    @Styles.Render("~/WIS/styles/Template")
+    @Styles.Render("~/WIS/styles/External")
+
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+
+
+    @*<div ng-include="'/Template/Navbar'"></div>*@
+
+    @Html.Action("NavBar", "Template")
+
+    <div class="app-body">
+
+        @*<div ng-include="'/Template/SidebarBav'"></div>*@
+
+        @Html.Action("SidebarNav", "Template")
+
+        <main class="main">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    @*<div ng-include="'/Template/Footer'"></div>*@
+
+    @Html.Action("Footer", "Template")
+
+    <!-- CoreUI and necessary plugins-->
+    @Scripts.Render("~/WIS/scripts/Jquery")
+    @Scripts.Render("~/WIS/scripts/JqueryUi")
+    @Scripts.Render("~/WIS/scripts/Tether")
+    @Scripts.Render("~/WIS/scripts/Angular")
+    @Scripts.Render("~/WIS/scripts/Configs")
+    @{
+        <script type="text/javascript">
+        cms.configs.TopBoxHomeHighlight = @AppSettings.Instance.GetString(Const.TopBoxHomeHighlight);
+        cms.configs.TopBoxMostView = @AppSettings.Instance.GetString(Const.TopBoxMostView);
+        cms.configs.TopBoxAssessmentHighlight = @AppSettings.Instance.GetString(Const.TopBoxAssessmentHighlight);
+        cms.configs.TopBoxMostSearch = @AppSettings.Instance.GetString(Const.TopBoxMostSearch);
+        cms.configs.TopBoxNewsFocus = @AppSettings.Instance.GetString(Const.TopBoxNewsFocus);
+        cms.configs.CKVERSION = @AppSettings.Instance.GetString(Const.CKEditorVersion);
+        cms.configs.SpellCheckerApiDomain = '@AppSettings.Instance.GetString(Const.SpellCheckerApiDomain)';
+        cms.configs.NoImage = '@AppSettings.Instance.GetString(Const.NoImage)';
+        cms.configs.CropSizeCMS = '@AppSettings.Instance.GetString(Const.CropSizeCMS)';
+        cms.configs.UploadProject = '@AppSettings.Instance.GetString(Const.UploadProject)';
+        cms.configs.VideoAESIV = '@AppSettings.Instance.GetString(Const.VideoAESIV)';
+        cms.configs.VideoAESKey = '@AppSettings.Instance.GetString(Const.VideoAESKey)';
+        cms.configs.VideoUploadDomain = '@AppSettings.Instance.GetString(Const.VideoUploadDomain)';
+        cms.configs.VideoUploadDomainClient = '@AppSettings.Instance.GetString(Const.VideoUploadDomainClient)';
+        cms.configs.VideoUploadHandler = '@AppSettings.Instance.GetString(Const.VideoUploadHandler)';
+        cms.configs.VideoViewDomain = '@AppSettings.Instance.GetString(Const.VideoViewDomain)';
+        cms.configs.UploadHandler = '@AppSettings.Instance.GetString(Const.UploadHandler)';
+        cms.configs.VideoThumbDomain = '@AppSettings.Instance.GetString(Const.VideoThumbDomain)';
+        cms.configs.ViewDomain = '@FileManager.Common.Config.ViewDomain';
+        cms.configs.NewsAutoSave.Enable = @(AppSettings.Instance.GetString(Const.NewsAutoSave) == "1" ? "true" : "false");
+        cms.configs.NewsAutoSave.Interval = @AppSettings.Instance.GetString(Const.NewsAutoSaveInterval);
+        cms.configs.ProductionDomain = '@AppSettings.Instance.GetString(Const.ProductionDomain)';
+        </script>
+    }
+    @Scripts.Render("~/WIS/scripts/AngularPlugin")
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js?v=" + AppSettings.Instance.GetString(Const.CKEditorVersion), "~/Scripts/ckeditor/config-short.js?v=" + AppSettings.Instance.GetString(Const.CKEditorVersion))
+    @Scripts.Render("~/WIS/scripts/Template?v=4")
+    @Scripts.Render("~/WIS/scripts/AngularCustomize")
+    @Scripts.Render("~/WIS/scripts/External")
+    @Scripts.Render("~/WIS/scripts/Menu")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

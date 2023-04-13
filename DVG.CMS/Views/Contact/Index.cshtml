@@ -1,0 +1,114 @@
+﻿@using DVG.WIS.Utilities
+@{ ViewBag.Title = "Quản lý Liên Hệ"; }
+<div ng-controller="ContactController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="animated fadeIn">
+        <div class="card clearfix">
+            <div class="card-header">
+                <button type="button" class="btn btn-sm btn-secondary pull-right mt-1" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+                    Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </button>
+            </div>
+            <div class="card-body search-form collapse">
+                <form ng-model="Search" class="row">
+                    <div class="form-group col-md-3">
+                        <label>Từ khóa</label>
+                        <input type="text" ng-keypress="keypressAction($event)" class="form-control" name="Search.Keyword" ng-model="Search.Keyword" placeholder="ID - Tiêu đề - Sapo">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Trạng thái</label>
+                        <select class="form-control" ng-init="Search.Status = option[0]" ng-options="option.Id as option.Name for option in InitModel.ListStatus" ng-model="Search.Status" ng-change="onChangeData()">
+                            <option value="" class="" selected="selected">--Lựa chọn--</option>
+                        </select>
+                    </div>
+                    @*<div class="col-lg-2 col-md-2">
+                        <div class="form-group">
+                            <label>Ngày Tạo</label>
+                            <input type="text" id="txtStartDateStr" name="txtStartDateStr" class="form-control datepicker-short" ng-model="SearchModel.StartDateStr" ng-init="DatePickerInit()">
+                        </div>
+                    </div>*@
+                    <div class="form-group col-md-1">
+                        <label>&nbsp;</label>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> @ViewBag.Title
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Tên</th>
+                                    <th>Phone</th>
+                                    <th>Content</th>
+                                    <th class="text-center" ng-if="CurrentFormStatus == FormStatusEnums.List">Ngày tạo</th>
+                                    <th class="text-center">Trạng thái</th>
+                                    <th class="text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ListData track by $index" ng-if="ListData">
+                                    <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                                    <td>
+                                        {{item.Name}}
+                                    </td>
+                                    <td>{{item.Phone}}</td>
+                                    <td>
+                                        {{item.Content}}
+                                    </td>
+   
+                                    <td class="text-center">{{item.CreatedDateStr}}</td>
+
+                                    <td class="text-center">
+                                        <span ng-show="item.Status == 1" class="badge badge-success">Đã Xác Nhận</span>
+                                        <span ng-show="item.Status == 2" class="badge badge-danger">Chưa Tiếp Nhận</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button ng-if="item.Status != 1" href="javascript:void(0)" class="btn btn-sm btn-success icon-lock" data-toggle="tooltip" ng-click="updateStatus(this)" type="button" title="Tiếp Nhận"></button>
+                                    </td>
+                                </tr>
+                                <tr ng-if="ListData == null || ListData.length == 0">
+                                    <td colspan="8">
+                                        <p class="text-center">Không có bản ghi nào</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/InfoContact")
+}

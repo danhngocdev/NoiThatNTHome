@@ -1,0 +1,71 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Local;
+@model CustomerFEModel
+@section styles{
+    @Styles.Render("~/styleForAll")
+}
+<div class="main">
+    <div class="maps">
+        <div class="container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d476859.20783924684!2d105.37248923502331!3d20.974087358826715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135008e13800a29%3A0x2987e416210b90d!2zSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1660029685863!5m2!1svi!2s" width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="container">
+            <div class="left-contact">
+                <h3 class="heading">Mỹ phẩm Berry More</h3>
+                <p><i class="icon-location"></i>B6-BT5 Khu đô thị mới Mỹ Đình 2, P.Mỹ Đình 2, Q.Nam Từ Liêm, Hà Nội</p>
+                <p><i class="icon-bank"></i><strong>VPGD:</strong>Tòa nhà Hội nhà báo VN, phường Yên Hòa, Q.Cầu Giấy, Hà Nội.</p>
+                <p><i class="icon-phone"></i> 024.37833660 - 024.38378866</p>
+                <p><i class="icon-fax"></i> 024.37833661</p>
+                <p><i class="icon-mail-alt"></i> berrymore@company.com</p>
+                <p><i class="icon-globe"></i> berrymore.vn</p>
+            </div>
+            <div class="right-contact">
+                <h3 class="heading">Liên hệ tư vấn</h3>
+                @using (Html.BeginForm("Register", "Customer", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Name, new { @placeholder = "Họ và tên *", @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Address, new { @placeholder = "Địa chỉ", @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Address)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Số điện thoại *", @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Phone)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Địa chỉ email *", @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Title, new { @placeholder = "Tiêu đề", @class = "form-control" })
+                        <span class="error">
+                            @Html.ValidationMessageFor(x => x.Title)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Description, new { cols = 20, @class = "form-control", @placeholder = "Nội dung", rows = "4" })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"><i class="fa fa-send"></i> Gửi liên hệ</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

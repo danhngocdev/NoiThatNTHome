@@ -1,0 +1,38 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@using DVG.WIS.Local;
+@using DVG.WIS.Entities;
+@model List<ProductFEListModel>
+
+<div id="content" class="blog-wrapper page-wrapper furniture-video" style="padding-bottom:unset">
+
+    <div class="row row-features ">
+        <div class="col large-12">
+            <div class="col-inner">
+                <h3 class="hot">
+                    <span>@ViewBag.Title</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row category-page-row">
+    @Html.Raw(ViewBag.DescCate)
+    <div class="col large-12">
+        <div class="shop-container" id="productList">
+            <div class="list-item-page products row row-small large-columns-4 medium-columns-2 small-columns-2 has-shadow row-box-shadow-1 row-box-shadow-2-hover has-equal-box-heights equalize-box">
+                @Html.Partial("~/Views/Product/_ProductListItem.cshtml", Model)
+
+            </div><!-- row -->
+
+
+        </div><!-- shop container -->
+        @if (ViewBag.TotalRecord > 0)
+        {
+            <div class="carloading loadProduct">
+                @Html.Partial("~/Views/Shared/_Loading.cshtml")
+            </div>
+        }
+    </div>
+</div>
+

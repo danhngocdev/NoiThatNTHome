@@ -1,0 +1,10 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@using DVG.WIS.Local;
+@using DVG.WIS.Entities;
+@model List<ProductFEListModel>
+@if (Model != null && Model.Any())
+{
+        @Html.Partial("~/Views/Product/_ProductListItem.cshtml", Model)
+}
+

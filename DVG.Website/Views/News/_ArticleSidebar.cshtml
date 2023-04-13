@@ -1,0 +1,20 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<NewsInListModel>
+@if (Model != null && Model.Any())
+{
+    <aside id="woocommerce_products-5" class="widget woocommerce widget_products">
+        <span class="widget-title "><span style="color: #13488a;">Tin tức nổi bật</span></span>
+        <div class="is-divider small"></div>
+        <ul class="product_list_widget">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@item.Url">
+                        <img width="100" height="100" src="@item.GetAvatar("crop/100x75/")" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail wp-post-image" alt="" loading="lazy" sizes="(max-width: 100px) 100vw, 100px">
+                        <span class="product-title">@item.Title</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </aside>
+}

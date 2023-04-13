@@ -1,0 +1,38 @@
+﻿<div class="card-header">
+    <strong ng-if="CustomerModel.Id > 0">Cập nhật thông tin khách hàng</strong>
+    <strong ng-if="CustomerModel.Id == 0 || CustomerModel.Id == null">Thêm mới thông tin khách hàng</strong>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateCustomer.$invalid" ng-if="CustomerModel != null || CustomerModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateCustomer.$invalid" ng-if="CustomerModel == null || CustomerModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+        <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+    </div>
+</div>
+<div class="card-body">
+    <form role="form" name="formUpdateCustomer">
+        <div class="form-group">
+            <label>Tên <span class="text-danger">*</span></label>
+            <input type="text" id="txtName" name="txtName" required="required" class="form-control" ng-model="CustomerModel.Name" maxlength="255">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" id="txtEmail" name="txtPosition" class="form-control" ng-model="CustomerModel.Email" maxlength="255">
+        </div>
+        <div class="form-group">
+            <label>Phone <span class="text-danger">*</span></label>
+            <input type="text" id="txtPhone" name="txtPhone" required="required" class="form-control" ng-model="CustomerModel.Phone" maxlength="255">
+        </div>
+        <div class="form-group">
+            <label>Tiêu đề</label>
+            <input type="text" id="txtTitle" name="txtTitle" class="form-control" ng-model="CustomerModel.Title" maxlength="255">
+        </div>
+        <div class="form-group">
+            <label>Nội dung</label>
+            <textarea id="Description" name="Description" class="form-control" rows="3" ng-model="CustomerModel.Description" ></textarea>
+        </div>
+    </form>
+</div>
+<div class="card-footer text-right">
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateCustomer.$invalid" ng-if="CustomerModel != null || CustomerModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdateCustomer.$invalid" ng-if="CustomerModel == null || CustomerModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+    <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+</div>

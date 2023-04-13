@@ -1,0 +1,179 @@
+﻿@using DVG.WIS.Utilities
+@{ ViewBag.Title = "Quản lý báo giá";
+ }
+<div ng-controller="PriceListController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="animated fadeIn">
+        <div class="card clearfix">
+            <div class="card-header">
+                <button type="button" class="btn btn-sm btn-secondary pull-right mt-1" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+                    Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </button>
+            </div>
+            <div class="card-body search-form collapse">
+                <form ng-model="Search" class="row">
+                    <div class="form-group col-md-3">
+                        <label>Từ khóa</label>
+                        <input type="text" ng-keypress="keypressAction($event)" class="form-control" name="Search.Keyword" ng-model="Search.Keyword" placeholder="ID - Tiêu đề - Sapo">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Trạng thái</label>
+                        <select class="form-control" ng-init="Search.Status = option[0]" ng-options="option.Id as option.Name for option in InitModel.ListStatus" ng-model="Search.Status" ng-change="onChangeData()">
+                            <option value="" class="" selected="selected">--Lựa chọn--</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label>&nbsp;</label>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> @ViewBag.Title
+                        <button type="button" class="btn btn-primary btn-sm float-right" ng-click="InitCreateOrUpdate()">Tạo mới +</button>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Tên</th>
+                                    <th>Giá</th>
+                                    <th>Đơn Vị Tính</th>
+                                    <th>Ghi Chú</th>
+                                    <th class="text-center" ng-if="CurrentFormStatus == FormStatusEnums.List">Ngày tạo</th>
+                                    <th class="text-center">Trạng thái</th>
+                                    <th class="text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ListData track by $index" ng-if="ListData">
+                                    <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                                    <td>
+                                        {{item.Name}}
+                                    </td>
+                                    <td>{{item.Price}}</td>
+                                    <td>
+                                        {{item.UnitName}}
+                                    </td>
+                                    <td>
+                                        {{item.Note}}
+                                    </td>
+                                    <td ng-if="CurrentFormStatus == FormStatusEnums.List" class="text-center">{{item.CreatedDateStr}}</td>
+
+                                    <td class="text-center">
+                                        <span ng-show="item.Status == PriceListStatus.Active" class="badge badge-success">{{item.StatusName}}</span>
+                                        <span ng-show="item.Status == PriceListStatus.NonActive" class="badge badge-danger">{{item.StatusName}}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-primary icon-pencil" data-toggle="tooltip" ng-click="getPriceListById(item.Id)" type="button" title="Sửa"></button>
+                                        <button ng-if="item.Status != PriceListStatus.Active" href="javascript:void(0)" class="btn btn-sm btn-danger icon-trash" data-toggle="tooltip" ng-click="deletePriceList(item.Id)" type="button" title="Xóa"></button>
+                                    </td>
+                                </tr>
+                                <tr ng-if="ListData == null || ListData.length == 0">
+                                    <td colspan="8">
+                                        <p class="text-center">Không có bản ghi nào</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-6 nga-fast nga-slide-right" ng-show="CurrentFormStatus != FormStatusEnums.List">
+                <div class="card" ng-show="CurrentFormStatus == FormStatusEnums.CreateOrUpdate">
+                    <div class="card-header">
+                        <strong ng-if="PriceList.Id > 0">Cập nhật thông tin báo giá</strong>
+                        <strong ng-if="PriceList.Id == 0 || PriceList.Id == null">Thêm mới báo giá</strong>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdatePriceList.$invalid" ng-if="PriceList != null && PriceList.Id > 0" ng-click="updatePriceList()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                            <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdatePriceList.$invalid" ng-if="PriceList == null || PriceList.Id == 0 || PriceList.Id == null" ng-click="updatePriceList()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                            <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form class="container" name="formUpdatePriceList">
+
+                            <div class="form-group row">
+                                <label>Tên báo giá <span class="text-danger">*</span></label>
+                                <input type="text" id="txtName" name="txtName" required="required" class="form-control" ng-model="PriceList.Name" ng-maxlength="255">
+                                <div ng-show="formUpdatePriceList.txtName.$error.required">
+                                    <span class="text-danger">Vui lòng nhập Tên báo giá.</span>
+                                </div>
+                                <div ng-show="formUpdatePriceList.txtName.$error.maxlength">
+                                    <span class="text-danger">Tên báo giá không được quá 300 ký tự.</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label>Giá <span class="text-danger">*</span></label>
+                                <input type="text" id="txtPrice" name="txtPrice" required="required" class="form-control" ng-model="PriceList.Price">
+                                <div ng-show="formUpdatePriceList.txtPrice.$error.required">
+                                    <span class="text-danger">Vui lòng nhập Giá.</span>
+                                </div>
+                                @*<div ng-show="formUpdatePriceList.txtPrice.$error.maxlength">
+                <span class="text-danger">Tên chuyên mục không được quá 300 ký tự.</span>
+            </div>*@
+                            </div>
+                            <div class="form-group row">
+                                <label>Ghi Chú</label>
+                                <input type="text" id="txtNote" name="txtNote" required="required" class="form-control" ng-model="PriceList.Note">
+                                <div ng-show="formUpdatePriceList.txtNote.$error.required">
+                                    <span class="text-danger">Vui lòng nhập Ghi Chú.</span>
+                                </div>
+                                @*<div ng-show="formUpdatePriceList.txtNote.$error.maxlength">
+                <span class="text-danger">Tên chuyên mục không được quá 300 ký tự.</span>
+            </div>*@
+                            </div>
+
+                            <div class="form-group row">
+                                <label>Trạng Thái <span class="text-danger">*</span></label>
+                                <select required class="form-control" ng-options="option.Id as option.Name for option in InitModel.ListStatus" ng-model="PriceList.Status"></select>
+                            </div>
+
+                            <div class="form-group row">
+                                <label>Đơn Vị Tính<span class="text-danger">*</span></label>
+                                <select required class="form-control" ng-options="option.Id as option.Name for option in InitModel.ListUnit" ng-model="PriceList.Unit"></select>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="card-footer text-right">
+                        <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdatePriceList.$invalid" ng-if="PriceList != null && PriceList.Id > 0" ng-click="updatePriceList()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                        <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdatePriceList.$invalid" ng-if="PriceList == null || PriceList.Id == 0 || PriceList.Id == null" ng-click="updatePriceList()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                        <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/PriceList")
+}

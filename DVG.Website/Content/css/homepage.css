@@ -1,0 +1,41 @@
+ .swiper-container .swiper-wrapper .swiper-slide .card-image {
+    background: #fff;
+    border: none;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+}
+
+ .swiper-container .swiper-wrapper .swiper-slide .card-image img {
+        display: block;
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+.swiper-container .swiper-pagination-bullet {
+    opacity: 0.8;
+    background: #252a32;
+}
+
+ .swiper-container .swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+ .swiper-container .swiper-button-next, .main .container .swiper-container .swiper-button-prev {
+    background-image: none;
+    background-size: 0;
+    background-repeat: no-repeat;
+    background-position: 0;
+    margin-top: -1rem;
+}
+
+ .swiper-container .swiper-button-next .arrow-icon, .main .container .swiper-container .swiper-button-prev .arrow-icon {
+        font-size: 2rem;
+        color: #fff;
+    }
+
+

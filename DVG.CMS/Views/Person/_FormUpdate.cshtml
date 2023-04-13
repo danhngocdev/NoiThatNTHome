@@ -1,0 +1,62 @@
+﻿<div class="card-header">
+    <strong ng-if="PersonModel.Id > 0">Cập nhật thông tin lãnh đạo</strong>
+    <strong ng-if="PersonModel.Id == 0 || PersonModel.Id == null">Thêm mới thông tin</strong>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdatePerson.$invalid" ng-if="PersonModel != null || PersonModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+        <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdatePerson.$invalid" ng-if="PersonModel == null || PersonModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+        <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+    </div>
+</div>
+<div class="card-body">
+    <form role="form" name="formUpdatePerson">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-6">
+                    <label>Tên <span class="text-danger">*</span></label>
+                    <input type="text" id="txtName" name="txtName" required="required" class="form-control" ng-model="PersonModel.Name" maxlength="255">
+                </div>
+                <div class="col-lg-6">
+                    <label>Ưu tiên (thấp đến cao) <span class="text-danger">*</span></label>
+                    <input type="number" id="txtPriority" name="txtPriority" required="required" class="form-control" ng-model="PersonModel.Priority" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Trạng thái <span class="text-danger">*</span></label>
+            <select id="txtStatus" required name="txtStatus" class="form-control" ng-init="PersonModel.Status = option[0]" ng-options="option.Id as option.Name for option in PersonStatus" ng-model="PersonModel.Status">
+                <option value="" class="">--Lựa chọn--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label> Ảnh đại diện (<small>Tối thiểu 230x160</small>)</label>
+                    <div>
+                        <button type="button" class="btn btn-info btn-sm" ng-click="selectAvatar()">
+                            <i class="fa fa-upload"></i>Tải lên
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="deleteAvatar()">
+                            <i class="fa fa-trash"></i>Xoá
+                        </button>
+                        <div class="mt-1">
+                            <div class="divimage">
+                                <img style="display: block;" id="avatarTopic" src="{{PersonModel.AvatarStr}}" title="Click xem ảnh gốc" ng-click="selectAvatar()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nội dung <span class="text-danger">*</span></label>
+            <textarea id="txtDescription" rows="4" class="form-control" required contenteditable="true" ng-model="PersonModel.Description">
+            </textarea>
+        </div>
+    </form>
+</div>
+<div class="card-footer text-right">
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdatePerson.$invalid" ng-if="PersonModel != null || PersonModel.Id > 0" ng-click="doUpdate()"><i class="fa fa-save"></i> Cập nhật</button>
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="formUpdatePerson.$invalid" ng-if="PersonModel == null || PersonModel.Id == 0" ng-click="doUpdate()"><i class="fa fa-plus"></i> Thêm mới</button>
+    <button class="btn btn-primary btn-sm" ng-click="cancelUpdate()"><i class="fa fa-close"></i> Hủy</button>
+</div>

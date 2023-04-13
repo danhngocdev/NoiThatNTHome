@@ -1,0 +1,105 @@
+﻿#ck_messageBox {
+    color: green;
+}
+#ck_listMenuHeading {
+    margin: 10px 0;
+}
+#ck_menuHeading_content {
+    max-height: 350px;
+    overflow-y: scroll;
+}
+.ck_menuheading_title {
+    margin: 10px 1px;
+}
+#ck_menuHeading_content .ck_mh_row{
+    margin-bottom: 10px;
+}
+.ck_mh_col {
+    display: inline-block;
+    float: left;
+}
+.ck_mh_col_left {
+    margin-right: 10px;
+    margin-top: 4px;
+    width: 35%;
+}
+.ck_mh_col_right {
+    width: 60%;
+}
+.dvs_mh_external_box {
+    display: none;
+}
+#ck_menuHeading_content input[type="checkbox"] {
+    vertical-align: middle;
+    margin-left: 1px;
+    margin-right: 2px;
+}
+.clear-fix:after {
+    content: '';
+    display: table;
+    height: 0;
+    clear: both;
+}
+.dvs_mh_ordinal_box {
+    width: 15%;
+    margin-right: 10px;
+    float: left;
+}
+.dvs_mh_title_external_box {
+    width: 80%;
+    float: left;
+}
+
+/*======CSS for spinner=======*/
+.cke_dialog_spinner
+{
+    border-radius: 50%;
+
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+
+    text-indent: -9999em;
+
+    border-top: 2px solid rgba(102, 102, 102, 0.2);
+    border-right: 2px solid rgba(102, 102, 102, 0.2);
+    border-bottom: 2px solid rgba(102, 102, 102, 0.2);
+    border-left: 2px solid rgba(102, 102, 102, 1);
+
+    -webkit-animation: dialog_spinner 1s infinite linear;
+    animation: dialog_spinner 1s infinite linear;
+}
+
+/* A GIF fallback for IE8 and IE9 which do not support CSS animations. */
+.cke_browser_ie8 .cke_dialog_spinner,
+.cke_browser_ie9 .cke_dialog_spinner
+{
+    background: url(icons/spinner.gif) center top no-repeat;
+    width: 16px;
+    height: 16px;
+    border: 0;
+}
+
+@-webkit-keyframes dialog_spinner
+{
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dialog_spinner
+{
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

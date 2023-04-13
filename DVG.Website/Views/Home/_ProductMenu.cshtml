@@ -1,0 +1,31 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core;
+@model List<MenuTop>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.Parent.Url">@item.Parent.Name</a>
+                @if (item.HasSubMenu) 
+                    {
+                    <ul class="sub-menu">
+                        @foreach (var sub in item.SubMenu)
+                        {
+                            <li>
+                                <a href="@sub.Parent.Url">
+                                    @sub.Parent.Name
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                    }
+                
+            </li>
+        }
+
+}
+
+

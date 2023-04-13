@@ -1,0 +1,159 @@
+﻿@using DVG.WIS.Utilities
+@{ ViewBag.Title = "Quản lý Video"; }
+<div ng-controller="VideoController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="animated fadeIn">
+        <div class="card clearfix">
+            <div class="card-header">
+                <button type="button" class="btn btn-sm btn-secondary pull-right mt-1" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+                    Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </button>
+            </div>
+            <div class="card-body search-form collapse">
+                <form ng-model="Search" class="row">
+                    <div class="form-group col-md-3">
+                        <label>Từ khóa</label>
+                        <input type="text" ng-keypress="keypressAction($event)" class="form-control" name="Search.Keyword" ng-model="Search.Keyword" placeholder="ID - Tiêu đề - Sapo">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Trạng thái</label>
+                        <select class="form-control" ng-init="Search.Status = option[0]" ng-options="option.Id as option.Name for option in InitModel.ListStatus" ng-model="Search.Status" ng-change="onChangeData()">
+                            <option value="" class="" selected="selected">--Lựa chọn--</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label>&nbsp;</label>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> @ViewBag.Title
+                        <button type="button" class="btn btn-primary btn-sm float-right" ng-click="InitCreateOrUpdate()">Tạo mới +</button>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Tiêu Đề</th>
+                                    <th>URL Video</th>
+                                    <th>Avatar</th>
+                                    <th class="text-center">Trạng thái</th>
+                                    <th class="text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ListData track by $index" ng-if="ListData">
+                                    <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                                    <td>
+                                        {{item.Title}}
+                                    </td>
+                                    <td>{{item.VideoUrl}}</td>
+                                    <td ng-if="item.Avatar != null">
+                                        <img src="{{item.Avatar}}" width="100" height="100" />
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-show="item.Status == 1" class="badge badge-success">{{item.StatusName}}</span>
+                                        <span ng-show="item.Status == 0" class="badge badge-danger">{{item.StatusName}}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-primary icon-pencil" data-toggle="tooltip" ng-click="getVideoById(item.Id)" type="button" title="Sửa"></button>
+                                        <button ng-if="item.Status != 1" href="javascript:void(0)" class="btn btn-sm btn-danger icon-trash" data-toggle="tooltip" ng-click="deleteVideo(item.Id)" type="button" title="Xóa"></button>
+                                    </td>
+                                </tr>
+                                <tr ng-if="ListData == null || ListData.length == 0">
+                                    <td colspan="8">
+                                        <p class="text-center">Không có bản ghi nào</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="float-left">
+                        Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                    </div>
+                    <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                        <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                            <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-6 nga-fast nga-slide-right" ng-show="CurrentFormStatus != FormStatusEnums.List">
+                <div class="card" ng-show="CurrentFormStatus == FormStatusEnums.CreateOrUpdate">
+                    <div class="card-header">
+                        <strong ng-if="Video.Id > 0">Cập nhật thông tin Video</strong>
+                        <strong ng-if="Video.Id == 0 || Video.Id == null">Thêm mới Video</strong>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateVideo.$invalid" ng-if="Video != null && Video.Id > 0" ng-click="updateVideo()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                            <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateVideo.$invalid" ng-if="Video == null || Video.Id == 0 || Video.Id == null" ng-click="updateVideo()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                            <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form class="container" name="formUpdateVideo">
+                            <div class="form-group row">
+                                <label>Tiêu Đề <span class="text-danger">*</span></label>
+                                <input type="text" id="txtTitle" name="txtTitle" required="required"  class="form-control" ng-model="Video.Title" ng-maxlength="255">
+                                <div ng-show="formUpdateVideo.txtTitle.$error.required">
+                                    <span class="text-danger">Vui lòng nhập tiêu đề.</span>
+                                </div>
+                                <div ng-show="formUpdateVideo.txtTitle.$error.maxlength">
+                                    <span class="text-danger">Tiêu đề không được quá 300 ký tự.</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label>URL Video <span class="text-danger">*</span></label>
+                                <input type="text" id="txtUrl" name="txtUrl" required="required" class="form-control" ng-model="Video.VideoUrl">
+                                <div ng-show="formUpdateVideo.txtUrl.$error.required">
+                                    <span class="text-danger">Vui lòng nhập URL.</span>
+                                </div>
+                            </div>
+
+       
+                                @*<div class="form-group row">
+                                    <label> Preview Youtube</label>
+                                    <pre id="myCode"></pre>
+                                </div>*@
+                       
+                          
+                            <div class="form-group row">
+                                <label>Trạng Thái <span class="text-danger">*</span></label>
+                                <select required class="form-control" ng-options="option.Id as option.Name for option in InitModel.ListStatus" ng-model="Video.Status"></select>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="card-footer text-right">
+                        <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateVideo.$invalid" ng-if="Video != null && Video.Id > 0" ng-click="updateVideo()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                        <button type="button" class="btn btn-sm btn-primary" ng-disabled="formUpdateVideo.$invalid" ng-if="Video == null || Video.Id == 0 || Video.Id == null" ng-click="updateVideo()"><i class="fa fa-dot-circle-o"></i> Thêm mới</button>
+                        <button type="reset" class="btn btn-sm btn-default" ng-click="cancleUpdate()"><i class="fa fa-ban"></i> Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/Video")
+}

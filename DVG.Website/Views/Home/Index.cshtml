@@ -1,0 +1,472 @@
+﻿@using DVG.WIS.Core.Enums;
+@using DVG.Website.Models;
+@using DVG.WIS.Core;
+@model List<HomePageViewModel>
+
+@*<div class="banner-grid-wrapper">
+        <div id="banner-grid" class="banner-grid row row-grid hidden" data-packery-options="">
+            <div class="col grid-col medium-4 small-12 large-2 grid-col-1">
+                <div class="col-inner">
+                </div>
+            </div>
+            <div class="col grid-col medium-8 small-12 large-7 grid-col-1">
+                <div class="col-inner">
+                </div>
+            </div>
+            <div class="col grid-col medium-6 small-12 large-3 grid-col-1-2">
+                <div class="col-inner">
+                </div>
+            </div>
+            <div class="col grid-col medium-6 small-12 large-3 grid-col-1-2">
+                <div class="col-inner">
+                </div>
+            </div>
+        </div>
+        <style scope="scope">
+            #banner-grid .grid-col-1 {
+                height: 500px
+            }
+
+            #banner-grid .grid-col-1-2 {
+                height: 250px
+            }
+
+            #banner-grid .grid-col-1-3 {
+                height: 166.66666666667px
+            }
+
+            #banner-grid .grid-col-2-3 {
+                height: 333.33333333333px
+            }
+
+            #banner-grid .grid-col-1-4 {
+                height: 125px
+            }
+
+            #banner-grid .grid-col-3-4 {
+                height: 375px
+            }
+            /* Tablet */
+            @@media (max-width: 850px) {
+                #banner-grid .grid-col-1 {
+                    height: 600px
+                }
+
+                #banner-grid .grid-col-1-2 {
+                    height: 300px
+                }
+
+                #banner-grid .grid-col-1-3 {
+                    height: 200px
+                }
+
+                #banner-grid .grid-col-2-3 {
+                    height: 400px
+                }
+
+                #banner-grid .grid-col-1-4 {
+                    height: 150px
+                }
+
+                #banner-grid .grid-col-3-4 {
+                    height: 450px
+                }
+            }
+        </style>
+    </div>*@
+<section class="section">
+    <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+    </div>
+    <div class="section-content relative">
+        <div class="row align-equal">
+            <div class="col pb-0 medium-9 small-12 large-9">
+                <div class="col-inner" id="bannerHomePage">
+                    @Html.Action("BannerHomePage", "Banner", new { pageId = BannerPositionEnum.Main.GetHashCode() })
+                </div>
+            </div>
+
+            <div class="col pb-0 hide-for-small medium-3 small-12 large-3">
+                <div class="col-inner" style="padding:0px 0px 0px 0px;margin:0px 0px -33px 0px;">
+                    <div class="col-inner">
+                        <div class="img has-hover x md-x lg-x y md-y lg-y">
+                            <a class="" href="Khuyen-mai.html">
+                                <div class="img-inner image-cover dark" style="padding-top:395px;">
+                                    <img src="https://noithatngocchau.vn/Uploads/qc/noithatngocchau-01.png"
+                                         class="attachment-original size-original wp-post-image" alt=""
+                                         loading="lazy" sizes="(max-width: 179px) 100vw, 179px" />
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+    </div>
+    <div class="section-content relative content4">
+        <div class="row align-equal ss2 row1">
+            <div class="col medium-6 small-6 large-3">
+                <div class="col-inner col-border">
+                    <a href="/danh-muc/cong-trinh-thi-cong">
+                        <div class="icon-box featured-box icon-box-left text-left align-middle">
+                            <div class="icon-box-img" style="width: 40px">
+                                <div class="icon">
+                                    <div class="icon-inner" style="color:rgb(222, 157, 28);">
+                                        <img width="47" height="57" src="~/Content/images/7.png"
+                                             class="attachment-medium size-medium wp-post-image"
+                                             alt="Công trình" loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-box-text last-reset">
+                                <h3 class="uppercase">
+                                    <span data-text-color="primary">
+                                        Công trình tiêu
+                                        biểu
+                                    </span>
+                                </h3>
+                                <p>Dự án của NT Home</p>
+                            </div>
+                        </div>
+                        <!-- .icon-box -->
+                    </a>
+                </div>
+            </div>
+            <div class="col medium-6 small-6 large-3">
+                <div class="col-inner col-border">
+                    <a href="/@ConstUrl.AboutUs">
+                        <div class="icon-box featured-box icon-box-left text-left align-middle">
+                            <div class="icon-box-img" style="width: 40px">
+                                <div class="icon">
+                                    <div class="icon-inner">
+                                        <img width="53" height="53" src="~/Content/images/8.png"
+                                             class="attachment-medium size-medium wp-post-image" alt=""
+                                             loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-box-text last-reset">
+                                <h3 class="uppercase">
+                                    <span data-text-color="primary">
+                                        Xưởng sản
+                                        xuất
+                                    </span>
+                                </h3>
+                                <p>Hiện đại, quy mô lớn</p>
+                            </div>
+                        </div>
+                        <!-- .icon-box -->
+                    </a>
+                </div>
+            </div>
+            <div class="col medium-6 small-6 large-3">
+                <div class="col-inner col-border">
+                    <a href="/@ConstUrl.PriceList">
+                        <div class="icon-box featured-box icon-box-left text-left align-middle">
+                            <div class="icon-box-img" style="width: 40px">
+                                <div class="icon">
+                                    <div class="icon-inner">
+                                        <img width="52" height="52" src="~/Content/images/icon11.png"
+                                             class="attachment-medium size-medium wp-post-image" alt=""
+                                             loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-box-text last-reset">
+                                <h3 class="uppercase">
+                                    <span data-text-color="primary">
+                                        Báo giá nội thất
+                                    </span>
+                                </h3>
+                                <p>Giá gốc,tại xưởng sx</p>
+                            </div>
+                        </div>
+                        <!-- .icon-box -->
+                    </a>
+                </div>
+            </div>
+            <div class="col medium-6 small-6 large-3">
+                <div class="col-inner col-border">
+                    <a href="/@ConstUrl.Procedure">
+                        <div class="icon-box featured-box icon-box-left text-left align-middle">
+                            <div class="icon-box-img" style="width: 40px">
+                                <div class="icon">
+                                    <div class="icon-inner">
+                                        <img width="60" height="44" src="~/Content/images/10.png"
+                                             class="attachment-medium size-medium wp-post-image" alt=""
+                                             loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-box-text last-reset">
+                                <h3 class="uppercase">
+                                    <span data-text-color="primary">
+                                        Quy trình thi
+                                        công
+                                    </span>
+                                </h3>
+                                <p>Trọn gói, khép kín</p>
+                            </div>
+                        </div>
+                        <!-- .icon-box -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="section" style="background-image:url('/Content/images/12.png');">
+    <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+    </div>
+    <div class="section-content relative">
+        <div class="container section-title-container">
+            <h3 style="text-align: center;">DANH MỤC SẢN PHẨM</h3>
+        </div>
+        <div class="row">
+            <div class="col small-12 large-12">
+                <div class="col-inner">
+                    <div id="product-grid content31"
+                         class="row height-75 half-columns has-equal-box-heights equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small has-shadow row-box-shadow-1 row-box-shadow-2-hover row-masonry"
+                         data-packery-options='{"itemSelector": ".col", "gutter": 0, "presentageWidth" : true}'>
+                        <div class="product-small col has-hover product type-product post-5485 status-publish first instock product_cat-giuong-go has-post-thumbnail sold-individually shipping-taxable purchasable product-type-simple conten32"
+                             style="padding-top:20px;">
+                            <div class="col-inner"
+                                 style="background-color: transparent;box-shadow: none;">
+                                <div class="product-small box " style="background-color: transparent;">
+                                    <div class="box-image" style="padding-top:100% !important;">
+                                        <div class="image-fade_in_back">
+                                            <a href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                <img width="400" height="294"
+                                                     src="https://noithatngocchau.vn:443/Uploads/qc/tu-bep-nhua-acrylic-co-hang-duc-giang-01.jpg"
+                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                     alt="Xem thêm" loading="lazy"
+                                                     sizes="(max-width: 400px) 100vw, 400px"
+                                                     style="border-radius: 50%;" />
+                                        </div>
+                                        <div class="image-tools is-small top right show-on-hover">
+                                        </div>
+                                        <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                        </div>
+                                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                        </div>
+                                    </div>
+                                    <!-- box-image -->
+                                    <div class="box-text box-text-products text-center grid-style-2"
+                                         style="padding-bottom: unset; padding-top: unset;position:unset;height: 20px">
+                                        <div class="title-wrapper"
+                                             style="position: relative; bottom: 30px;">
+                                            <h2 class="name product-title">
+                                                <a style="color:#107cde; font-size: 17px;"
+                                                   href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                    PHÒNG
+                                                    BẾP
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="cart-wrapper"></div>
+                                    </div><!-- box-text -->
+                                </div>
+                                <!-- box -->
+                            </div>
+                            <!-- .col-inner -->
+                        </div>
+                        <!-- col -->
+                        <div class="product-small col has-hover product type-product post-5485 status-publish first instock product_cat-giuong-go has-post-thumbnail sold-individually shipping-taxable purchasable product-type-simple conten32"
+                             style="padding-top:20px;">
+                            <div class="col-inner"
+                                 style="background-color: transparent;box-shadow: none;">
+                                <div class="product-small box " style="background-color: transparent;">
+                                    <div class="box-image" style="padding-top:100% !important;">
+                                        <div class="image-fade_in_back">
+                                            <a href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                <img width="400" height="294"
+                                                     src="https://noithatngocchau.vn:443/Uploads/qc/tu-bep-nhua-acrylic-co-hang-duc-giang-01.jpg"
+                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                     alt="Xem thêm" loading="lazy"
+                                                     sizes="(max-width: 400px) 100vw, 400px"
+                                                     style="border-radius: 50%;" />
+                                        </div>
+                                        <div class="image-tools is-small top right show-on-hover">
+                                        </div>
+                                        <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                        </div>
+                                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                        </div>
+                                    </div>
+                                    <!-- box-image -->
+                                    <div class="box-text box-text-products text-center grid-style-2"
+                                         style="padding-bottom: unset; padding-top: unset;position:unset;height: 20px">
+                                        <div class="title-wrapper"
+                                             style="position: relative; bottom: 30px;">
+                                            <h2 class="name product-title">
+                                                <a style="color:#107cde; font-size: 17px;"
+                                                   href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                    PHÒNG
+                                                    BẾP
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="cart-wrapper"></div>
+                                    </div><!-- box-text -->
+                                </div>
+                                <!-- box -->
+                            </div>
+                            <!-- .col-inner -->
+                        </div>
+                        <!-- col -->
+                        <div class="product-small col has-hover product type-product post-5485 status-publish first instock product_cat-giuong-go has-post-thumbnail sold-individually shipping-taxable purchasable product-type-simple conten32"
+                             style="padding-top:20px;">
+                            <div class="col-inner"
+                                 style="background-color: transparent;box-shadow: none;">
+                                <div class="product-small box " style="background-color: transparent;">
+                                    <div class="box-image" style="padding-top:100% !important;">
+                                        <div class="image-fade_in_back">
+                                            <a href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                <img width="400" height="294"
+                                                     src="https://noithatngocchau.vn:443/Uploads/qc/tu-bep-nhua-acrylic-co-hang-duc-giang-01.jpg"
+                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                     alt="Xem thêm" loading="lazy"
+                                                     sizes="(max-width: 400px) 100vw, 400px"
+                                                     style="border-radius: 50%;" />
+                                        </div>
+                                        <div class="image-tools is-small top right show-on-hover">
+                                        </div>
+                                        <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                        </div>
+                                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                        </div>
+                                    </div>
+                                    <!-- box-image -->
+                                    <div class="box-text box-text-products text-center grid-style-2"
+                                         style="padding-bottom: unset; padding-top: unset;position:unset;height: 20px">
+                                        <div class="title-wrapper"
+                                             style="position: relative; bottom: 30px;">
+                                            <h2 class="name product-title">
+                                                <a style="color:#107cde; font-size: 17px;"
+                                                   href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                    PHÒNG
+                                                    BẾP
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="cart-wrapper"></div>
+                                    </div><!-- box-text -->
+                                </div>
+                                <!-- box -->
+                            </div>
+                            <!-- .col-inner -->
+                        </div>
+                        <!-- col -->
+                        <div class="product-small col has-hover product type-product post-5485 status-publish first instock product_cat-giuong-go has-post-thumbnail sold-individually shipping-taxable purchasable product-type-simple conten32"
+                             style="padding-top:20px;">
+                            <div class="col-inner"
+                                 style="background-color: transparent;box-shadow: none;">
+                                <div class="product-small box " style="background-color: transparent;">
+                                    <div class="box-image" style="padding-top:100% !important;">
+                                        <div class="image-fade_in_back">
+                                            <a href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                <img width="400" height="294"
+                                                     src="https://noithatngocchau.vn:443/Uploads/qc/tu-bep-nhua-acrylic-co-hang-duc-giang-01.jpg"
+                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                     alt="Xem thêm" loading="lazy"
+                                                     sizes="(max-width: 400px) 100vw, 400px"
+                                                     style="border-radius: 50%;" />
+                                        </div>
+                                        <div class="image-tools is-small top right show-on-hover">
+                                        </div>
+                                        <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                        </div>
+                                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                        </div>
+                                    </div>
+                                    <!-- box-image -->
+                                    <div class="box-text box-text-products text-center grid-style-2"
+                                         style="padding-bottom: unset; padding-top: unset;position:unset;height: 20px">
+                                        <div class="title-wrapper"
+                                             style="position: relative; bottom: 30px;">
+                                            <h2 class="name product-title">
+                                                <a style="color:#107cde; font-size: 17px;"
+                                                   href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                    PHÒNG
+                                                    BẾP
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="cart-wrapper"></div>
+                                    </div><!-- box-text -->
+                                </div>
+                                <!-- box -->
+                            </div>
+                            <!-- .col-inner -->
+                        </div>
+                        <!-- col -->
+                        <div class="product-small col has-hover product type-product post-5485 status-publish first instock product_cat-giuong-go has-post-thumbnail sold-individually shipping-taxable purchasable product-type-simple conten32"
+                             style="padding-top:20px;">
+                            <div class="col-inner"
+                                 style="background-color: transparent;box-shadow: none;">
+                                <div class="product-small box " style="background-color: transparent;">
+                                    <div class="box-image" style="padding-top:100% !important;">
+                                        <div class="image-fade_in_back">
+                                            <a href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                <img width="400" height="294"
+                                                     src="https://noithatngocchau.vn:443/Uploads/qc/tu-bep-nhua-acrylic-co-hang-duc-giang-01.jpg"
+                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                     alt="Xem thêm" loading="lazy"
+                                                     sizes="(max-width: 400px) 100vw, 400px"
+                                                     style="border-radius: 50%;" />
+                                        </div>
+                                        <div class="image-tools is-small top right show-on-hover">
+                                        </div>
+                                        <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                        </div>
+                                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                        </div>
+                                    </div>
+                                    <!-- box-image -->
+                                    <div class="box-text box-text-products text-center grid-style-2"
+                                         style="padding-bottom: unset; padding-top: unset;position:unset;height: 20px">
+                                        <div class="title-wrapper"
+                                             style="position: relative; bottom: 30px;">
+                                            <h2 class="name product-title">
+                                                <a style="color:#107cde; font-size: 17px;"
+                                                   href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html">
+                                                    PHÒNG
+                                                    BẾP
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="cart-wrapper"></div>
+                                    </div><!-- box-text -->
+                                </div>
+                                <!-- box -->
+                            </div>
+                            <!-- .col-inner -->
+                        </div>
+                        <!-- col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+@*//Box sản phẩm*@
+
+@Html.Partial("~/Views/Product/_ProductBodyHomePage.cshtml", Model)
+
+
+@Html.Action("Construction", "News")
+
+
+@*box Tin tức*@
+@Html.Action("HighlightNews", "News")
+

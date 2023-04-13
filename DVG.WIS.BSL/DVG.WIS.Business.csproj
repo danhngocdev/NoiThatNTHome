@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{758E8852-FCE0-4082-8096-75B7EE98C922}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DVG.WIS.Business</RootNamespace>
+    <AssemblyName>DVG.WIS.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activities\ActivityBo.cs" />
+    <Compile Include="Activities\IActivityBo.cs" />
+    <Compile Include="AuthAction\AuthActionBo.cs" />
+    <Compile Include="AuthAction\IAuthActionBo.cs" />
+    <Compile Include="Authenticator\AuthenService.cs" />
+    <Compile Include="AuthGroupActionMapping\AuthGroupActionMappingBo.cs" />
+    <Compile Include="AuthGroupActionMapping\IAuthGroupActionMappingBo.cs" />
+    <Compile Include="AuthGroupCategoryMapping\AuthGroupCategoryMappingBo.cs" />
+    <Compile Include="AuthGroupCategoryMapping\IAuthGroupCategoryMappingBo.cs" />
+    <Compile Include="AuthGroupNewsStatusMapping\AuthGroupNewsStatusMappingBo.cs" />
+    <Compile Include="AuthGroupNewsStatusMapping\IAuthGroupNewsStatusMappingBo.cs" />
+    <Compile Include="AuthGroupUserMapping\AuthGroupUserMappingBo.cs" />
+    <Compile Include="AuthGroupUserMapping\IAuthGroupUserMappingBo.cs" />
+    <Compile Include="AuthGroup\AuthGroupBo.cs" />
+    <Compile Include="AuthGroup\IAuthGroupBo.cs" />
+    <Compile Include="Banner\BannerBo.cs" />
+    <Compile Include="Banner\BannerBoFE.cs" />
+    <Compile Include="Banner\Cached\BannerBoCached.cs" />
+    <Compile Include="Banner\Cached\IBannerBoCached.cs" />
+    <Compile Include="Banner\IBannerBo.cs" />
+    <Compile Include="Banner\IBannerBoFE.cs" />
+    <Compile Include="Category\Cached\CategoryBoCached.cs" />
+    <Compile Include="Category\Cached\ICategoryBoCached.cs" />
+    <Compile Include="Category\CategoryBo.cs" />
+    <Compile Include="Category\CategoryBoFE.cs" />
+    <Compile Include="Category\ICategoryBo.cs" />
+    <Compile Include="Category\ICategoryBoFE.cs" />
+    <Compile Include="ConfigSystem\ConfigSystemBo.cs" />
+    <Compile Include="ConfigSystem\IConfigSystemBo.cs" />
+    <Compile Include="Galleries\GalleryBo.cs" />
+    <Compile Include="Galleries\IGalleryBo.cs" />
+    <Compile Include="Customers\ICustomerBo.cs" />
+    <Compile Include="Customers\CustomerBo.cs" />
+    <Compile Include="FM_photo\FM_PhotoBo.cs" />
+    <Compile Include="FM_photo\IFM_PhotoBo.cs" />
+    <Compile Include="InfoContact\IInfoContactBo.cs" />
+    <Compile Include="InfoContact\InfoContactBo.cs" />
+    <Compile Include="Menu\IMenuBo.cs" />
+    <Compile Include="Menu\MenuBo.cs" />
+    <Compile Include="Orders\IOrderBo.cs" />
+    <Compile Include="Orders\OrderBo.cs" />
+    <Compile Include="PriceList\IPriceListBo.cs" />
+    <Compile Include="PriceList\PriceListBo.cs" />
+    <Compile Include="ProductShowHome\IProductShowHomeBo.cs" />
+    <Compile Include="ProductShowHome\ProductShowHomeBo.cs" />
+    <Compile Include="Products\IProductBo.cs" />
+    <Compile Include="Products\ProductBo.cs" />
+    <Compile Include="News\NewsBo.cs" />
+    <Compile Include="News\INewsBo.cs" />
+    <Compile Include="Persons\IPersonBo.cs" />
+    <Compile Include="Persons\PersonBo.cs" />
+    <Compile Include="Recruitments\RecruitmentBo.cs" />
+    <Compile Include="Recruitments\IRecruitmentBo.cs" />
+    <Compile Include="Slider\Cached\ISliderBoCache.cs" />
+    <Compile Include="Slider\Cached\SliderBoCache.cs" />
+    <Compile Include="Slider\ISliderBo.cs" />
+    <Compile Include="Slider\SliderBo.cs" />
+    <Compile Include="Subscribe\ISubscribeBo.cs" />
+    <Compile Include="Subscribe\SubscribeBo.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="AuthGroupUserMappingService.cs" />
+    <Compile Include="AuthGroupNewsStatusMappingService.cs" />
+    <Compile Include="AuthGroupCategoryMappingService.cs" />
+    <Compile Include="AuthGroupActionMappingService.cs" />
+    <Compile Include="AuthGroupService.cs" />
+    <Compile Include="AuthActionService.cs" />
+    <Compile Include="NewsService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\IUserBo.cs" />
+    <Compile Include="Users\UserBo.cs" />
+    <Compile Include="Video\IVideoBo.cs" />
+    <Compile Include="Video\VideoBo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DVG.WIS.Caching\DVG.WIS.Caching.csproj">
+      <Project>{E67CDDD6-E186-4997-86E7-F8CCFA659877}</Project>
+      <Name>DVG.WIS.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVG.WIS.Core\DVG.WIS.Core.csproj">
+      <Project>{CF6F4FE2-2162-4970-9C28-827E603D1796}</Project>
+      <Name>DVG.WIS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVG.WIS.DAL\DVG.WIS.DAL.csproj">
+      <Project>{4FDBD751-9252-4CBD-85EC-19190DA39526}</Project>
+      <Name>DVG.WIS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVG.WIS.Entities\DVG.WIS.Entities.csproj">
+      <Project>{F75DFCA3-EDB3-44F6-91C6-45FF54D2BF36}</Project>
+      <Name>DVG.WIS.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVG.WIS.PublishModel\DVG.WIS.PublicModel.csproj">
+      <Project>{A1239570-9F49-44E3-9A8A-11A062089D72}</Project>
+      <Name>DVG.WIS.PublicModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVG.WIS.Utilities\DVG.WIS.Utilities.csproj">
+      <Project>{32B27F71-69D8-4D89-AB79-DD80EECA1DE3}</Project>
+      <Name>DVG.WIS.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'SVN-Poppins';
+    font-style: normal;
+    font-display:swap;
+    font-weight: 400;
+    src: url('../font/poppins.regular.ttf'); /* IE9 Compat Modes */
+  }
+  @font-face {
+    font-family: 'SVN-Poppins';
+    font-style: normal;
+    font-display:swap;
+    font-weight: 600;
+    src: url('../font/poppins.semibold.ttf'); /* IE9 Compat Modes */
+  }
+  @font-face {
+    font-family: 'SVN-Poppins';
+    font-style: normal;
+    font-display:swap;
+    font-weight: 700;
+    src: url('../font/SVN-Poppins_Bold.otf'); /* IE9 Compat Modes */
+  }

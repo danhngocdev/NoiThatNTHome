@@ -1,0 +1,57 @@
+﻿<div class="card clearfix">
+    <div class="card-header">
+        <button type="button" class="btn btn-sm btn-secondary pull-right" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+            Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+    </div>
+    <div class="card-body search-form collapse">
+        <form ng-model="Search" class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="form-group">
+                    <label>Từ khóa</label>
+                    <input type="text" placeholder="Nhập tên banner" ng-keypress="keypressAction($event)" class="form-control" name="SearchModel.Keyword" ng-model="SearchModel.Keyword">
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <div class="form-group">
+                    <label>Nền tảng</label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListPlatform" ng-model="SearchModel.Platform" ng-change="doSearch()">
+                        <option selected value="">--Lựa chọn</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <div class="form-group">
+                    <label>Trang hiển thị</label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListPage" ng-model="SearchModel.PageId" ng-change="doSearch()">
+                        <option selected value="">--Lựa chọn</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <div class="form-group">
+                    <label>Vị trí hiển thị</label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListPosition" ng-model="SearchModel.Position" ng-change="doSearch()">
+                        <option selected value="">--Lựa chọn</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in ParamModel.ListStatus" ng-model="SearchModel.Status" ng-change="doSearch()">
+                        <option selected value="">--Lựa chọn</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="form-group">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/End form search-->
+</div>
+
+

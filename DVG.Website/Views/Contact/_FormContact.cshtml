@@ -1,0 +1,42 @@
+﻿@model DVG.WIS.PublicModel.ContactFEModel
+
+<div class="popup-loan-package leadpopup campaign-leads">
+    <div class="bca-popup">
+        <div class="header-title">
+            <span class="txt">Đăng ký nhận ưu đãi</span>
+            <span class="btn_close" onclick="common.closePopup();"><i class="fa-window-close"></i></span>
+        </div>
+        <div class="bca-content">
+        <div class="bca-form">
+            <form action="@Url.Action("SendRequest", "Contact")" asp-antiforgery="false" method="post" class="row-fluid">
+                <div class="form-input mgb_15">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control fullname", placeholder = "Nhập Họ Tên" })
+                    <div class="error red-clr">
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+                </div>
+                <div class="form-input mgb_15">
+                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", placeholder = "Nhập Số điện thoại" })
+                    <div class="error red-clr">
+                        @Html.ValidationMessageFor(x => x.Phone)
+                    </div>
+                </div>
+                <div class="form-input mgb_15">
+                    @Html.TextBoxFor(x => x.Content, new { @class = "form-control", placeholder = "Nhập nội dung" })
+                    <div class="error red-clr">
+                        @Html.ValidationMessageFor(x => x.Content)
+                    </div>
+                </div>
+                <div id="lblMessage" class="red-clr form-input mgb_15"></div>
+        <environment include="Development,Production,Staging">
+        <div class="form-input mgb_15">
+                    <button type="submit" id="btnContactLead" class="btn bg_blue btn_submit">Gửi Ngay</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Lib/jquery.validate.unobtrusive.min.js"></script>

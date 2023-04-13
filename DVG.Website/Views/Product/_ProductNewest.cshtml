@@ -1,0 +1,38 @@
+﻿@using DVG.WIS.Local;
+@using DVG.WIS.PublicModel;
+@model List<ProductFEListModel>
+
+@if (Model != null && Model.Any())
+{
+    <div class="promotion-product">
+        <h2 class="title">Sản phẩm mới nhất</h2>
+        <div class="product-right">
+            @foreach (var item in Model)
+            {
+                <div class="product-item">
+                    <div class="image">
+                        <a href="@item.Link" title="@item.Name">
+                            <img src="@item.GetAvatar("crop/140x110/")" alt="@item.Name">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <h3 class="heading">
+                            <a href="@item.Link" title="@item.Name">
+                                @item.Name
+                            </a>
+                        </h3>
+                        @if (item.PricePromotion > 0)
+                        {
+                            <span class="price">@item.PricePromotionString</span>
+                            <span class="old-price">@item.PriceString</span>
+                        }
+                        else
+                        {
+                            <span class="price">@item.PriceString</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

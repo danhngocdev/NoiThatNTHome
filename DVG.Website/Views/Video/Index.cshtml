@@ -1,0 +1,90 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<VideoModel>
+<div id="content" class="blog-wrapper page-wrapper furniture-video" style="padding-bottom:unset">
+    <div class="row row-features ">
+        <div class="col large-12">
+            <div class="col-inner">
+                <h3 class="hot">
+                    <span>Video thi công thực tế</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model != null && Model.Any())
+{
+<section class="section" style="padding-top: unset; padding-bottom: unset;">
+    <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+    </div>
+    <div class="section-content relative">
+        <div class="row" id="row-1244459167">
+            <div class="col small-12 large-12">
+                <div class="col-inner">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col medium-4 small-12 large-4">
+                                <div class="col-inner">
+                                    <div class="img has-hover x md-x lg-x y md-y lg-y">
+                                        <iframe height="250" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/@item.VideoUrl"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="row large-columns-3 medium-columns- small-columns-2 row-small has-shadow row-box-shadow-1 row-box-shadow-2-hover slider row-slider slider-nav-reveal slider-nav-push flickity-enabled" data-flickity-options="{&quot;imagesLoaded&quot;: true, &quot;groupCells&quot;: &quot;100%&quot;, &quot;dragThreshold&quot; : 5, &quot;cellAlign&quot;: &quot;left&quot;,&quot;wrapAround&quot;: true,&quot;prevNextButtons&quot;: true,&quot;percentPosition&quot;: true,&quot;pageDots&quot;: false, &quot;rightToLeft&quot;: false, &quot;autoPlay&quot; : false}" tabindex="0">
+                        <div class="flickity-viewport" style="height: 0px; touch-action: pan-y;">
+                            <div class="flickity-slider" style="left: 0px;"></div>
+                        </div>
+                        <button class="flickity-button flickity-prev-next-button previous" type="button" disabled="" aria-label="Previous">
+                            <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+                            </svg>
+                        </button>
+                        <button class="flickity-button flickity-prev-next-button next" type="button" disabled="" aria-label="Next">
+                            <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> }
+            else
+            {
+
+<section class="section" style="padding-top: unset; padding-bottom: unset;">
+    <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+    </div>
+    <div class="section-content relative">
+        <div class="row" id="row-1244459167">
+            <div class="col small-12 large-12">
+                <div class="col-inner">
+                    <div class="row">
+                       <h1>Đang Cập Nhập</h1>
+                    </div>
+                    <div class="row large-columns-3 medium-columns- small-columns-2 row-small has-shadow row-box-shadow-1 row-box-shadow-2-hover slider row-slider slider-nav-reveal slider-nav-push flickity-enabled" data-flickity-options="{&quot;imagesLoaded&quot;: true, &quot;groupCells&quot;: &quot;100%&quot;, &quot;dragThreshold&quot; : 5, &quot;cellAlign&quot;: &quot;left&quot;,&quot;wrapAround&quot;: true,&quot;prevNextButtons&quot;: true,&quot;percentPosition&quot;: true,&quot;pageDots&quot;: false, &quot;rightToLeft&quot;: false, &quot;autoPlay&quot; : false}" tabindex="0">
+                        <div class="flickity-viewport" style="height: 0px; touch-action: pan-y;">
+                            <div class="flickity-slider" style="left: 0px;"></div>
+                        </div>
+                        <button class="flickity-button flickity-prev-next-button previous" type="button" disabled="" aria-label="Previous">
+                            <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+                            </svg>
+                        </button>
+                        <button class="flickity-button flickity-prev-next-button next" type="button" disabled="" aria-label="Next">
+                            <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

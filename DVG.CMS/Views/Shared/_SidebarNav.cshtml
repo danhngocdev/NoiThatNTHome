@@ -1,0 +1,109 @@
+﻿@using DVG.WIS.Utilities
+<div class="sidebar" ng-controller="MenuController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-title">Cài đặt chung</li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Page/UpdatePage?pageId=@EncryptUtility.EncryptId("1")">
+                    <i class="nav-icon icon-speech"></i>Giới thiệu
+                </a>
+            </li>
+            @*
+
+        <li class="nav-item">
+            <a class="nav-link" href="/Page/UpdatePage?pageId=@EncryptUtility.EncryptId("2")">
+                <i class="nav-icon icon-speech"></i>Giá trị cốt lõi
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Page/UpdatePage?pageId=@EncryptUtility.EncryptId("3")">
+                <i class="nav-icon icon-speech"></i>Câu chuyện thành công
+            </a>
+        </li>*@
+            @*<li class="nav-item">
+            <a class="nav-link" href="/Video/UpdateVideo?videoId=@EncryptUtility.EncryptId("1")">
+                <i class="nav-icon icon-speech"></i>Video
+            </a>
+        </li>*@
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Category">
+                    <i class="nav-icon icon-layers"></i> Danh mục
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Contact">
+                    <i class="nav-icon icon-layers"></i> Danh Sách Liên Hệ
+                </a>
+            </li>
+
+
+            <li class="nav-title">Quản trị</li>
+            <li class="nav-item">
+                <a class="nav-link" href="/News">
+                    <i class="nav-icon icon-speech"></i>Tin tức & Blogs
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Product">
+                    <i class="nav-icon icon-diamond"></i>Sản phẩm
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/ProductShowHome">
+                    <i class="nav-icon icon-diamond"></i>Sản Phẩm Hiển Thị
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Banner">
+                    <i class="nav-icon icon-picture"></i> Banner
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/PriceList">
+                    <i class="nav-icon icon-key"></i> Danh Sách báo giá
+                </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/Person">
+                    <i class="nav-icon icon-envelope-open" aria-hidden="true"></i> Phản hồi
+                </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/Customer">
+                    <i class="nav-icon icon-user" aria-hidden="true"></i> Khách hàng
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Video">
+                    <i class="nav-icon icon-user" aria-hidden="true"></i> Video
+                </a>
+            </li>
+            <li class="nav-title">Quản lý đơn hàng</li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Order">
+                    <i class="nav-icon icon-basket-loaded" aria-hidden="true"></i> Đơn hàng
+                </a>
+            </li>
+            <li class="nav-title">Quản lý tài khoản</li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Users">
+                    <i class="nav-icon icon-user"></i> Quản lý tài khoản
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/AuthGroup">
+                    <i class="nav-icon icon-key"></i> Nhóm quyền
+                </a>
+            </li>
+
+
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>

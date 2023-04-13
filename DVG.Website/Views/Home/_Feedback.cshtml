@@ -1,0 +1,41 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<PersonFEModel>
+@{
+    int i = 0;
+}
+<div class="feedback" id="feedback">
+    <div class="container ">
+        <p class="title">Cảm nhận khách hàng</p>
+        <h3 class="heading-box">Khách hàng nói gì về chúng tôi</h3>
+        <div class="swiper-container">
+            <div class="feedback-box swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    i++;
+                    <div class="feedback-item @(i == 2 ? "active":"") swiper-slide">
+                        <div class="images">
+                            <a href="javascript:void(0)">
+                                <img src="@item.GetAvatar("resize/150x150/")" alt="@item.Name" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h3 class="heading">
+                                @item.Name
+                            </h3>
+                            <p class="desc">
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <span class="next-slide navigation">
+                <i class="icon-right-open-big"></i>
+            </span>
+            <span class="previous-slide navigation">
+                <i class="icon-left-open-big"></i>
+            </span>
+        </div>
+    </div>
+</div>
+

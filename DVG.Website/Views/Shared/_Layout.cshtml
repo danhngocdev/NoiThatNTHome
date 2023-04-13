@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/Content/images/logonthome.jpg" sizes="32x32">
+    <title>@Html.Raw(ViewBag.TitlePage)</title>
+    @if (string.IsNullOrEmpty(ViewBag.NoIndex))
+    {
+<meta name="robots" content="index,follow" />
+ }
+else
+{
+@Html.Raw(ViewBag.NoIndex)}
+    @Html.Raw(ViewBag.MetaDescription)
+    @Html.Raw(ViewBag.MetaFacebook)
+    @Html.Raw(ViewBag.MetaCanonical)
+
+    @Styles.Render("~/commonStyle")
+
+    <link rel="stylesheet" href="~/Content/font-awesome/font-awesome.min.html" />
+    <link rel="stylesheet" href="~/Content/css/dashicons.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/elusive.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/foundation-icons.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/genericons.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/extra.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/style.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/vendors-style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/styles.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/menu-image.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/frontend.css" type="text/css" media="all" />
+    <link rel="stylesheet" hrr="~/Content/css/bootstrap.min32c3.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/tinvn-main-css.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/front.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/jquery.mCustomScrollbar.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/yellow.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/by_text.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/color.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/image.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/label.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/select_hierarchy.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/select_radio_check.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/slider.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/front.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/animate.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/fl-icons.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/frontend.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/common.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/wvs-theme-override.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/frontend-tooltip.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/local-ryviu.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/flatsome5.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/flatsome4-shop.html" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/flatlineui-furniture.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/font/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/css/change.css" />
+    <link rel="stylesheet" href="~/Content/css/formweb.css" />
+    <link rel="stylesheet" href="~/Content/css/fix.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css"/>
+    @*<script type='text/javascript' src='~/Content/js/jquery-migrate.min.js' id='jquery-migrate-js' defer></script>*@
+    <script type='text/javascript' src='~/Content/js/front.js' id='wpim-js' defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        @Html.Partial("~/Views/Partial/_Header.cshtml")
+        <div id="main">
+            @RenderBody()
+        </div>
+        @Html.Partial("~/Views/Partial/_Footer.cshtml")
+
+        <a href="#" class="go-top" style="display: block">
+            <i class="icon-up"></i>
+        </a>
+    </div>
+    <div id="loading"></div>
+    <div id="popup">
+    </div>
+
+    @Scripts.Render("~/scriptsCommon")
+   
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

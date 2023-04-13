@@ -1,0 +1,80 @@
+﻿@using DVG.WIS.Utilities
+@using DVG.WIS.Core
+@{
+    string Idstr = ViewBag.Idstr;
+}
+<div ng-controller="VideoActionController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="animated fadeIn">
+        <form name="formUpdate" id="divedit" ng-show="CurrentForm == CurrentFormEnum.Edit">
+            <div class="row">
+                <div id="updateVideoEditor" class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Nội dung bài viết</strong>
+                            <div class="d-inline-block pull-right">
+                                <button type="button" class="btn btn-sm btn-info" ng-click="openEditContent()"><i class="fa fa-cog"></i> Cài đặt bài viết</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="m-auto" style="max-width: 720px;">
+                                <div class="form-group">
+                                    <label>Tiêu đề <span class="text-danger">*</span></label>
+                                    <input type="text" id="title" name="title" placeholder="Tiêu đề bài viết" required="required" class="form-control f-w-500" ng-model="Video.Title" ng-maxlength="300" ng-change="onChangeTitleVideo()" ng-blur="BlurTitleInput()">
+                                    <div ng-show="formUpdate.title.$error.required">
+                                        <span class="text-danger">Vui lòng nhập tiêu đề.</span>
+                                    </div>
+                                    <div ng-show="formUpdate.title.$error.maxlength">
+                                        <span class="text-danger">Tiêu đề không được quá 300 ký tự.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link Youtube: <span class="text-danger">*</span></label>
+                                    <input type="text" id="videoUrl" name="videoUrl" required="required" class="form-control f-w-500" ng-model="Video.VideoUrl" ng-change="onChangeTitleVideo()" ng-blur="BlurTitleInput()">
+                                    <div ng-show="formUpdate.videoUrl.$error.required">
+                                        <span class="text-danger">Vui lòng nhập Link Youtube.</span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Link điều hướng : <span class="text-danger">*</span></label>
+                                    <input type="text" id="link" name="link" required="required" class="form-control f-w-500" ng-model="Video.Link">
+                                    <div ng-show="formUpdate.link.$error.required">
+                                        <span class="text-danger">Vui lòng nhập Link điều hướng.</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="aside-edit-panel aside-edit-panel-sm" style="width:33%">
+                    <div class="tab-content" id="updateNewsBlock">
+                        <div class="tab-pane active" id="updateBikeBrand" role="tabpanel">
+                            <div id="accordion" role="tablist">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="aside-control-bottom">
+                        <div class="pull-left">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="doSave()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                            <button type="reset" class="btn btn-sm btn-default" onclick=" return confirmCancel()"><i class="fa fa-ban"></i> Hủy</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    var uploadHandler = "@string.Concat(DVG.WIS.Utilities.AppSettings.Instance.GetString("Video-Upload-Domain-Client"), DVG.WIS.Utilities.AppSettings.Instance.GetString("Video-Upload-Handler"))";
+    var uploadProject = "@DVG.WIS.Utilities.AppSettings.Instance.GetString("Upload-Project")";
+    var domainVideo = "@DVG.WIS.Utilities.AppSettings.Instance.GetString("Video-View-Domain")";
+</script>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/VideoAction")
+}

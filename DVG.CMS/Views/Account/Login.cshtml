@@ -1,0 +1,78 @@
+﻿@using System.Web.Optimization
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>Đăng nhập hệ thống CMS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    @Styles.Render("~/WIS/styles/Template")
+</head>
+<body class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <form name="LoginForm" ng-controller="AccountController" ng-init="init('@ViewBag.ReturnUrl')">
+                                <h1 style="font-size:25px;">Nanamisport</h1>
+                                <p class="text-muted">Vui lòng đăng nhập để truy cập trang quản trị</p>
+                                @*<div class="text-danger" ng-hide="LoginForm.Model_email.$valid">
+                                    Vui lòng nhập tên đăng nhập.
+                                </div>*@
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="icon-user"></i>
+                                        </span>
+                                    </div>
+                                    <input id="name" type="text" class="form-control" placeholder="Username" name="Model_email" ng-model="Model.email" ng-keypress="ShortSubmit($event)" autofocus required>
+                                </div>
+                                @*<div class="text-danger" ng-hide="LoginForm.Model_password.$valid">
+                                    Vui lòng nhập mật khẩu.
+                                </div>*@
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="icon-lock"></i>
+                                        </span>
+                                    </div>
+                                    <input id="password" type="password" class="form-control" placeholder="Password" name="Model_password" ng-model="Model.password" ng-keypress="ShortSubmit($event)" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary px-4" ng-click="doLogin()" ng-disabled="!LoginForm.$valid">Đăng nhập</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                        <div class="card-body text-center">
+                            <div>
+                                <h2 style="font-size:24px;">Quản trị Website</h2>
+                                <h2>Nanamisport.com</h2>
+                                <p>Version 1.1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/WIS/scripts/Jquery")
+    @Scripts.Render("~/WIS/scripts/Tether")
+    @Scripts.Render("~/WIS/scripts/Angular")
+    @Scripts.Render("~/WIS/scripts/AngularPlugin")
+    @Scripts.Render("~/WIS/scripts/Template")
+    @Scripts.Render("~/WIS/scripts/AngularCustomize")
+    @Scripts.Render("~/WIS/scripts/External")
+    @Scripts.Render("~/WIS/scripts/Account")
+</body>
+</html>

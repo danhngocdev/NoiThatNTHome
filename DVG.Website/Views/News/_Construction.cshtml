@@ -1,0 +1,44 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<NewsInListModel>
+
+@if (Model != null && Model.Any())
+{
+    <section class="ag-slide-block" id="boxProject">
+         <div class="container section-title-container">
+            <h3 class="section-title section-title-center">
+                <b></b><span class="section-title-main">
+                    Công Trình Thi Công
+                </span><b></b>
+            </h3>
+        </div>
+        <div class="swiper-container">
+            <ul class="swiper-wrapper ag-slide_list">
+                @{ int i = 0;
+                    foreach (var item in Model)
+                    {
+                        <li class="swiper-slide ag-slide_item" data-swiper-autoplay="1500" data-swiper-slide-index="@i">
+                            <!--data-swiper-autoplay это скорость autoplay для слайдов-->
+                            <img src="@item.GetAvatar("crop/300x300/")" class="ag-slide_img" alt="">
+                            <div class="ag-slide_info clearfix">
+                                <div class="ag-slide-info_descr">
+                                
+                                    <a href="@item.Url">
+                                        <h6 class="ag-slide-info_title">@item.Title"</h6>
+                                    </a>
+                                    
+                                    <span class="ag-slide-info_route">
+                                        <img src="https://rawcdn.githack.com/SochavaAG/example-mycode/master/pens/swiper/images/arrow.svg" class="ag-slide-info_img" alt=""> 2.5 км, 6-я линия В.О., 13
+                                    </span>
+                                </div>
+                               
+                            </div>
+                        </li>   
+                        i++;
+                    } }
+            </ul>
+        </div>
+    </section>
+}
+
+
+

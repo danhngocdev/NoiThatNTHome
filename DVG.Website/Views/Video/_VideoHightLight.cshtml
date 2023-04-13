@@ -1,0 +1,20 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<VideoModel>
+
+@if (Model != null && Model.Any())
+{
+<aside id="text-5" class="widget widget_text">
+    <span class="widget-title ">
+        <span style="color: #13488a;">Video nổi bật</span>
+    </span>
+    <div class="is-divider small"></div>
+    @foreach (var item in Model)
+    {
+        <div class="textwidget">
+            <p> <iframe height="250" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/@item.VideoUrl"></iframe></p>
+        </div>
+    }
+
+
+</aside>
+}

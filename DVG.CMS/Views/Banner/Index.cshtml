@@ -1,0 +1,97 @@
+﻿@using DVG.WIS.Utilities
+@{
+    ViewBag.Title = "Quản lý banner";
+}
+<div class="animated fadeIn" ng-controller="BannerController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <!--Form search-->
+    @{Html.RenderPartial("_FormSearch");}
+    <!--/End form search-->
+
+    <div class="row">
+        <div class="col-lg-12" ng-class="CurrentFormStatus == FormStatusEnums.List? 'col-lg-12' : 'col-lg-6'">
+            <div class="clearfix">
+                <div class="float-left">
+                    Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                </div>
+                <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                    <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                        <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                    </div>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Danh sách banner
+                    <button type="button" class="btn btn-primary btn-sm float-right" ng-click="editextend('')">Tạo mới +</button>
+                </div>
+                <div class="card-body">
+                    <table id="datatable" class="table table-striped" role="grid" aria-describedby="datatable_info">
+                        <thead>
+                            <tr role="row">
+                                <th>#</th>
+                                <th class="sorting_asc" style="width:15%">Tên</th>
+                                <th class="sorting_asc" style="width:15%">Trang hiển thị</th>
+                                <th class="sorting_asc" style="width:15%">Vị trí hiển thị</th>
+                                <th class="sorting_asc" style="width:10%">Trạng thái</th>
+                                <th class="sorting" style="width:15%" ng-if="CurrentFormStatus != FormStatusEnums.CreateOrUpdate">Thông tin khác</th>
+                                <th class="sorting" style="width:15%" ng-if="CurrentFormStatus != FormStatusEnums.CreateOrUpdate"></th>
+                                <th class="sorting" style="width:30%" ng-if="CurrentFormStatus == FormStatusEnums.CreateOrUpdate"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr role="row" ng-repeat="item in SearchModel.ListData track by $index" ng-include="getTemplate(item)"></tr>
+                        </tbody>
+                    </table>
+                    <script type="text/ng-template" id="display">
+                        <td class="text-center">{{((page.currentPage - 1) * page.itemsPerPage) + $index+1}}</td>
+                        <td class="sorting_1">
+                            {{item.Name}}
+                        </td>
+                        <td class="sorting_1">
+                            {{item.PageName}}
+                        </td>
+                        <td class="sorting_1">
+                            {{item.PositionName}}
+                        </td>
+                        <td class="sorting_1">
+                            <span ng-show="item.Status == BannerStatus.Show" class="badge badge-success">{{item.StatusName}}</span>
+                            <span ng-show="item.Status == BannerStatus.Hide" class="badge badge-danger">{{item.StatusName}}</span>
+                        </td>
+                        <td ng-if="CurrentFormStatus != FormStatusEnums.CreateOrUpdate">
+                            <p>Ngày tạo: {{item.CreatedDateStr}}</p>
+                            <p>Ngày sửa cuối: {{item.ModifiedDateStr}}</p>
+                            <p>Hiện từ ngày: {{item.FromDateStr}}</p>
+                            <p>Hiện đến ngày: {{item.UntilDateStr}}</p>
+                        </td>
+                        <td class="text-right">
+                            <button class="btn btn-sm btn-info" href="javascript:void(0)" ng-click="editextend(item)" data-animation="false" data-toggle="tooltip" title="Chỉnh sửa chi tiết"><i class="fa fa-edit"></i></button>&nbsp;
+                            <button ng-if="item.Status != BannerStatus.Hide" class="btn btn-sm btn-warning icon-lock" data-toggle="tooltip" ng-click="lockBanner(item.Id)" type="button" title="Ẩn banner"></button>
+                            <button ng-if="item.Status == BannerStatus.Hide" class="btn btn-sm btn-success icon-lock-open" data-toggle="tooltip" ng-click="unlockBanner(item.Id)" type="button" title="Hiện banner"></button>
+                            <button class="btn btn-sm btn-danger" href="javascript:void(0)" ng-click="delete(item.Id)" data-animation="false" data-toggle="tooltip" title="Xóa"><i class="fa fa-trash-o"></i></button>&nbsp;
+                        </td>
+                    </script>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="float-left">
+                    Bạn đang ở trang {{page.currentPage}}/{{roundNumberPaging(page.itemsPerPage,page.totalItems)}} (có tổng {{page.totalItems}} bản ghi)
+                </div>
+                <nav class="float-right" ng-if="page.totalItems > page.itemsPerPage">
+                    <div class="pull-right paging_simple_numbers" id="datatable_paginate">
+                        <uib-pagination class="pagination mg-top-5" total-items="page.totalItems" max-size="5" items-per-page="page.itemsPerPage" ng-model="page.currentPage" ng-change="getListData()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true"></uib-pagination>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-6 nga-fast nga-slide-right" ng-show="CurrentFormStatus != FormStatusEnums.List">
+            <div class="card" ng-show="CurrentFormStatus == FormStatusEnums.CreateOrUpdate">
+                @{Html.RenderPartial("_FormUpdate");}
+            </div><!--/End update form-->
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/Banner")
+}
+

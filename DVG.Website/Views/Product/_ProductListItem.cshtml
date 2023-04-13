@@ -1,0 +1,45 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@using DVG.WIS.Local;
+@using DVG.WIS.Entities;
+@model List<ProductFEListModel>
+@foreach (var item in Model)
+{
+<div class="product-small col has-hover product type-product" style="padding-bottom:30px;">
+    <div class="col-inner">
+        <div class="product-small box ">
+            <div class="box-image">
+                <div class="image-fade_in_back">
+                    <a href="@item.Link">
+                        <img width="400" height="267" src="https://noithatngocchau.vn:443/Uploads/Product/tu-bep-melamin-Anh-dong-thai-binh-gia-lam-01.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="@item.Name" loading="lazy">
+                    </a>
+                </div>
+
+            </div>
+            <a href="@item.Link">
+            </a>
+            <div class="box-text box-text-products text-center grid-style-2">
+                <a href="@item.Link">
+                </a>
+                <div class="title-wrapper">
+                    <a href="@item.Link"></a>
+                    <h2 class="name product-title" style="height: 42px;">
+                        <a href="@item.Link">@item.Name</a>
+                    </h2>
+                </div>
+                <div class="price-wrapper" style="height: 27.6406px;">
+                    <span class="price">
+                        <del>
+                            <span class="woocommerce-Price-amount amount">@item.PricePromotion<span class="woocommerce-Price-currencySymbol"></span></span>
+                        </del>
+                        <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span></span></ins>
+                    </span>
+                </div>
+                <div class="cart-wrapper"></div>
+            </div>
+            <!-- box-text -->
+        </div>
+        <!-- box -->
+    </div>
+    <!-- .col-inner -->
+</div> <!-- col -->}

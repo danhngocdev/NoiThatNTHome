@@ -1,0 +1,23 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core.Enums;
+@model List<BannerFEModel>
+
+@if (Model !=null && Model.Any())
+{
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        @foreach (var item in Model)
+        {
+            <div class="swiper-slide">
+                <div class="card-image">
+                    <img src="@item.Embed" alt="@item.Title">
+                </div>
+            </div>
+        }
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Scrollbar -->
+
+</div>
+}

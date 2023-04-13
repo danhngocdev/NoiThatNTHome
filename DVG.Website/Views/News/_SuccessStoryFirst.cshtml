@@ -1,0 +1,28 @@
+﻿@using DVG.WIS.PublicModel;
+@using DVG.WIS.Core;
+@model List<NewsInListModel>
+@if (Model != null && Model.Any())
+{
+    var item = Model[0];
+    <div class="agency-homepage">
+        <div class="container">
+            <div class="agency-box">
+                <div class="agency-content">
+                    <span class="tag-agency">Câu chuyện thành công</span>
+                    <h3 class="heading">
+                        <a href="@item.Url" title="@item.Title">@item.Title</a>
+                    </h3>
+                    <p class="desc">
+                        @item.Sapo
+                    </p>
+                    <a href="/@ConstUrl.News/@ConstUrl.CustomerStory" class="btn-view-more">Xem thêm</a>
+                </div>
+                <div class="agency-image">
+                    <a href="@item.Url" title="@item.Title">
+                        <img src="@item.GetAvatar("crop/520x348/")" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

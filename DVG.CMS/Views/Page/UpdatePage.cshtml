@@ -1,0 +1,140 @@
+﻿@using DVG.WIS.Utilities
+@using DVG.WIS.Core
+@{
+    string Idstr = ViewBag.Idstr;
+}
+<div ng-controller="PageActionController" ng-init="Init(@NewtonJson.Serialize(Model))">
+    <div class="animated fadeIn">
+        <form name="formUpdate" id="divedit" ng-show="CurrentForm == CurrentFormEnum.Edit">
+            <div class="row">
+                <div id="updatePageEditor" class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Nội dung bài viết</strong>
+                            <div class="d-inline-block pull-right">
+                                <button type="button" class="btn btn-sm btn-info" ng-click="openEditContent()"><i class="fa fa-cog"></i> Cài đặt bài viết</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="m-auto" style="max-width: 720px;">
+                                <div class="form-group">
+                                    <label>Tiêu đề <span class="text-danger">*</span></label>
+                                    <input type="text" id="title" name="title" placeholder="Tiêu đề bài viết" required="required" class="form-control f-w-500" ng-model="Page.Title" ng-maxlength="300" ng-change="onChangeTitlePage()" ng-blur="BlurTitleInput()">
+                                    <div ng-show="formUpdate.title.$error.required">
+                                        <span class="text-danger">Vui lòng nhập tiêu đề.</span>
+                                    </div>
+                                    <div ng-show="formUpdate.title.$error.maxlength">
+                                        <span class="text-danger">Tiêu đề không được quá 300 ký tự.</span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <div class="w-100">
+                                        <label>Nội dung<span class="text-danger">*</span></label>
+                                        <div id="content" class="editor-inline" contenteditable="true" ng-model="Page.Description">
+                                        </div>
+                                        <div ng-show="formUpdate.content.$invalid">
+                                            <span class="text-danger">Vui lòng nhập nội dung.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="aside-edit-panel aside-edit-panel-sm" style="width:33%">
+                    <div class="tab-content" id="updateNewsBlock">
+                        <div class="tab-pane active" id="updateBikeBrand" role="tabpanel">
+                            <div id="accordion" role="tablist">
+                                <div class="form-group">
+                                    <label>Cấu hình SEO</label>
+                                    <div id="divboxseo">
+                                        <div>
+                                            <b style="color: Red">Preview</b>: <b>Khi độc giả tìm kiếm trên Google, kết quả sẽ hiển thị:</b>
+                                            <br />
+                                            <em>(Đây là mặc định hiển thị, nếu muốn khác và tối ưu hơn hãy sửa theo hướng dẫn bên dưới)</em>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <table class="table table-responsive-sm google-search-preview">
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <div class="" sig="yzv">
+                                                                <h3 class="r">
+                                                                    <a href="#" id="ggTitle"></a>
+                                                                </h3>
+                                                                <div class="s">
+                                                                    <div class="f kv">
+                                                                        <cite>
+                                                                            <span class="bc" id="ggLink"></span>
+                                                                        </cite>
+                                                                    </div>
+                                                                    <span class="st" id="ggDes"></span>
+                                                                </div>
+                                                            </div>
+                                                            <pre id="output" class="output" style="display: none"></pre>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <div class="form-group">
+                                                                <label>Từ khóa chủ đạo:</label>
+                                                                <input ng-model="Page.SEOKeyword" type="text" class="form-control" id="txtStandardKeyword" placeHolder="Hãy viết vào đây 1 từ khóa duy nhất mà bạn cho rằng nó quan trọng nhất bài (2 - 6 chữ)" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <div class="form-group">
+                                                                <label>Tiêu đề hiển thị trên google:<em style="color: Gray">(Nếu bạn muốn 1 tiêu đề đặc biệt thu hút trên Google, hãy sáng tạo ở đây)</em></label>
+                                                                <input ng-model="Page.SEOTitle" name="SEOTitle" type="text" id="txtMetaTitle" class="form-control" ng-maxlength="300" /> Còn lại <span id="metaTitleLimit">58</span>/58
+                                                                <div id="metaTitleLimitMessenger" style="display: none">
+                                                                    <em style="color: #DC2425">Để SEO hiệu quả,bạn nên để 58 ký tự là tốt nhất</em>
+                                                                </div>
+                                                                <div ng-show="formUpdate.SEOTitle.$error.maxlength">
+                                                                    <span class="text-danger">Tiêu đề hiển thị trên google không được quá 300 ký tự.</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <label>Mô tả hiển thị trên Google:<em style="color: Gray">(Hãy SÁNG TẠO 1 mô tả thú vị, nhiều điểm nhấn sẽ thu hút nhiều click)</em></label>
+                                                            <textarea ng-model="Page.SEODescription" id="txtMetaDesc" rows="5" class="form-control"></textarea> Còn lại <span id="metaDesLimit">150</span>/150
+                                                            <input type="text" id="txtExtension2" style="display: none" />
+                                                            <div id="metaDesLimitMessenger" style="display: none">
+                                                                <em style="color: #DC2425">Để SEO hiệu quả,bạn nên để 150 ký tự là tốt nhất</em>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="aside-control-bottom">
+                        <div class="pull-left">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="doSave()"><i class="fa fa-dot-circle-o"></i> Cập nhật</button>
+                            <button type="reset" class="btn btn-sm btn-default" onclick=" return confirmCancel()"><i class="fa fa-ban"></i> Hủy</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    var uploadHandler = "@string.Concat(DVG.WIS.Utilities.AppSettings.Instance.GetString("Video-Upload-Domain-Client"), DVG.WIS.Utilities.AppSettings.Instance.GetString("Video-Upload-Handler"))";
+    var uploadProject = "@DVG.WIS.Utilities.AppSettings.Instance.GetString("Upload-Project")";
+    var domainVideo = "@DVG.WIS.Utilities.AppSettings.Instance.GetString("Video-View-Domain")";
+</script>
+@section scripts
+{
+    @Scripts.Render("~/WIS/scripts/SEOBox")
+    @Scripts.Render("~/WIS/scripts/PageAction")
+}

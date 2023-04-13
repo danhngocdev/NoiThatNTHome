@@ -1,0 +1,630 @@
+﻿select.form-control {
+    padding: 0 1rem !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+.bg-white {
+    background-color: #FFF;
+}
+
+.tree-view-wrapper, .tree-view-wrapper ul {
+    list-style: none;
+}
+
+    .tree-view-wrapper li {
+        position: relative;
+    }
+
+.show-hide {
+    top: 1px;
+    position: absolute;
+}
+
+    .show-hide i {
+        font-size: 20px;
+    }
+
+.show-hide, .edit {
+    cursor: pointer;
+}
+
+.tree-view-wrapper .custom-control {
+    margin-left: 15px;
+}
+
+.tree-checkbox {
+    margin: 6px !important;
+}
+
+.edit {
+    margin-right: 6px !important;
+}
+
+    .edit i {
+        color: #D77105;
+    }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.tree-node-icon {
+    background: rgba(0, 0, 0, 0) url(/Content/Images/tree-view.png) no-repeat scroll 0 0;
+    float: left;
+    height: 17px;
+    margin-right: 5px;
+    margin-top: -2px;
+    overflow: hidden;
+    width: 15px;
+}
+
+
+.tree-node-1 {
+    padding-left: 15px !important;
+}
+
+.tree-node-2 {
+    padding-left: 30px !important;
+}
+
+.tree-node-3 {
+    padding-left: 45px !important;
+}
+
+.tree-node-4 {
+    padding-left: 60px !important;
+}
+
+.tree-node-5 {
+    padding-left: 75px !important;
+}
+
+.avatar-view {
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.avatar-sq-90 {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.avatar-sq-60 {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.avatar-sq {
+    position: relative;
+    background: white;
+}
+
+    .avatar-sq img {
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+.avatar-controll {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+
+    .avatar-controll a {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        color: white;
+        background: #3c8dbc;
+    }
+
+    .avatar-controll i {
+        display: block;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 12px;
+        height: 15px;
+    }
+
+.w-90px {
+    width: 90px;
+}
+
+.avatar-sq:hover div.avatar-controll {
+    display: block;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-croshair {
+    cursor: crosshair;
+}
+
+.cursor-eresize {
+    cursor: e-resize;
+}
+
+.cursor-move {
+    cursor: move;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.opacity-05 {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute
+}
+
+.position-fixed {
+    position: fixed
+}
+
+.top-0 {
+    top: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.bottom-10 {
+    bottom: 10px;
+}
+
+.left-0 {
+    left: 0
+}
+
+.chosen-container {
+    width: 100% !important;
+}
+
+    .chosen-container a.chosen-single {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        -ms-border-radius: 0;
+        border-radius: 0;
+    }
+
+.chosen-container-single .chosen-single div b {
+    background-position: 0 8px !important;
+}
+
+.right-10 {
+    right: 10px;
+}
+
+table[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+/**
+    * An element with .dndPlaceholder class will be
+    * added to the dnd-list while the user is dragging
+    * over it.
+    */
+table[dnd-list] .dndPlaceholder {
+    display: block;
+    min-height: 150px;
+}
+
+/**
+    * Show selected elements in green
+    */
+table[dnd-list] tr.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.avatar.avatar-exlg {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+}
+
+    .avatar.avatar-exlg .img-avatar {
+        width: 300px;
+        height: 200px;
+    }
+
+.jwplayer {
+    margin: auto !important;
+}
+
+.vsc {
+    display: inline-block;
+    position: relative;
+    width: 600px;
+}
+
+    .vsc a {
+        color: #12c;
+        text-decoration: underline;
+        font-size: medium;
+        font-weight: normal;
+        margin-bottom: 2px;
+        font-family: arial,sans-serif;
+    }
+
+    .vsc .r {
+        margin: 0;
+        padding: 0;
+    }
+
+    .vsc .bc {
+        color: #093;
+        font-style: normal;
+        margin-bottom: 2px;
+        font-size: 14px !important;
+        line-height: 1.2;
+        font-weight: normal;
+        font-family: arial,sans-serif;
+    }
+
+    .vsc .st {
+        line-height: 1.24;
+        width: 502px;
+        font-size: small;
+        font-family: arial,sans-serif;
+    }
+
+.kwSuggest {
+    background-color: #000;
+    color: #fefefe;
+}
+/*CSS for TAGS*/
+.bootstrap-tagsinput {
+    min-width: 95%;
+    max-width: 95%;
+}
+
+.ui-autocomplete li {
+    list-style-image: none !important;
+}
+
+.divimage {
+    width: 150px;
+    height: 150px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    border: solid 1px #ccc;
+    padding: 1px;
+    cursor: pointer;
+}
+
+    .divimage img {
+        max-height: 150px;
+        max-width: 150px;
+    }
+
+.bg-color-custom {
+    background-color: #eceff1;
+}
+
+/*CSS for panel update*/
+
+.app-body .aside-edit-panel {
+    -ms-flex: 0 0 600px !important;
+    flex: 0 0 600px !important;
+}
+
+.aside-edit-panel {
+    z-index: 1019;
+    width: 620px;
+    color: #29363d;
+    background: #fff;
+    border-left: 1px solid #a4b7c1;
+}
+
+.aside-edit-panel {
+    transition: margin-left .25s,margin-right .25s,width .25s,flex .25s;
+    transition: margin-left .25s,margin-right .25s,width .25s,flex .25s,-ms-flex .25s;
+}
+
+    .aside-edit-panel .nav-tabs {
+        border-color: #cfd8dc;
+    }
+
+.aside-edit-panel-hidden .aside-edit-panel {
+    margin-right: -600px !important;
+}
+
+.aside-edit-panel-fixed .aside-edit-panel {
+    position: fixed !important;
+    top: 55px;
+    right: 0;
+    height: 100% !important;
+}
+
+    .aside-edit-panel-fixed .aside-edit-panel .tab-content {
+        height: calc(100vh - 2.375rem - 105px);
+    }
+
+.aside-edit-panel-fixed .main, .aside-edit-panel-fixed .app-footer {
+    margin-right: 600px !important;
+}
+
+.aside-edit-panel-fixed.aside-edit-panel-hidden .main, .aside-edit-panel-fixed.aside-edit-panel-hidden .app-footer {
+    margin-right: 0 !important;
+}
+
+.aside-edit-panel-off-canvas .aside-edit-panel {
+    position: fixed;
+    top: 55px;
+    right: 0;
+    z-index: 1019;
+    height: 100%;
+}
+
+    .aside-edit-panel-off-canvas .aside-edit-panel .tab-content {
+        height: calc(100vh - 2.375rem - 55px);
+    }
+
+.aside-edit-panel .tab-content {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 0;
+    border-top: 1px solid #a4b7c1;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.aside-control-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 600px;
+    z-index: 1019;
+    min-height: 50px;
+    padding: 0 1rem;
+    line-height: 50px;
+    background: #eceff1;
+    border-top: 1px solid #cfd8dc;
+}
+
+.app-body .aside-edit-panel-sm {
+    -ms-flex: 0 0 400px !important;
+    flex: 0 0 400px !important;
+}
+
+.aside-edit-panel-sm {
+    width: 400px;
+}
+
+    .aside-edit-panel-sm .aside-control-bottom {
+        min-width: 400px;
+        line-height: 2.5em;
+    }
+
+.aside-edit-panel-hidden .aside-edit-panel-sm {
+    margin-right: -4000px !important;
+}
+
+.aside-edit-panel-fixed-sm .main, .aside-edit-panel-fixed-sm .app-footer {
+    margin-right: 400px !important;
+}
+
+.collapse.in {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .aside-edit-panel {
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: none;
+        border-left: none;
+        width: 100%;
+    }
+
+    .aside-control-bottom, .aside-edit-panel-sm .aside-control-bottom {
+        width: 100%;
+    }
+
+    .aside-edit-panel-hidden .aside-edit-panel {
+        margin-right: -600px !important;
+        height: 0 !important;
+        left: auto;
+        width: auto;
+        display: none;
+    }
+
+    .app {
+        overflow: hidden;
+    }
+
+    .aside-edit-panel-hidden.app {
+        overflow: auto;
+    }
+}
+
+
+#autoSaveAlert {
+    visibility: visible;
+    right: 20px;
+    position: fixed;
+    bottom: 20px;
+    width: 380px;
+    height: auto;
+    left: inherit;
+    top: inherit;
+}
+
+    #autoSaveAlert a {
+        text-decoration: underline;
+    }
+
+.google-search-preview h3 {
+    margin: 0;
+}
+
+    .google-search-preview h3 a {
+        font-weight: normal;
+        color: #1a0dab;
+        font-size: 18px;
+        font-family: arial,sans-serif;
+        line-height: 1.2;
+    }
+
+.google-search-preview .s {
+    color: #006621;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.google-search-preview .st {
+    color: #545454;
+    font-size: small;
+    font-family: arial,sans-serif;
+}
+
+.editor-inline {
+    min-height: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.dvsvideo {
+    max-width: 100%;
+}
+
+.tab-control {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.btn-xs {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.fix-css-datetimepicker td, .fix-css-datetimepicker th {
+    padding: 0.75rem 0;
+}
+
+table.table-striped tr.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.f-w-500 {
+    font-weight: 500;
+}
+
+.aside-edit-panel.aside-drop {
+    z-index: 999;
+}
+
+.cke_editable {
+    color: #000;
+    font-size: 14px;
+    font-family: 'OpenSans',Arial,Helvetica,sans-serif;
+}
+
+/** CKEditor Box nhúng **/
+.dvs-textbox {
+    background-color: #ECEFF0;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid;
+}
+
+    .dvs-textbox .dvs-textbox-title {
+        font-weight: bold;
+    }
+
+.dvs-photobox {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+    .dvs-photobox img {
+        /*float: left;*/
+        max-width: 100%;
+    }
+
+    .dvs-photobox span {
+        background-color: aliceblue;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+        display: table;
+    }
+
+        .dvs-photobox span p {
+            vertical-align: middle;
+            display: table-cell;
+            padding: 5px;
+            font-style: italic;
+        }
+
+.dvs-photobox-caption-right span p {
+    vertical-align: middle;
+    display: table-cell;
+    font-style: italic;
+}
+
+.dvs-photobox figure {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}
+
+
+.dvs-photobox-caption-right span, .dvs-photobox-caption-left span {
+    width: 80px;
+}
+
+
+/** CKEditor Box nhúng **/
+.dvg_photo_box figure img, .cke_editable img {
+    max-width: 100%;
+}
+
+.ckeditor-copytable p {
+    margin-bottom: 0px !important;
+}

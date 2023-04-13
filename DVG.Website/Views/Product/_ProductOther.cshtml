@@ -1,0 +1,33 @@
+﻿@using DVG.WIS.PublicModel;
+@model List<ProductFEListModel>
+
+@if (Model != null && Model.Any())
+{
+    <div class="other-product">
+        <div class="container">
+            <div class="title-head">
+                <h2 class="f-bold title-head-text">@DVG.WIS.Local.Resource.OurProducts</h2>
+            </div>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-20 col-sm-4 col-xs-12">
+                        <div class="op-item">
+                            <div class="op-image">
+                                <a href="@item.Link" title="@item.Name"><img src="@item.GetAvatar("resize/150x150/")" class="img-responsive" alt="@item.Name"></a>
+                            </div>
+                            <div class="op-heading f-semibold">
+                                <h3 class="no-mg-bottom no-mg-top">
+                                    <a href="@item.Link" title="@item.Name">
+                                        @item.Name
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+

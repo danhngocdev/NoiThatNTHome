@@ -1,0 +1,31 @@
+﻿<div class="card clearfix">
+    <div class="card-header">
+        <button type="button" class="btn btn-sm btn-secondary pull-right" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+            Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+    </div>
+    <div class="card-body search-form collapse">
+        <form ng-model="Search" class="row">
+            <div class="col-lg-2 col-md-2">
+                <div class="form-group">
+                    <label>Ngày bắt đầu</label>
+                    <input type="text" id="txtStartDateStr" name="txtStartDateStr" class="form-control datepicker-short" ng-model="SearchModel.StartDateStr" ng-init="DatePickerInit()">
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <div class="form-group">
+                    <label>Ngày kết thúc</label>
+                    <input type="text" id="txtEndDateStr" name="txtEndDateStr" class="form-control datepicker-short" ng-model="SearchModel.EndDateStr" ng-init="DatePickerInit()">
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="form-group">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/End form search-->
+</div>
+
+

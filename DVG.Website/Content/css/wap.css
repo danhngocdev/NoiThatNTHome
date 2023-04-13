@@ -1,0 +1,25 @@
+﻿.nav li a {
+    padding: 10px;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.nav > li > a {
+    text-transform: uppercase;
+    color: #107cde;
+}
+
+.nav > li > a {
+    font-weight: 700;
+}
+
+.nav > li > a {
+    font-family: "Roboto", sans-serif;
+}
+.toggle{
+    position:relative;
+    left:19%;
+}
+.nav .sub-menu {
+        background: unset !important;
+    }

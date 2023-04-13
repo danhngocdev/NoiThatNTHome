@@ -1,0 +1,39 @@
+﻿<div class="card clearfix">
+    <div class="card-header">
+        <button type="button" class="btn btn-sm btn-secondary pull-right" data-toggle="collapse" data-target=".search-form" ng-click="CollapseSearchForm == 0 ? CollapseSearchForm = 1 : CollapseSearchForm = 0">
+            Tìm kiếm <i class="fa" ng-class="CollapseSearchForm == 0 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+    </div>
+    <div class="card-body search-form collapse">
+        <form ng-model="Search" class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="form-group">
+                    <label>Tên</label>
+                    <input type="text" placeholder="Nhập tên lãnh đạo" ng-keypress="keypressAction($event)" class="form-control" name="SearchModel.Name" ng-model="SearchModel.Name">
+                </div>
+            </div>
+            @*<div class="col-lg-3 col-md-3">
+                <div class="form-group">
+                    <label>Vị trí</label>
+                    <input type="text" placeholder="Nhập tên lãnh đạo" ng-keypress="keypressAction($event)" class="form-control" name="SearchModel.Position" ng-model="SearchModel.Position">
+                </div>
+            </div>*@
+            <div class="col-lg-3 col-md-3">
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select required class="form-control" ng-options="option.Id as option.Name for option in PersonStatus" ng-model="SearchModel.Status" ng-change="doSearch()">
+                        <option selected value="">--Lựa chọn</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="form-group">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <button type="button" class="btn btn-primary" ng-click="doSearch()">Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/End form search-->
+</div>
+
+

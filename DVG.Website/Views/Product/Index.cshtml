@@ -1,0 +1,107 @@
+﻿@using DVG.WIS.Core;
+@using DVG.WIS.Core.Enums;
+@using DVG.Website.Models;
+@model ProductPageViewModel
+@section styles{
+    <link rel="stylesheet" href="~/Scripts/Lib/swiper-671/swiper-bundle.min.css" />
+    @Styles.Render("~/styleForAll")
+}
+@section scripts{
+    <script src="~/Scripts/Lib/swiper-671/swiper-bundle.min.js"></script>
+}
+<div class="main">
+    @Html.Action("HeadBanner", "Banner", new { pageId = BannerPageEnum.HomePage.GetHashCode() })
+
+    @*@if (Request.Browser.IsMobileDevice)
+    {
+        @Html.Partial("_ProductCategory.Mobile")
+    }
+    else
+    {
+        @Html.Partial("_ProductCategory")
+    }*@
+
+
+    @if (Model != null && Model.ListProductForFace != null)
+    {
+        <div class="product-section">
+            <div class="container">
+                <p class="title">Sản phẩm</p>
+                <h3 class="heading-box">Giày bóng đá Nike</h3>
+                <div class="product-section-box">
+                    <div class="product-scroll">
+                        @foreach (var item in Model.ListProductForFace)
+                        {
+                            <div class="product-item">
+                                <div class="images">
+                                    <a href="@item.Link" title="@item.Name">
+                                        <img src="@item.GetAvatar("crop/370x270/")" alt="@item.Name" />
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <h3 class="heading">
+                                        <a href="@item.Link" title="@item.Name">@item.Name</a>
+                                    </h3>
+                                    @if (item.PricePromotion > 0)
+                                    {
+                                        <span class="price">@item.PricePromotionString</span>
+                                        <span class="old-price">@item.PriceString</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="price">@item.PriceString</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="viewall">
+            <a href="/@ConstUrl.Product/@ConstUrl.ProductFace" class="btn-view-more">Xem thêm</a>
+        </div>
+    }
+
+
+    @if (Model != null && Model.ListProductForBody != null)
+    {
+        <div class="product-section">
+            <div class="container">
+                <p class="title">Sản phẩm</p>
+                <h3 class="heading-box">Giày bóng đá Adidas</h3>
+                <div class="product-section-box">
+                    <div class="product-scroll">
+                        @foreach (var item in Model.ListProductForBody)
+                        {
+                            <div class="product-item">
+                                <div class="images">
+                                    <a href="@item.Link" title="@item.Name">
+                                        <img src="@item.GetAvatar("crop/370x270/")" alt="@item.Name" />
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <h3 class="heading">
+                                        <a href="@item.Link" title="@item.Name">@item.Name</a>
+                                    </h3>
+                                    @if (item.PricePromotion > 0)
+                                    {
+                                        <span class="price">@item.PricePromotionString</span>
+                                        <span class="old-price">@item.PriceString</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="price">@item.PriceString</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="viewall">
+            <a href="/@ConstUrl.Product/@ConstUrl.ProductBody" class="btn-view-more">Xem thêm</a>
+        </div>
+    }
+</div>

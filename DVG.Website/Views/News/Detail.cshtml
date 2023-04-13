@@ -1,0 +1,70 @@
+﻿@using DVG.WIS.Entities;
+@using DVG.WIS.Local;
+@using DVG.WIS.Core;
+@model News
+
+
+@section styles{
+    @Styles.Render("~/styleForHomepage")
+    @Styles.Render("~/styleForAll")
+}
+
+<div id="content" class="blog-wrapper blog-single page-wrapper">
+    <div class="row align-center">
+        <div class="large-9 col">
+            <article class="post type-post">
+                <div class="article-inner ">
+                    <header class="entry-header">
+                        <div class="entry-header-text entry-header-text-top text-left" style="padding-bottom: unset">
+                            <h1 class="entry-title" style="text-align: center;">@Model.Title</h1>
+                        </div>
+                    </header>
+
+                    @Html.Raw(Model.Description)
+                </div>
+            </article>
+        </div>
+        <div class="large-3 col">
+            <div id="secondary" class="widget-area " role="complementary">
+              
+                @Html.Action("ArticleSidebar","News",new {top = 5,newsId = Model.Id})
+
+               @Html.Action("VideoHightLight", "Video",new { top =5})
+            </div>
+        </div>
+    </div>
+    <!-- .row -->
+</div>
+
+
+
+@*<div class="main">
+    <div class="news-page">
+        <div class="container">
+            <div class="left-news">
+                <div class="box-avatar-news">
+                    <img src="@CoreUtils.BuildCropAvatar(Model.Avatar, string.Empty, "resize/670x360/")" />
+                    <div class="box-avatar-info">
+                        <span>Đăng bởi: BerryMore</span>
+                        <span class="line">|</span>
+                        <span>@Model.PublishedDate.ToString("dd/MM/yyyy")</span>
+                    </div>
+                </div>
+                <h1 class="heading">
+                    @Model.Title
+                </h1>
+                <p class="">
+                    @Model.Sapo
+                </p>
+                <div class="content-format">
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+            <div class="right-newspage">
+                @Html.Action("ProductHighLight", "Product")
+                @Html.Action("ProductNewest", "Product")
+            </div>
+        </div>
+        @Html.Action("HighlightNews", "News", new { top = 3, newsId = Model.Id })
+    </div>
+</div>*@
