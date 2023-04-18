@@ -6,6 +6,7 @@ using DVG.WIS.Business.InfoContact;
 using DVG.WIS.Business.Menu;
 using DVG.WIS.Business.News;
 using DVG.WIS.Business.Persons;
+using DVG.WIS.Business.PriceList;
 using DVG.WIS.Business.Products;
 using DVG.WIS.Business.ProductShowHome;
 using DVG.WIS.Business.Recruitments;
@@ -19,6 +20,7 @@ using DVG.WIS.DAL.Customers;
 using DVG.WIS.DAL.InfoContact;
 using DVG.WIS.DAL.News;
 using DVG.WIS.DAL.Persons;
+using DVG.WIS.DAL.PriceList;
 using DVG.WIS.DAL.Products;
 using DVG.WIS.DAL.ProductShowHome;
 using DVG.WIS.DAL.Recruitments;
@@ -140,7 +142,10 @@ namespace DVG.Website
             container.RegisterType<IInfoContactDal, InfoContactDal>();
             container.RegisterType<IInfoContactBo, InfoContactBo>();
 
+            //Price List
 
+            container.RegisterType<IPriceListDal, PriceListDal>();
+            container.RegisterType<IPriceListBo, PriceListBo>();
         }
     }
 }

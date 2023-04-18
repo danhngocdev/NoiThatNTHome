@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Allow: /*.js$
 Allow: /*.css$
-Sitemap: https://ttdpanel.com.vn/sitemap.xml
+Sitemap: https://noithatnthome/sitemap.xml

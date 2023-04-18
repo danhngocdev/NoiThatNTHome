@@ -1,0 +1,96 @@
+﻿@model List<PriceListModel>
+@using DVG.WIS.PublicModel.CMS
+
+
+<div id="content" class="blog-wrapper blog-single page-wrapper">
+    <div class="row align-center">
+        <div class="large-9 col">
+            <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+                <div class="article-inner ">
+                    <header class="entry-header">
+                        <div class="entry-header-text entry-header-text-top text-left" style="padding-bottom: unset">
+                            <h1 class="entry-title" style="text-align: center;">BÁO GIÁ TỦ BẾP NĂM @DateTime.Now.Year.ToString()</h1>
+
+                        </div>
+                    </header>
+                    <p> </p><p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>Mét dài tủ bếp =&nbsp; (M. dài tủ bếp trên + M. dài tủ bếp dưới ) / 2&nbsp;</strong></span></span></p>
+
+                    <h3><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">Đơn giá trên website là đơn giá cho 1 m dài ngang tủ, gồm cả tủ trên và tủ dưới, chưa tính đến các chi phí phụ kiện và thiết bị khác như:&nbsp;</span></span></h3>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Phụ kiện giá inox bên trong tủ</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Mặt đá tủ bếp</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Kính ốp tường</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Bếp nấu, máy hút mùi, máy rửa bát, hệ thống chiếu sáng…</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Phụ kiện tủ bếp khác trong tủ bếp như; thùng gạo, thùng rác, hệ giá inox tủ kho…</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>II. Đơn giá tủ bếp được tính theo kích thước tủ bếp tiêu chuẩn.</strong></span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Tủ bếp trên: cao 700mm x&nbsp; sâu 350mm</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Phào tủ 80mm – 120mm tùy từng kiểu tủ</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Tủ dưới: cao 810mm – 860mm cả mặt đá ,( sâu 580mm cả mặt cánh, mặt đá sâu 600mm)</span></span></p>
+
+                    <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif">-Hậu tủ là hợp kim nhôm Aluminium</span></span></p>
+
+
+                    @if (Model != null && Model.Any())
+                    {
+                        <table style="width:100%; border:1px solid gray" summary="Báo giá phụ kiện tủ bếp">
+                            <tbody>
+                                <tr>
+                                    <th style="text-align: center; background-color: rgb(102, 204, 0);"><strong><span style="font-size:16px;">Tên sản phẩm</span></strong></th>
+                                    <th style="text-align: center; background-color: rgb(102, 204, 0);"><strong><span style="font-size:16px;">Đơn Vị tính</span></strong></th>
+                                    <th style="text-align: center; background-color: rgb(102, 204, 0);"><strong><span style="font-size:16px;">Đơn giá (vnđ)</span></strong></th>
+                                    <th style="text-align: center; background-color: rgb(102, 204, 0);"><strong><span style="font-size:16px;">Ghi Chú</span></strong></th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    //var price = item.Price > 0 ? item.Price.ToString()
+                                    <tr>
+                                        <td style="text-align: center; background-color: rgb(255, 255, 204);"><strong><span style="font-size:16px;">@item.Name</span></strong></td>
+                                        <td style="background-color: rgb(255, 255, 204); text-align:center"><span style="font-size:16px;">@item.UnitName</span></td>
+                                        <td style="text-align: center; background-color: rgb(255, 255, 204);"><em><span style="font-size:16px;">@item.Price.ToString("#,###")</span></em></td>
+                                        <td style="text-align: center; background-color: rgb(255, 255, 204);"><strong><span style="color:#FF0000;"><span style="font-size:16px;">@item.Note</span></span></strong></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    }
+
+                        <p><span style="font-size:18px"><span style="font-family:Arial,Helvetica,sans-serif"><strong><em>Lưu ý: khách hàng có thể đặt hàng theo kích thước phù hợp vói không gian nhà bếp và yêu cầu kích thước ngoài kích thước quy chuẩn trên.</em></strong></span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p style="text-align:center">&nbsp;</p>
+
+                        <p>&nbsp;</p>
+
+                        <p>&nbsp;</p><p></p>
+                    </div>
+            </article>
+
+
+
+
+        </div>
+
+
+
+        <div class="large-3 col">
+            <div id="secondary" class="widget-area " role="complementary">
+                @Html.Action("ArticleSidebar", "News", new { top = 5 })
+
+                @Html.Action("VideoHightLight", "Video", new { top = 5 })
+            </div>
+        </div>
+
+
+    </div><!-- .row -->
+
+</div>

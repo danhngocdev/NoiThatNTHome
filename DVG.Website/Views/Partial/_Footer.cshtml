@@ -1,5 +1,5 @@
 ﻿@using DVG.WIS.Core;
-
+@using DVG.WIS.PublicModel;
 
 <footer id="footer" class="footer-wrapper">
     <section class="section dark">
@@ -14,7 +14,7 @@
                             <ul id="menu-ve-zito" class="menu">
                                 <li id="menu-item"
                                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item">
-                                    <a rel="nofollow" href="/gioi-thieu"
+                                    <a rel="nofollow" href="/@ConstUrl.AboutUs"
                                        class="menu-image-title-after">
                                         <span class="menu-image-title-after menu-image-title">
                                             Giới
@@ -67,116 +67,48 @@
                         <div class="menu-menu-product-category-container">
                             <ul id="menu-menu-product-category" class="menu">
 
-                                <li id="menu-item-3621"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
-                                    <a rel="nofollow"
-                                       href="https://noithatngocchau.vn:443/PHONG-KHACH-ls580.html"
-                                       class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">
-                                            PHÒNG
-                                            KHÁCH
-                                        </span>
-                                    </a>
-                                </li>
-
-
-                                <li id="menu-item-3621"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
-                                    <a rel="nofollow" href="https://noithatngocchau.vn:443/PHONG-NGU-ls581.html"
-                                       class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">PHÒNG NGỦ</span>
-                                    </a>
-                                </li>
-
-
-                                <li id="menu-item-3621"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
-                                    <a rel="nofollow" href="https://noithatngocchau.vn:443/PHONG-BEP-ls582.html"
-                                       class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">PHÒNG BẾP</span>
-                                    </a>
-                                </li>
-
-
-                                <li id="menu-item-3621"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
-                                    <a rel="nofollow"
-                                       href="https://noithatngocchau.vn:443/THIET-KE-NOI-THAT-ls583.html"
-                                       class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">
-                                            THIẾT KẾ NỘI
-                                            THẤT
-                                        </span>
-                                    </a>
-                                </li>
-
-
-                                <li id="menu-item-3621"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
-                                    <a rel="nofollow" href="https://noithatngocchau.vn:443/PHU-KIEN-ls631.html"
-                                       class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">PHỤ KIỆN</span>
-                                    </a>
-                                </li>
-
-
-
-                                <li id="menu-item-3612"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
-                                    <a rel="nofollow" href="Video.html" class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">Videos</span>
-                                    </a>
-                                </li>
-
-                                <li id="menu-item-3614"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-3612">
-                                    <a rel="nofollow" href="Cong-trinh.html"
-                                       class="menu-image-title-after">
-                                        <span class="menu-image-title-after menu-image-title">
-                                            Công
-                                            trình thi công
-                                        </span>
-                                    </a>
-                                </li>
-
-
+                                @foreach (var item in MyMenuDictionary.ListMenuFooterDictionary)
+                                {
+                                    <li id="menu-item"
+                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item">
+                                        <a rel="nofollow"
+                                           href="@item.Value"
+                                           class="menu-image-title-after">
+                                            <span class="menu-image-title-after menu-image-title">
+                                                @item.Key
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
-
-
                 <div class="col medium-3 small-12 large-3">
                     <div class="col-inner">
-
                         <p class="f-title">Page NỘI THẤT NT Home</p>
                         <p>
-                           
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F100042405595771%2F&tabs=timeline&width=340&height=331&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="331" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
                         </p>
 
                     </div>
                 </div>
-
             </div>
             <div class="is-divider divider clearfix"
                  style="margin-top:0em;margin-bottom:0em;max-width:100%;height:1px;background-color:rgba(255, 255, 255, 0.26);">
             </div>
 
-            <div class="row sc-showrooms" id="row-1239016170">
-
+            <div class="row sc-showrooms">
                 <div class="col small-12 large-12">
                     <div class="col-inner text-center">
                         <p class="rooms-title">
-                            <img src="icon-home.png" alt="showrooms" />Hệ thống Showroom Nội
+                            Hệ thống Showroom Nội
                             Thất NT Home
                         </p>
 
                     </div>
                 </div>
-
-
             </div>
             <div class="row row-address">
                 <div class="col pb-half medium-6 small-12 large-6">
@@ -217,19 +149,7 @@
 
                 <div class="col pb-half medium-6 small-12 large-6">
                     <div class="col-inner">
-
-
-
-
                         <div class="col-inner">
-
-
-
-
-
-
-
-
                             <div class="icon-box featured-box icon-box-left text-left">
                                 <div class="icon-box-img" style="width: 20px">
                                     <div class="icon">
@@ -290,8 +210,6 @@
 
     <div class="absolute-footer light medium-text-center small-text-center">
         <div class="container clearfix">
-
-
             <div class="footer-primary pull-left">
                 <div class="copyright-footer">
                     Copyright 2023 © <strong>Noithatnthome.com</strong>

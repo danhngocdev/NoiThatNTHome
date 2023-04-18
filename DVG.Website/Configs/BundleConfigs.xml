@@ -1,28 +1,73 @@
 ﻿<bundle name="12345">
 
 	<styles>
-		<style name="~/commonStyle">
+		<style name="~/stylesCommon">
 			<items>
 				<item>
-					<path>~/Content/css/fontello.css</path>
+					<path>~/Content/css/styles.css</path>
 					<css_fix_rewrite_url>true</css_fix_rewrite_url>
 				</item>
 				<item>
-					<path>~/Content/css/header-footer.css</path>
+					<path>~/Content/font/css/all.min.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/swiper-bundle.min.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/fix.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/common.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/menu-image.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/color.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/animate.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/flatsome5.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/change.css</path>
 					<css_fix_rewrite_url>true</css_fix_rewrite_url>
 				</item>
 			</items>
 		</style>
 
-		<style name="~/styleForHomepage">
+		<style name="~/styleForWap">
 			<items>
 				<item>
-					<path>~/Content/css/homepage.css</path>
+					<path>~/Content/css/formwap.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/wap.css</path>
 					<css_fix_rewrite_url>true</css_fix_rewrite_url>
 				</item>
 			</items>
 		</style>
 
+		<style name="~/styleForWeb">
+			<items>
+				<item>
+					<path>~/Content/css/formweb.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+			</items>
+		</style>
+		
 		<style name="~/styleForProductDetail">
 			<items>
 				<item>

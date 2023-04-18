@@ -17,22 +17,24 @@
             {
                 foreach (var item in Model.Where(x => x.HasSubMenu))
                 {
-                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children has-child"
-                        aria-expanded="false">
-                        <a href="@item.Parent.Url">
-                            @item.Parent.Name
-                        </a><button class="toggle">
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                            <ul class="sub-menu nav-sidebar-ul children" style="margin-left:13px;">
-                                @foreach (var sub in item.SubMenu)
-                                {
-                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat">
-                                        <a href="@sub.Parent.Url">@sub.Parent.Name</a>
-                                    </li>
-                                }
-                            </ul>
-                    </li>
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children has-child"
+            aria-expanded="false">
+            <a href="@item.Parent.Url">
+                @item.Parent.Name sss
+            </a>
+            <button class="toggle">
+                <i class="fa fa-angle-down"></i>
+            </button>
+           
+
+            <ul class="sub-menu nav-sidebar-ul children" style="margin-left:13px;">
+                @foreach (var sub in item.SubMenu)
+                {
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-group">
+            <a href="@sub.Parent.Url">@sub.Parent.Name x</a>
+        </li>}
+            </ul>
+        </li>
                 }
             }
 
@@ -40,7 +42,7 @@
             @foreach (var item in Model.Where(x => !x.HasSubMenu))
             {
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="@item.Parent.Name">@item.Parent.Name</a>
+            <a href="@item.Parent.Name">@item.Parent.Name s</a>
         </li>
         }
 

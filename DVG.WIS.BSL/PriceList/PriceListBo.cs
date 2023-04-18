@@ -68,7 +68,18 @@ namespace DVG.WIS.Business.PriceList
 
         public IEnumerable<PriceListModel> GetListAllFe()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var dto = _priceListDal.GetListFe();
+                var result = dto.Select(x => new PriceListModel(x)).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+              
+                Logger.WriteLog(Logger.LogType.Error, ex.ToString());
+                return new List<PriceListModel>();
+            }
         }
 
         public ErrorCodes Update(Entities.PriceList priceList)

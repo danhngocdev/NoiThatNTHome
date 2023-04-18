@@ -243,23 +243,6 @@ blockquote,
     border-color: #c0a36b
 }
 
-body {
-    font-size: 100%;
-}
-
-@media screen and (max-width: 549px) {
-    body {
-        font-size: 100%;
-    }
-}
-
-body {
-    font-family: "Roboto", sans-serif
-}
-
-body {
-    font-weight: 0
-}
 
 body {
     color: #3c3c3c
@@ -273,6 +256,12 @@ body {
     font-weight: 700;
 }
 
+
+.nav li a {
+    padding: 10px; 
+    line-height: 20px;
+    display: inline-block;
+}
 h1,
 h2,
 h3,

@@ -2051,6 +2051,7 @@ li.hide-title > a {
     .toggle i {
         font-size: 1.8em;
         transition: all 0.3s;
+     
     }
 
     .toggle:focus {
@@ -2178,7 +2179,7 @@ li.hide-title > a {
 
 .nav-sidebar.nav-vertical > li.menu-item.active,
 .nav-sidebar.nav-vertical > li.menu-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background: #adb5bd;
 }
 
 .nav-sidebar.nav-vertical > li + li {

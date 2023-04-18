@@ -62,4 +62,7 @@ namespace DVG.WIS.PublicModel
 
         public bool HasSubMenu { get; set; }
     }
+
+
+    
 }

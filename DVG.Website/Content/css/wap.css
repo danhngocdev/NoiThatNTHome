@@ -21,5 +21,20 @@
     left:19%;
 }
 .nav .sub-menu {
-        background: unset !important;
-    }
+    background: unset !important;
+   /* background-color: #adb5bd;*/
+}
+.sub-menu .menu-item-group {
+    border-top: 1px dashed #dee2e6;
+}
+.menu-item .menu-link {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: white;
+}

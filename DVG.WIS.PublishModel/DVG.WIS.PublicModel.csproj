@@ -70,6 +70,7 @@
     <Compile Include="GalleryFEModel.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="CustomerFEModel.cs" />
+    <Compile Include="MyMenuDictionary.cs" />
     <Compile Include="NewsInListModel.cs" />
     <Compile Include="OrderModel.cs" />
     <Compile Include="PageDetailModel.cs" />

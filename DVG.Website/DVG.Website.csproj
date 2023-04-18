@@ -145,6 +145,7 @@
     <Compile Include="Controllers\PagingController.cs" />
     <Compile Include="Controllers\PriceListController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SiteMapController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -156,69 +157,24 @@
   <ItemGroup>
     <Content Include="Configs\BundleConfigs.xml" />
     <Content Include="Content\css\animate.css" />
-    <Content Include="Content\css\by_text.css" />
-    <Content Include="Content\css\category-page.css" />
     <Content Include="Content\css\change.css" />
     <Content Include="Content\css\color.css" />
     <Content Include="Content\css\common.css" />
-    <Content Include="Content\css\dashicons.min.css" />
-    <Content Include="Content\css\Elusive-Icons-2.html" />
-    <Content Include="Content\css\Elusive-Icons-3.html" />
-    <Content Include="Content\css\Elusive-Icons-4.html" />
-    <Content Include="Content\css\Elusive-Icons.html" />
-    <Content Include="Content\css\Elusive-Iconsd41d.html" />
-    <Content Include="Content\css\elusive.min.css" />
-    <Content Include="Content\css\extra.min.css" />
     <Content Include="Content\css\fix.css" />
-    <Content Include="Content\css\fl-icons.css" />
-    <Content Include="Content\css\flatlineui-furniture.css" />
-    <Content Include="Content\css\flatsome4-shop.html" />
     <Content Include="Content\css\flatsome5.css" />
-    <Content Include="Content\css\font.css" />
     <Content Include="Content\css\fontello.css" />
     <Content Include="Content\css\formwap.css" />
     <Content Include="Content\css\formweb.css" />
-    <Content Include="Content\css\foundation-icons-2.html" />
-    <Content Include="Content\css\foundation-icons-3.html" />
-    <Content Include="Content\css\foundation-icons-4.html" />
-    <Content Include="Content\css\foundation-icons.html" />
-    <Content Include="Content\css\foundation-icons.min.css" />
-    <Content Include="Content\css\foundation-iconsd41d.html" />
-    <Content Include="Content\css\front.css" />
-    <Content Include="Content\css\frontend-tooltip.min.css" />
-    <Content Include="Content\css\frontend.css" />
-    <Content Include="Content\css\frontend.min.css" />
-    <Content Include="Content\css\Genericons-2.html" />
-    <Content Include="Content\css\Genericons.html" />
-    <Content Include="Content\css\genericons.min.css" />
-    <Content Include="Content\css\Genericonsd41d.html" />
-    <Content Include="Content\css\header-footer.css" />
-    <Content Include="Content\css\homepage.css" />
     <Content Include="Content\css\icons\fl-icons-2.html" />
     <Content Include="Content\css\icons\fl-icons-3.html" />
     <Content Include="Content\css\icons\fl-icons-4.html" />
     <Content Include="Content\css\icons\fl-icons-5.html" />
     <Content Include="Content\css\icons\fl-icons.html" />
-    <Content Include="Content\css\image.css" />
-    <Content Include="Content\css\ion.rangeSlider.skinSimple4c7e.css" />
-    <Content Include="Content\css\ion.rangeSlider4c7e.css" />
-    <Content Include="Content\css\jquery.mCustomScrollbar.css" />
-    <Content Include="Content\css\label.css" />
-    <Content Include="Content\css\local-ryviu.css" />
     <Content Include="Content\css\menu-image.css" />
     <Content Include="Content\css\productDetail.css" />
-    <Content Include="Content\css\rps-category-page.css" />
-    <Content Include="Content\css\select_hierarchy.css" />
-    <Content Include="Content\css\select_radio_check.css" />
-    <Content Include="Content\css\slider.css" />
-    <Content Include="Content\css\style.css" />
-    <Content Include="Content\css\style.min.css" />
     <Content Include="Content\css\styles.css" />
-    <Content Include="Content\css\tinvn-main-css.css" />
-    <Content Include="Content\css\vendors-style.css" />
+    <Content Include="Content\css\swiper-bundle.min.css" />
     <Content Include="Content\css\wap.css" />
-    <Content Include="Content\css\wvs-theme-override.min.css" />
-    <Content Include="Content\css\yellow.css" />
     <Content Include="Content\font-awesome\font-awesome.min.html" />
     <Content Include="Content\font\css\all.min.css" />
     <Content Include="Content\font\fontello.svg" />
@@ -236,7 +192,9 @@
     <Content Include="Content\images\body.png" />
     <Content Include="Content\images\call-calling.svg" />
     <Content Include="Content\images\face.png" />
+    <Content Include="Content\images\fb.png" />
     <Content Include="Content\images\ft-bg-overlay.png" />
+    <Content Include="Content\images\goi.png" />
     <Content Include="Content\images\hotnews.png" />
     <Content Include="Content\images\icon-video.svg" />
     <Content Include="Content\images\icon11.png" />
@@ -245,6 +203,7 @@
     <Content Include="Content\images\loading300.gif" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logonthome.jpg" />
+    <Content Include="Content\images\logoto.jpg" />
     <Content Include="Content\images\mid-banner.png" />
     <Content Include="Content\images\news.png" />
     <Content Include="Content\images\newsmid.png" />
@@ -261,6 +220,7 @@
     <Content Include="Content\images\Slider.png" />
     <Content Include="Content\images\story-success.png" />
     <Content Include="Content\images\story.png" />
+    <Content Include="Content\images\zl.png" />
     <Content Include="Content\js\api-fetch.min44e0.js" />
     <Content Include="Content\js\customs-scrollbar5152.js" />
     <Content Include="Content\js\flatlineui-furniture8a54.js" />
@@ -276,6 +236,7 @@
     <Content Include="Content\js\perfect-scrollbar.min5152.js" />
     <Content Include="Content\js\slider4c7e.js" />
     <Content Include="Content\js\superfish.min.js" />
+    <Content Include="Content\js\swiper-bundle.min.js" />
     <Content Include="Content\js\woocommerce.minb2f9.js" />
     <Content Include="Content\js\woocommercea5bd.js" />
     <Content Include="favicon.png" />
@@ -322,7 +283,6 @@
     <Content Include="Scripts\Lib\wowCustom.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\notifies.js" />
-    <Content Include="sitemap.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -400,10 +360,11 @@
     <Content Include="Views\Shared\_Loading.cshtml" />
     <Content Include="Views\Product\_ListItem.cshtml" />
     <Content Include="Views\Home\Procedure.cshtml" />
+    <Content Include="Views\PriceList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PriceList\" />
+    <Folder Include="Views\SiteMap\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

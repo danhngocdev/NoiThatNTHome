@@ -19,7 +19,8 @@ namespace DVG.Website.Controllers
         // GET: PriceList
         public ActionResult Index()
         {
-            return View();
+            var result = _priceListBo.GetListAllFe();
+            return View(result);
         }
     }
 }
