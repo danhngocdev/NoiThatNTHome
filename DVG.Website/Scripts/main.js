@@ -331,9 +331,9 @@ var main = {
         //    main.addToCart(2);
         //})
 
-        $('#btn-search').on("click", function () {
-            main.search();
-        });
+        //$('#btn-search').on("click", function () {
+        //    main.search();
+        //});
 
 
         //$('.menu-wap').on("click", ".icon-down-open", function () {
@@ -426,7 +426,12 @@ var main = {
             $('.field-validation-error').empty();
         });
         $('button[type=submit]').click(function () {
-            var form = $(this).parents('form:first');
+            //var flag = false;
+            //var form = $(this).parents('form:first');
+            //if (form.attr("id").match("searchForm")) {
+            //    flag = true;
+            //}
+            //console.log(form.attr('action'),22);
             $(form).off("submit");
             if (form.valid()) {
                 form.submit(function (e) {
@@ -437,8 +442,9 @@ var main = {
                         common.loading();
                         this.beenSubmitted = data;
                         $.post(form.attr('action'), data, function (response) {
+                            //console.log(response);
                             if (response.Error) {
-                                notifies.createMessageError(response.Message);
+                                notifies.messageError(response.Message);
                             }
                             else {
                                 switch (response.NextAction) {
@@ -449,7 +455,7 @@ var main = {
                                         location.href = response.Message;
                                         break;
                                     default:
-                                        notifies.createMessageError(response.Message);
+                                    
                                         break;
                                 }
                             }
@@ -481,7 +487,7 @@ var main = {
                         else {
                             switch (response.NextAction) {
                                 case 1:
-                                    alert(1);
+                                    //alert(1);
                                     notifies.messageSuccessPosting(response.Title);
                                     break;
                                 default:

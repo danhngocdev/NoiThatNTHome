@@ -10,6 +10,7 @@ using DVG.WIS.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -113,6 +114,10 @@ namespace DVG.Website.Controllers
 
         public ActionResult Search(string keyword, int pageIndex = 1)
         {
+
+
+            //Regex regex = new Regex("(~|!|#|\\$|%|\\^|&|\\*|\\(|\\)|_|\\+|\\{|\\}|\\||\"|:|\\?|>|<|,|\\.|\\/|;|'|\\\\|[|\\]|=|-)", RegexOptions.IgnoreCase);
+           //keyword = keyword.Replace(regex, string.Empty);
             string title = "Tìm kiếm sản phẩm: " + keyword;
             string standardUrl = Request.RawUrl.ToString();
 

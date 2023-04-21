@@ -52,15 +52,11 @@ namespace DVG.WIS.Business
 
         public static string BuildURLForCategory(string cateUrl, int newsType, int id)
         {
-            if (!string.IsNullOrEmpty(cateUrl))
-            {
-                cateUrl.Replace("danh-muc/", string.Empty);
-            }
             switch (newsType)
             {
                 
                 default:
-                    return (!string.IsNullOrEmpty(cateUrl) && !cateUrl.StartsWith("/")) ? string.Concat("danh-muc/", cateUrl) : cateUrl;
+                    return (!string.IsNullOrEmpty(cateUrl) && !cateUrl.StartsWith("/")) ? cateUrl : cateUrl;
             }
         }
 

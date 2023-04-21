@@ -81,11 +81,11 @@ body.boxed .is-sticky-section {
 
 @media (max-width: 549px) {
     .header-main {
-        height: 70px
+        height: 100px
     }
 
     #logo img {
-        max-height: 70px
+        max-height: 100px
     }
 }
 

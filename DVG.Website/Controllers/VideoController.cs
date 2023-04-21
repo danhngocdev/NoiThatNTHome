@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace DVG.Website.Controllers
 {
-    public class VideoController : BaseController
+    public class VideoController : Controller
     {
         private  readonly IVideoBo _videoBo;
         public VideoController(IVideoBo videoBo)
@@ -42,7 +42,7 @@ namespace DVG.Website.Controllers
             string currentUrl = Request != null && Request.RawUrl != null ? Request.RawUrl : standardUrl;
             if (!currentUrl.Equals(standardUrl))
             {
-                return Redirect301(standardUrl);
+                return RedirectPermanent(standardUrl);
             }
             #endregion
 

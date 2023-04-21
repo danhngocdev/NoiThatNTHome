@@ -24,9 +24,9 @@ namespace DVG.WIS.Core
         public static string ProductBody = "giay-da-bong-adidas";
         public static string ProductFace = "giay-da-bong-nike";
         public static string ProductListPaging = "san-pham/{category}/p{pageIndex}";
-        public static string ProductList = "danh-muc/{category}";
-        public static string ProductListAjax = "danh-muc/{category}/p{pageIndex}";
-        public static string ProductPaging = "danh-danh/p{pageIndex}";
+        public static string ProductList = "{category}";
+        public static string ProductListAjax = "{category}/p{pageIndex}";
+        public static string ProductPaging = "p{pageIndex}";
         public static string ProductListSearch = "tim-kiem-san-pham";
         public static string ProductSearchPaging = "tim-kiem-san-pham/p{pageIndex}";
         public static string ProductDetail = "san-pham/{title}-pid{productId}";

@@ -14,8 +14,8 @@ var notifies = {
                             </div>
                                 <div class="page-wrapper-popup">
                                 <div class="custom-modal">
-                                    <div class="succes succes-animation icon-top"><i class="fa fa-check"></i></div>
-                                    <div class="succes border-bottom"></div>
+                                    <div class="danger danger-animation icon-top"><i class="fa fa-times"></i></div>
+                                    <div class="danger border-bottom"></div>
                                     <div class="content">
                                         <p class="type">Thất Bại</p>
                                         <p class="message-type">Bạn Vui Lòng Thử Lại</p>

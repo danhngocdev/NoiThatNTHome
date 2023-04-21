@@ -56,7 +56,7 @@ namespace DVG.Website.Controllers
                     if (homePage.ListProduct.Count >0 && homePage.ListProduct.Any())
                     {
                         var cate = _categoryBo.GetById(item.CategoryId);
-                        homePage.Link = string.Format("danh-muc/{0}", cate.ShortURL);
+                        homePage.Link = string.Format("/{0}", cate.ShortURL);
                         homePageViewModel.Add(homePage);
                     }
                 }

@@ -204,6 +204,7 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logonthome.jpg" />
     <Content Include="Content\images\logoto.jpg" />
+    <Content Include="Content\images\logoweb.jpg" />
     <Content Include="Content\images\mid-banner.png" />
     <Content Include="Content\images\news.png" />
     <Content Include="Content\images\newsmid.png" />
