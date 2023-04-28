@@ -68,10 +68,6 @@ namespace DVG.Website.Controllers
             var lstCategory = _categoryBo.GetListAll();
             var cate = lstCategory.Where(x => x.ShortURL.Equals(category)).FirstOrDefault();
             int cateId = 0;
-            if (cate !=null && cate.Id>0 && cate.ShortURL.Equals(ConstUrl.News))
-            {
-                return Redirect("/tin-tuc");
-            }
             string title = string.Empty;
             string standardUrl = string.Empty;
             string desc = string.Empty;
@@ -106,8 +102,8 @@ namespace DVG.Website.Controllers
             ViewBag.MetaCanonical = SEO.MetaCanonical(StaticVariable.BaseUrl.TrimEnd('/') + Request.RawUrl.ToString());
             ViewBag.IsProduct = true;
             ViewBag.Title = title;
-            ViewBag.TitlePage = SEO.AddTitle(Resource.ProductTitle);
-            ViewBag.MetaDescription = SEO.AddMeta("description", Resource.ProductDesc);
+            ViewBag.TitlePage = SEO.AddTitle(!string.IsNullOrEmpty(cate.MetaTitle) ? cate.MetaTitle : cate.Name);
+            ViewBag.MetaDescription = SEO.AddMeta("description", !string.IsNullOrEmpty(cate.MetaDescription) ? cate.MetaDescription : cate.Description);
             ViewBag.MetaFacebook = SEO.AddMetaImages("photo/2020/03/03/banner1.jpg");
             return View(lstProductModel);
         }

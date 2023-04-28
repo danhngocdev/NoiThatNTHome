@@ -22,6 +22,7 @@ namespace DVG.WIS.DAL.News
         IEnumerable<Entities.News> GetListNewsByCateId(int languageId, int cateId, int top);
         IEnumerable<Entities.News> GetListNewsHighlight(int top);
         IEnumerable<Entities.News> GetListNewsHighlightByCate(int cateId,int top);
+        IEnumerable<Entities.News> GetListArticleSiteMap();
 
     }
 }

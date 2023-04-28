@@ -95,6 +95,8 @@
     <Compile Include="Persons\PersonBo.cs" />
     <Compile Include="Recruitments\RecruitmentBo.cs" />
     <Compile Include="Recruitments\IRecruitmentBo.cs" />
+    <Compile Include="SiteMap\ISiteMapBo.cs" />
+    <Compile Include="SiteMap\SiteMapBo.cs" />
     <Compile Include="Slider\Cached\ISliderBoCache.cs" />
     <Compile Include="Slider\Cached\SliderBoCache.cs" />
     <Compile Include="Slider\ISliderBo.cs" />

@@ -24,5 +24,7 @@ namespace DVG.WIS.DAL.Products
         int UpdateOrder(Order order, List<OrderDetail> orderDetails);
         IEnumerable<Product> GetListProducByListProductId(List<int> lstID);
 
+        IEnumerable<Product> GetListProductSiteMap();
+
     }
 }

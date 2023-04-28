@@ -362,5 +362,23 @@ namespace DVG.WIS.DAL.News
                 throw new Exception(string.Format("{0} => {1}", storeName, ex.ToString()));
             }
         }
+
+        public IEnumerable<Entities.News> GetListArticleSiteMap()
+        {
+            var listNews = new List<Entities.News>();
+            try
+            {
+                using (var context = Context())
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.Append(" select n.id,n.Title,n.PublishedDate,n.Avatar from News n where n.Status = 1 ");
+                    listNews = context.Sql(query.ToString()).QueryMany<Entities.News>();
+                    return listNews;
+                }
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
     }
 }

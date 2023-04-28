@@ -423,7 +423,7 @@
     left: 10px;
     bottom: 40px;
     position: fixed;
-    z-index: 2000000;
+    z-index: 100;
 }
 
     .uchat .h8 {

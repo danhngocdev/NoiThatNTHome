@@ -178,8 +178,30 @@
     <Content Include="Content\font-awesome\font-awesome.min.html" />
     <Content Include="Content\font\css\all.min.css" />
     <Content Include="Content\font\fontello.svg" />
+    <Content Include="Content\font\SVN-Poppins Medium.otf" />
+    <Content Include="Content\font\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\font\webfonts\fa-brands-400.html" />
+    <Content Include="Content\font\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\font\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\font\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\font\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\font\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\font\webfonts\fa-regular-400.html" />
+    <Content Include="Content\font\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\font\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\font\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\font\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\font\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\font\webfonts\fa-solid-900.html" />
+    <Content Include="Content\font\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\font\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\font\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\font\webfonts\fa-solid-900d41d.eot" />
     <Content Include="Content\images\10.png" />
     <Content Include="Content\images\12.png" />
+    <Content Include="Content\images\phongkhach.jpg" />
+    <Content Include="Content\images\phongngu.jpg" />
+    <Content Include="Content\images\phongbep.jpg" />
     <Content Include="Content\images\7.png" />
     <Content Include="Content\images\8.png" />
     <Content Include="Content\images\9.png" />
@@ -209,6 +231,7 @@
     <Content Include="Content\images\news.png" />
     <Content Include="Content\images\newsmid.png" />
     <Content Include="Content\images\newsmid2.png" />
+    <Content Include="Content\images\phukien.jpg" />
     <Content Include="Content\images\product-image.png" />
     <Content Include="Content\images\product-left-banner.png" />
     <Content Include="Content\images\product-list.png" />
@@ -271,7 +294,6 @@
     <Content Include="Content\font\SVN-Poppins Light Italic.otf" />
     <Content Include="Content\font\SVN-Poppins Light.otf" />
     <Content Include="Content\font\SVN-Poppins Medium Italic.otf" />
-    <Content Include="Content\font\SVN-Poppins Medium.otf" />
     <Content Include="Content\font\SVN-Poppins SemiBold Italic.otf" />
     <Content Include="Content\font\SVN-Poppins Thin Italic.otf" />
     <Content Include="Content\font\SVN-Poppins Thin.otf" />
@@ -365,7 +387,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SiteMap\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

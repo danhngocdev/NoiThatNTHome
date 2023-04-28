@@ -341,6 +341,23 @@ namespace DVG.WIS.DAL.Products
             }
         }
 
-
+        public IEnumerable<Product> GetListProductSiteMap()
+        {
+            IEnumerable<Entities.Product> lstRet;
+            try
+            {
+                using (IDbContext context = Context())
+                {
+                    string sql = "Select p.Id,p.Name,p.CreatedDate,p.Avatar from Products p where p.Status = 1 ";
+                    lstRet =  context.Sql(sql)
+                          .QueryMany<Entities.Product>();
+                    return lstRet;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
     }
 }

@@ -203,5 +203,18 @@ namespace DVG.WIS.Business.Products
                 return null;
             }
         }
+
+        public IEnumerable<Product> GetListProductSiteMap()
+        {
+            try
+            {
+                return _productDal.GetListProductSiteMap();
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.LogType.Error, ex.ToString());
+                return null;
+            }
+        }
     }
 }

@@ -244,5 +244,20 @@ namespace DVG.WIS.Business.News
             }
             return errorCodes;
         }
+
+        public IEnumerable<NewsInListModel> GetListArticleSiteMap()
+        {
+            try
+            {
+                var lstModel = _newsDal.GetListArticleSiteMap();
+                IEnumerable<NewsInListModel> lstNews = lstModel.Select(x => new NewsInListModel(x));
+                return lstNews;
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.LogType.Error, ex.ToString());
+                return null;
+            }
+        }
     }
 }

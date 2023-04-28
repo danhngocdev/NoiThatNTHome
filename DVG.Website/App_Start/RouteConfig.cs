@@ -15,6 +15,40 @@ namespace DVG.Website
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            #region SiteMap
+
+            routes.MapRoute(
+               name: "SitemapIndex",
+               url: "sitemap.xml",
+               defaults: new { controller = "Sitemap", action = "Index" }
+            ); 
+            
+            routes.MapRoute(
+               name: "SitemapCategory",
+               url: "sitemap/category.xml",
+               defaults: new { controller = "Sitemap", action = "SiteMapCategory" }
+            );
+
+            routes.MapRoute(
+              name: "SitemapProduct",
+              url: "sitemap/product.xml",
+              defaults: new { controller = "Sitemap", action = "SiteMapProduct" }
+           );
+
+            routes.MapRoute(
+              name: "SitemapArticle",
+              url: "sitemap/article.xml",
+              defaults: new { controller = "Sitemap", action = "SiteMapArticle" }
+           );
+            #endregion
+
+
+            routes.MapRoute(
+          name: "News",
+          url: ConstUrl.News,
+          defaults: new { controller = "News", action = "Index" }
+      );
             #region Product
 
 
@@ -68,11 +102,7 @@ namespace DVG.Website
 
             #region News
 
-            routes.MapRoute(
-              name: "News",
-              url: ConstUrl.News,
-              defaults: new { controller = "News", action = "Index" }
-          );
+        
 
             routes.MapRoute(
                 name: "NewsDetail",
@@ -146,6 +176,10 @@ namespace DVG.Website
             );
 
             #endregion
+
+
+           
+
 
             routes.MapRoute(
                 name: "Default",

@@ -18,6 +18,7 @@ namespace DVG.WIS.Business.Products
         IEnumerable<WIS.Entities.NewsImage> GetListImageByProductId(int ProductId);
         IEnumerable<Product> GetListProductNewest(int languageId, int limit);
         IEnumerable<Product> GetListProductHot(int limit);
+        IEnumerable<Product> GetListProductSiteMap();
     
         IEnumerable<Product> GetListProducByCateId(int cateId, int pageIndex, int pageSize, out int totalRows);
         IEnumerable<Product> GetListProducByListProductId(List<int> lstID);

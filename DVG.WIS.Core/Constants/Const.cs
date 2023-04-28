@@ -152,6 +152,8 @@ namespace DVG.WIS.Core
         public const string DateTimeFormatFull = "dd/MM/yyyy HH:mm:ss";
         public const string DateTimeShortFormatAdmin = "dd/MM/yyyy";
         public const string DateTimeMonthYearFormatAdmin = "MM/yyyy";
+        public const string FormatSiteMapDate = "yyyy-MM-ddTHH:mm:sszzz";
+
 
         #region
 

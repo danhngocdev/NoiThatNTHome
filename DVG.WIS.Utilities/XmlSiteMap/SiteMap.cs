@@ -9,10 +9,10 @@ using System.Xml.Serialization;
 namespace DVG.WIS.Utilities.XmlSiteMap
 {
 
-
     [XmlRoot("urlset", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
     public class UrlSet
     {
+        private string FormatDateSitemap = "yyyy-MM-dd";
         private ArrayList map;
         public int Length { get { return map != null ? map.Count : 0; } }
 
@@ -51,30 +51,62 @@ namespace DVG.WIS.Utilities.XmlSiteMap
 
             return 0;
         }
+
         public void UpdateLastModAll()
         {
             if (map != null && map.Count > 0)
             {
                 foreach (Location item in map)
                 {
-                    item.LastModifiedString = DateTime.Now.ToString("yyyy-MM-dd");
+                    item.LastModified = DateTime.Now.ToString(FormatDateSitemap);
                 }
             }
         }
     }
 
-    [XmlRoot("sitemapindex", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
-    public class SiteMap
+    [XmlRoot("sitemapindex", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")] //urlset là tên thẻ mở đầu trong file sitemap.xml (phải trùng tên)
+    public class Sitemap
     {
+        private string FormatDateSitemap = "yyyy-MM-dd";
         private ArrayList map;
         public int Length { get { return map != null ? map.Count : 0; } }
 
-        public SiteMap()
+        public Sitemap()
         {
             map = new ArrayList();
         }
 
-        public int Add(SiteMapLoc item)
+
+        [XmlElement("sitemap")]
+        public SiteMapLocation[] Locations
+        {
+            get
+            {
+                SiteMapLocation[] items = new SiteMapLocation[map.Count];
+                map.CopyTo(items);
+                return items;
+            }
+            set
+            {
+                if (value == null)
+                    return;
+                SiteMapLocation[] items = (SiteMapLocation[])value;
+                map.Clear();
+                foreach (SiteMapLocation item in items)
+                    map.Add(item);
+            }
+        }
+
+        public int Add(Location item)
+        {
+            if (!map.Contains(item))
+                return map.Add(item);
+
+            return 0;
+        }
+
+
+        public int Add(SiteMapLocation item)
         {
             if (!IsExists(item))
                 return map.Add(item);
@@ -82,7 +114,7 @@ namespace DVG.WIS.Utilities.XmlSiteMap
             return 0;
         }
 
-        public int Insert(SiteMapLoc item)
+        public int Insert(SiteMapLocation item)
         {
             if (!IsExists(item))
             {
@@ -91,11 +123,12 @@ namespace DVG.WIS.Utilities.XmlSiteMap
             }
             return 0;
         }
-        public bool IsExists(SiteMapLoc siteMapLoc)
+
+        public bool IsExists(SiteMapLocation siteMapLoc)
         {
             if (map != null && map.Count > 0)
             {
-                foreach (SiteMapLoc item in map)
+                foreach (SiteMapLocation item in map)
                 {
                     if (item.Url.Equals(siteMapLoc.Url)) return true;
                 }
@@ -103,48 +136,67 @@ namespace DVG.WIS.Utilities.XmlSiteMap
 
             return false;
         }
+
+        public void UpdateLastMod(string url)
+        {
+            if (map != null && map.Count > 0)
+            {
+                foreach (SiteMapLocation item in map)
+                {
+                    if (item.Url.Equals(url))
+                    {
+                        item.LastModified = DateTime.Now.ToString(FormatDateSitemap);
+                    }
+                }
+            }
+        }
         public void UpdateLastModAll()
         {
             if (map != null && map.Count > 0)
             {
-                foreach (SiteMapLoc item in map)
+                foreach (SiteMapLocation item in map)
                 {
-                    item.LastModified = DateTime.Now.ToString("yyyy-MM-dd");
+                    item.LastModified = DateTime.Now.ToString(FormatDateSitemap);
                 }
-            }
-        }
-
-        [XmlElement("sitemap")]
-        public SiteMapLoc[] Locations
-        {
-            get
-            {
-                SiteMapLoc[] items = new SiteMapLoc[map.Count];
-                map.CopyTo(items);
-                return items;
-            }
-            set
-            {
-                if (value == null)
-                    return;
-
-                SiteMapLoc[] items = (SiteMapLoc[])value;
-                map.Clear();
-                foreach (SiteMapLoc item in items)
-                    map.Add(item);
             }
         }
     }
 
-    public class SiteMapLoc
+    public class SiteMapLocation
     {
+        public enum eChangeFrequency
+        {
+            always,
+            hourly,
+            daily,
+            weekly,
+            monthly,
+            yearly,
+            never
+        }
+
         [XmlElement("loc")]
         public string Url { get; set; }
 
-        [XmlElement("priority")]
-        public double? Priority { get; set; }
         [XmlElement("lastmod")]
         public string LastModified { get; set; }
+
+        [XmlElement("changefreq")]
+        public eChangeFrequency? ChangeFrequency { get; set; }
+
+        [XmlElement("priority")]
+        public double? Priority { get; set; }
+
+        public bool ShouldSerializeChangeFrequency()
+        {
+            return ChangeFrequency.HasValue;
+        }
+
+        public bool ShouldSerializePriority()
+        {
+            return Priority.HasValue;
+        }
+
     }
 
     // Items in the shopping list
@@ -168,16 +220,8 @@ namespace DVG.WIS.Utilities.XmlSiteMap
         public eChangeFrequency? ChangeFrequency { get; set; }
         public bool ShouldSerializeChangeFrequency() { return ChangeFrequency.HasValue; }
 
-        [XmlIgnore]
-        public DateTime? LastModified { get; set; }
-
         [XmlElement("lastmod")]
-        public string LastModifiedString
-        {
-            get { return this.LastModified.HasValue ? this.LastModified.Value.ToString("yyyy-MM-ddTHH:mm:ss+07:00") : string.Empty; }
-            set { this.LastModified = DateTime.Parse(value); }
-        }
-        public bool ShouldSerializeLastModified() { return LastModified.HasValue; }
+        public string LastModified { get; set; }
 
         [XmlElement("priority")]
         public double? Priority { get; set; }
@@ -192,10 +236,10 @@ namespace DVG.WIS.Utilities.XmlSiteMap
     public class SiteMapSettings
     {
         [XmlElement("lastmod")]
-        public DateTime? LastModifiedDate { get; set; }
+        public System.DateTime LastModifiedDate { get; set; }
     }
 
-    //[XmlRoot("image:image")]
+    [XmlRoot("image:image")]
     public class ImageNode
     {
         [XmlElement("image:loc")]
@@ -204,4 +248,83 @@ namespace DVG.WIS.Utilities.XmlSiteMap
         [XmlElement("image:title")]
         public string ImageTitle { get; set; }
     }
+
+
+
+    //[XmlRoot("urlset", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
+    //public class Sitemap
+    //{
+    //    private ArrayList map;
+    //    public int Length { get { return map != null ? map.Count : 0; } }
+
+    //    public Sitemap()
+    //    {
+    //        map = new ArrayList();
+    //    }
+
+    //    [XmlElement("url")]
+    //    public Location[] Locations
+    //    {
+    //        get
+    //        {
+    //            Location[] items = new Location[map.Count];
+    //            map.CopyTo(items);
+    //            return items;
+    //        }
+    //        set
+    //        {
+    //            if (value == null)
+    //                return;
+    //            Location[] items = (Location[])value;
+    //            map.Clear();
+    //            foreach (Location item in items)
+    //                map.Add(item);
+    //        }
+    //    }
+
+    //    public int Add(Location item)
+    //    {
+    //        if (!map.Contains(item))
+    //            return map.Add(item);
+
+    //        return 0;
+    //    }
+    //}
+
+    //// Items in the shopping list
+    //public class Location
+    //{
+    //    public enum eChangeFrequency
+    //    {
+    //        always,
+    //        hourly,
+    //        daily,
+    //        weekly,
+    //        monthly,
+    //        yearly,
+    //        never
+    //    }
+
+    //    [XmlElement("loc")]
+    //    public string Url { get; set; }
+
+    //    [XmlElement("changefreq")]
+    //    public eChangeFrequency? ChangeFrequency { get; set; }
+    //    public bool ShouldSerializeChangeFrequency() { return ChangeFrequency.HasValue; }
+
+    //    [XmlElement("lastmod")]
+    //    public DateTime? LastModified { get; set; }
+    //    public bool ShouldSerializeLastModified() { return LastModified.HasValue; }
+
+    //    [XmlElement("priority")]
+    //    public double? Priority { get; set; }
+    //    public bool ShouldSerializePriority() { return Priority.HasValue; }
+    //}
+
+    //[XmlRoot("settings")]
+    //public class SiteMapSettings
+    //{
+    //    [XmlElement("lastmod")]
+    //    public DateTime? LastModifiedDate { get; set; }
+    //}
 }

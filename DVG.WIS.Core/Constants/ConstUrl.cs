@@ -45,6 +45,7 @@ namespace DVG.WIS.Core
         public const string CareerNews = "tin-tuyen-dung";
         public const string CustomerStory = "cau-chuyen-khach-hang";
 
+        public static string BaseUrl = AppSettings.Instance.GetString("BaseUrl");
 
     }
 

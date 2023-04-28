@@ -10,6 +10,7 @@ using DVG.WIS.Business.PriceList;
 using DVG.WIS.Business.Products;
 using DVG.WIS.Business.ProductShowHome;
 using DVG.WIS.Business.Recruitments;
+using DVG.WIS.Business.SiteMap;
 using DVG.WIS.Business.Video;
 using DVG.WIS.Caching.Cached;
 using DVG.WIS.Caching.Cached.Implements;
@@ -146,6 +147,8 @@ namespace DVG.Website
 
             container.RegisterType<IPriceListDal, PriceListDal>();
             container.RegisterType<IPriceListBo, PriceListBo>();
+            //SiteMap
+            container.RegisterType<ISiteMapBo, SiteMapBo>();
         }
     }
 }

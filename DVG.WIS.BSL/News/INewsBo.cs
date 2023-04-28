@@ -25,5 +25,7 @@ namespace DVG.WIS.Business.News
         IEnumerable<NewsInListModel> GetListNewsHighlight(int top);
         IEnumerable<NewsInListModel> GetListNewsHighlightByCate(int cateId,int top);
 
+        IEnumerable<NewsInListModel> GetListArticleSiteMap();
+
     }
 }
