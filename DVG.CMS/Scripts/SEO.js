@@ -1,5 +1,5 @@
 ﻿//BOXSEO---------------
-var BaseUrl = 'http://berrymore.vn/';
+var BaseUrl = 'http://noithatnthome.com/';
 
 function ValidateKeyword() {
 

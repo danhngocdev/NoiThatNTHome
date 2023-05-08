@@ -9,8 +9,10 @@
 }
 @section styles{
     @Styles.Render("~/styleForProductDetail")
+    <link rel="stylesheet" href="~/Content/css/slick.css" />
+
 }
-<input type="hidden" id="hddProductId" value="@Model.Id"/>
+<input type="hidden" id="hddProductId" value="@Model.Id" />
 <div class="shop-container">
     <div class="container">
         <div class="woocommerce-notices-wrapper"></div>
@@ -19,96 +21,126 @@
         <div class="product-container">
             <div class="product-main">
                 <div class="row content-row mb-0">
-                    <div class="col sago-no-padding-15 medium-7 small-12 large-7">
-                        <div class="col-inner text-left">
-                            <div id="productdetail" class="gallery">
-                                <div class="swiper-container gallery-slider">
-                                    <div class="swiper-wrapper">
-                                        @if (!string.IsNullOrEmpty(Model.Avatar))
-                                        {
-                                         <div class="swiper-slide"><img src="@CoreUtils.BuildCropAvatar(Model.Avatar, string.Empty, "resize/370x270/")" alt="@Model.Name"></div>
-                                        }
-                                        @if (lstImage.Count > 0 )
-                                        {
-                                            foreach (var item in lstImage)
-                                            {
 
-                                            <div class="swiper-slide"><img src="@item.GetAvatar("crop/370x270/")" alt="@item.Title"></div>
-
-                                            }
+                    <div class="box-product-detail mb-line">
+                        <div class="elm_left">
+                            <div class="slide-wrapper">
+                                <div class="product-images">
+                                    <div class="photo main-photo no_br text-center js-product-slider">
+                                        @foreach (var item in lstImage)
+                                        {
+                                            <img src="@item.ImageUrl" alt="">
                                         }
- 
                                     </div>
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div>
                                 </div>
-                                <div class="swiper-container gallery-thumbs">
-                                    <div class="swiper-wrapper">
-                                        @if (!string.IsNullOrEmpty(Model.Avatar))
-                                        {
-                                            <div class="swiper-slide"><img src="@CoreUtils.BuildCropAvatar(Model.Avatar, string.Empty, "resize/370x270/")" alt="@Model.Name"></div>}
-                                        @if (lstImage.Count > 0)
-                                        {
-                                            foreach (var item in lstImage)
-                                            {
+                                <div class="multiple-img-list custom-slick-arrow js-click-product">
+                                    @foreach (var item in lstImage)
+                                    {
+                                        <div class="product-col">
+                                            <div class="img">
+                                                <img src="@item.ImageUrl" alt="">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="elm_right">
+                            <div class="content">
+                                <h1 class="heading">@Model.Name</h1>
+                                <div class="product-info summary col-fit col entry-summary product-summary">
+                                    <div class="price-wrapper" style="border-bottom: 1px solid #ececec">
+                                        <p class="price product-page-price price-on-sale">
+                                            <span class="product--price-title">
+                                                Giá: <span class="price"><del><span class="woocommerce-Price-amount amount">@string.Format("{0:#,##0} ₫", Model.Price)<span class="woocommerce-Price-currencySymbol"></span></span></del> <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@string.Format("{0:#,##0} ₫", Model.PricePromotion)<span class="woocommerce-Price-currencySymbol"></span></span></ins></span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="product-short-description">
 
-                                                <div class="swiper-slide"><img src="@item.GetAvatar("crop/370x270/")" alt="@item.Title"></div>
-                                            }
-                                        }
+                                        <p> </p><p>Nội Thất NT Home</p>
+
+                                        <ul>
+                                            <li>Là đơn vị sản xuất trực tiếp từ xưởng đến tay khách hàng</li>
+                                            <li>Cam kết 100% chất lương sản phẩm theo hợp đồng có hóa đơn đảm bảo</li>
+                                            <li>
+                                                Bảo hành 36 tháng kể từ khi hoàn thiện<br>
+                                                &nbsp;
+                                            </li>
+                                        </ul> <p></p>
+
+                                    </div>
+                                    <div class="btn-promotion">
+                                        <a rel="nofollow" href="javascript:void(0)" class="btn bg_blue full_w btn-promo">Đăng Ký Tư Vấn</a>
+
+                                    </div>
+
+
+                                    <div class="p-hotline" style="border-top: 1px solid #ececec">
+                                        <h3>Liên hệ ngay để được tư vấn</h3>
+                                        <div class="lienhe">
+                                            <img src="https://zito.vn/wp-content/themes/flatsome-child/change/assets/images/icon-phone.svg" alt="icon phone">
+                                            <!-- <span>Hotline: 0123.1234.23</span> -->
+                                            <strong> Mr Tỉnh : </strong>  <a href="tel:0975254324" style="color:#900; font-weight:bold;"> 0975254324</a>
+                                        </div>
+
+                                        <div class="lienhe">
+                                            <img src="https://zito.vn/wp-content/themes/flatsome-child/change/assets/images/icon-phone.svg" alt="icon phone">
+                                            <!-- <span>Hotline: 0123.1234.23</span> -->
+                                            <strong>  Mr Ngọc :  </strong> <a href="tel:0343141199" style="color:#900;font-weight:bold;">
+                                                0343141199
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="product-info summary col-fit col entry-summary product-summary">
-                        <h1 class="product-title product_title entry-title">
-                            @Model.Name
-                        </h1>
-                        <div class="price-wrapper" style="border-bottom: 1px solid #ececec">
-                            <p class="price product-page-price price-on-sale">
-                                <span class="product--price-title">
-                                    Giá: <span class="price"><del><span class="woocommerce-Price-amount amount">@string.Format("{0:#,##0} ₫", Model.Price)<span class="woocommerce-Price-currencySymbol"></span></span></del> <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@string.Format("{0:#,##0} ₫", Model.PricePromotion)<span class="woocommerce-Price-currencySymbol"></span></span></ins></span>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="product-short-description">
 
-                            <p> </p><p>Nội Thất NT Home</p>
+                    @*<div class="col sago-no-padding-15 medium-7 small-12 large-7">
+                            <div class="col-inner text-left">
+                                <div id="productdetail" class="gallery">
+                                    <div class="swiper-container gallery-slider">
+                                        <div class="swiper-wrapper">
+                                            @if (!string.IsNullOrEmpty(Model.Avatar))
+                                            {
+                                             <div class="swiper-slide"><img src="@CoreUtils.BuildCropAvatar(Model.Avatar, string.Empty, "resize/360x230/")" alt="@Model.Name"></div>
+                                            }
+                                            @if (lstImage.Count > 0 )
+                                            {
+                                                foreach (var item in lstImage)
+                                                {
 
-                            <ul>
-                                <li>Là đơn vị sản xuất trực tiếp từ xưởng đến tay khách hàng</li>
-                                <li>Cam kết 100% chất lương sản phẩm theo hợp đồng có hóa đơn đảm bảo</li>
-                                <li>
-                                    Bảo hành 36 tháng kể từ khi hoàn thiện<br>
-                                    &nbsp;
-                                </li>
-                            </ul> <p></p>
+                                                <div class="swiper-slide"><img src="@item.GetAvatar("crop/360x230/")" alt="@item.Title"></div>
 
-                        </div>
-                        <div class="btn-promotion">
-                            <a rel="nofollow" href="javascript:void(0)" class="btn bg_blue full_w btn-promo">Đăng Ký Tư Vấn</a>
+                                                }
+                                            }
 
-                        </div>
+                                        </div>
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+                                    <div class="swiper-container gallery-thumbs">
+                                        <div class="swiper-wrapper">
+                                            @if (!string.IsNullOrEmpty(Model.Avatar))
+                                            {
+                                                <div class="swiper-slide"><img src="@CoreUtils.BuildCropAvatar(Model.Avatar, string.Empty, "resize/360x230/")" alt="@Model.Name"></div>}
+                                            @if (lstImage.Count > 0)
+                                            {
+                                                foreach (var item in lstImage)
+                                                {
 
-
-                        <div class="p-hotline" style="border-top: 1px solid #ececec">
-                            <h3>Liên hệ ngay để được tư vấn</h3>
-                            <div class="lienhe">
-                                <img src="https://zito.vn/wp-content/themes/flatsome-child/change/assets/images/icon-phone.svg" alt="icon phone">
-                                <!-- <span>Hotline: 0123.1234.23</span> -->
-                                <strong> Mr Tỉnh : </strong>  <a href="tel:0975254324" style="color:#900; font-weight:bold;"> 0975254324</a>
+                                                    <div class="swiper-slide"><img src="@item.GetAvatar("crop/360x230/")" alt="@item.Title"></div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>*@
 
-                            <div class="lienhe">
-                                <img src="https://zito.vn/wp-content/themes/flatsome-child/change/assets/images/icon-phone.svg" alt="icon phone">
-                                <!-- <span>Hotline: 0123.1234.23</span> -->
-                                <strong>  Mr Ngọc :  </strong> <a href="tel:0343141199" style="color:#900;font-weight:bold;">
-                                    0343141199
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
 
             </div>
@@ -127,7 +159,7 @@
                                     <div class="tab-panels" style="background-color: white;">
                                         <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active" id="tab-description">
                                             <div class="area_article" style="max-height: auto; background-color:white;">
-                                               @Html.Raw(Model.Description)
+                                                @Html.Raw(Model.Description)
                                             </div>
                                         </div>
                                     </div><!-- .tab-panels -->
@@ -156,9 +188,11 @@
                         </div>
                     </div>
                     <div class="container section-title-container">
-                    <h3 class="section-title section-title-center">
-                        <b>
-                            </b><span class="section-title-main">CÁC SẢN PHẨM LIÊN QUAN</span><b></b></h3></div>
+                        <h3 class="section-title section-title-center">
+                            <b>
+                            </b><span class="section-title-main">CÁC SẢN PHẨM LIÊN QUAN</span><b></b>
+                        </h3>
+                    </div>
 
 
                     <div class="row">
@@ -168,7 +202,7 @@
                                 <div class="products row row-small large-columns-4 medium-columns-2 small-columns-2 has-shadow row-box-shadow-1 row-box-shadow-2-hover has-equal-box-heights equalize-box">
 
 
-                                    @Html.Action("ProductHighLight", "Product", new { categoryId = Model.CategoryId,productId = Model.Id})
+                                    @Html.Action("ProductHighLight", "Product", new { categoryId = Model.CategoryId, productId = Model.Id })
 
 
 
@@ -191,6 +225,9 @@
 
 
 @section scripts{
+    <script src="~/Scripts/Lib/slick.min.js">
+
+    </script>
     <script>
         var countImage = '@countImage';
     </script>

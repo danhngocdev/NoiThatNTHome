@@ -66,7 +66,7 @@ namespace DVG.CMS.Controllers
         }
 
         [HttpPost]
-        [IsValidUrlRequest(KeyName = "CustomerController.Search", Description = "Customer - Danh sách")]
+        [IsValidUrlRequest(KeyName = "NewsController.Search", Description = "Customer - Danh sách")]
         public ActionResult Search(NewsSearchModel searchModel)
         {
             ResponseData responseData = new ResponseData();

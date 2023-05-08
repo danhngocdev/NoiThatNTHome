@@ -155,37 +155,64 @@ var main = {
 
 
         //メインスライド
-        var slider = new Swiper('#productdetail .gallery-slider', {
-            slidesPerView: 1,
-            centeredSlides: true,
-            loop: false,
-            //autoplay: true,
-            loopedSlides: 6, //スライドの枚数と同じ値を指定
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+        //var slider = new Swiper('#productdetail .gallery-slider', {
+        //    slidesPerView: 1,
+        //    centeredSlides: true,
+        //    loop: false,
+        //    //autoplay: true,
+        //    loopedSlides: 6, //スライドの枚数と同じ値を指定
+        //    navigation: {
+        //        nextEl: '.swiper-button-next',
+        //        prevEl: '.swiper-button-prev',
+        //    },
+        //});
 
         //サムネイルスライド
-        var thumbs = new Swiper('#productdetail .gallery-thumbs', {
-            slidesPerView: 'auto',
-            spaceBetween: 10,
-            centeredSlides: true,
-            loop: false,
-            autoplay: true,
-            slideToClickedSlide: true,
+        //var thumbs = new Swiper('#productdetail .gallery-thumbs', {
+        //    slidesPerView: 'auto',
+        //    spaceBetween: 10,
+        //    centeredSlides: true,
+        //    loop: false,
+        //    autoplay: true,
+        //    slideToClickedSlide: true,
 
-        });
+        //});
 
         //3系
         //slider.params.control = thumbs;
         //thumbs.params.control = slider;
 
         //4系～
-        slider.controller.control = thumbs;
-        thumbs.controller.control = slider;
+        //slider.controller.control = thumbs;
+        //thumbs.controller.control = slider;
 
+
+
+        $('.js-click-product').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.js-product-slider',
+            dots: false,
+            focusOnSelect: true,
+            infinite: true,
+            arrows: true,
+            vertical: true,
+            responsive: [
+
+                {
+                    breakpoint: 767,
+                    settings: {
+                        vertical: false
+                    }
+                }
+            ]
+        });
+        $('.js-product-slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            asNavFor: '.js-click-product'
+        });
 
 
 
@@ -819,7 +846,7 @@ var productList = {
             ? newurl.substr(0, newurl.indexOf('?')) + "/p" + page + newurl.substr(newurl.indexOf('?')) + "&loadmore=1"
             : newurl + "/p" + page + "?loadmore=1"
             ;
-        alert(newurl)
+        //alert(newurl)
         $.ajax({
             type: "POST",
             url: newurl,

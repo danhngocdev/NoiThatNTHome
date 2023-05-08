@@ -36,7 +36,10 @@ namespace DVG.WIS.PublicModel
         {
             get
             {
-                return string.Format("{0:#,##0} ₫", this.Price);
+                if (this.Price > 0)
+                    return string.Format("{0:#,##0} ₫", this.Price);
+                else
+                    return "Liên Hệ";
             }
         }
         public string PricePromotionString

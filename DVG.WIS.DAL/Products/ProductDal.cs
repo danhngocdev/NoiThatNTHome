@@ -176,6 +176,7 @@ namespace DVG.WIS.DAL.Products
                         .Parameter("IsHighLight", Product.IsHighLight, DataTypes.Int32)
                         .Parameter("CategoryId", Product.CategoryId, DataTypes.Int32)
                         .QuerySingle<int>();
+                    int productId = numberRecords;
                     if (numberRecords < 1)
                     {
                         errors = "Có lỗi ở sp " + storeName;
@@ -185,7 +186,7 @@ namespace DVG.WIS.DAL.Products
                     {
                         //Xóa ds image cũ
                         context.StoredProcedure(storeDeleteProductImage)
-                            .Parameter("NewsId", Product.Id, DataTypes.Int32)
+                            .Parameter("NewsId", productId, DataTypes.Int32)
                             .Execute();
                         //Insert ds image mới
                         if (listProductImage != null && listProductImage.Count > 0)
@@ -193,7 +194,7 @@ namespace DVG.WIS.DAL.Products
                             foreach (var image in listProductImage)
                             {
                                 numberRecords = context.StoredProcedure(storeInsertProductImage)
-                                    .Parameter("NewsId", Product.Id, DataTypes.Int32)
+                                    .Parameter("NewsId", productId, DataTypes.Int32)
                                     .Parameter("ImageUrl", image.ImageUrl, DataTypes.String)
                                     .Parameter("Title", image.Title, DataTypes.String)
                                     .QuerySingle<int>();

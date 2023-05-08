@@ -74,6 +74,14 @@
 					<path>~/Content/css/productDetail.css</path>
 					<css_fix_rewrite_url>true</css_fix_rewrite_url>
 				</item>
+				<item>
+					<path>~/Content/css/slick-theme.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
+				<item>
+					<path>~/Content/css/slick.css</path>
+					<css_fix_rewrite_url>true</css_fix_rewrite_url>
+				</item>
 			</items>
 		</style>
 
@@ -110,7 +118,6 @@
 					<path>~/Scripts/notifies.js</path>
 					<css_fix_rewrite_url>true</css_fix_rewrite_url>
 				</item>
-
 			</items>
 		</script>
 

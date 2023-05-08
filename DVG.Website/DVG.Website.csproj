@@ -263,6 +263,8 @@
     <Content Include="Content\js\swiper-bundle.min.js" />
     <Content Include="Content\js\woocommerce.minb2f9.js" />
     <Content Include="Content\js\woocommercea5bd.js" />
+    <Content Include="Content\css\slick-theme.css" />
+    <Content Include="Content\css\slick.css" />
     <Content Include="favicon.png" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
@@ -272,6 +274,7 @@
     <Content Include="Scripts\Lib\jquery-1.11.3.min.js" />
     <Content Include="Scripts\Lib\jquery.video-extend.js" />
     <Content Include="Scripts\Lib\owl.carousel.min.js" />
+    <Content Include="Scripts\Lib\slick.min.js" />
     <Content Include="Scripts\Lib\swiper-671\swiper-bundle.min.css" />
     <Content Include="Scripts\Lib\swiper-671\swiper-bundle.min.js" />
     <Content Include="Scripts\Lib\wow.min.js" />

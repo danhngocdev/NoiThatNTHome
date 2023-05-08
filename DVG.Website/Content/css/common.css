@@ -616,3 +616,87 @@ img.emoji {
     /* justify-items: center; */
     /* flex-basis: auto; */
 }
+/***Loading***/
+.fblwti-animated {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right,#eee 8%,#ddd 18%,#eee 33%);
+    background-size: 800px 200px;
+    height: 180px;
+    position: relative;
+}
+
+.fblwtia-mask {
+    background: #fff;
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 15px;
+}
+
+.fblwtia-sepline-margin, .fblwtia-sepline-title-0, .fblwtia-sepline-title-1, .fblwtia-sepline-sapo-0, .fblwtia-sepline-sapo-1 {
+    left: 35%;
+}
+
+.fblwtia-sepline-margin {
+    height: 100%;
+    width: 30px;
+}
+
+.fblwtia-sepline-title-0 {
+    top: 22px;
+    width: 100%;
+    height: 16px;
+}
+
+.fblwtia-sepline-title-1 {
+    top: 60px;
+    width: 100%;
+    height: 25px;
+}
+
+.fblwtia-sepline-title-2 {
+    top: 37px;
+    width: 15%;
+    height: 23px;
+    right: 0;
+}
+
+.fblwtia-sepline-sapo-0 {
+    top: 100px;
+    width: 100%;
+    height: 12px;
+}
+
+.fblwtia-sepline-sapo-1 {
+    top: 126px;
+    width: 100%;
+    height: 38px;
+}
+
+.fblwtia-sepline-more {
+    width: 50%;
+    height: 23px;
+    right: 0;
+    bottom: 0;
+}
+
+@-webkit-keyframes placeHolderShimmer {
+    0% {
+        background-position: -800px 0;
+    }
+
+    100% {
+        background-position: 800px 0;
+    }
+}
+
+.cintamobil-loading .item-hr:first-child {
+    margin-top: 0;
+}
+/***End Loading***/

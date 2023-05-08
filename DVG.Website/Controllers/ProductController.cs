@@ -159,17 +159,21 @@ namespace DVG.Website.Controllers
                 return Redirect(CoreUtils.BuildURL(AppSettings.Instance.GetString(Const.UrlNotfoundContent)));
             }
 
-            string linkCur = CoreUtils.BuildURL("{0}/{1}-pid{2}", "san-pham", StringUtils.UnicodeToUnsignCharAndDash(news.Name), news.Id);
+            //string linkCur = CoreUtils.BuildURL("{0}/{1}-pid{2}", "san-pham", StringUtils.UnicodeToUnsignCharAndDash(news.Name), news.Id);
 
             List<NewsImageFEModel> lstNewsImage = new List<NewsImageFEModel>();
-            var lstImage = _productBo.GetListImageByProductId(productId);
+            var lstImage = _productBo.GetListImageByProductId(productId).ToList();
             if (lstImage != null && lstImage.Any())
             {
+                var newImg = new NewsImage();
+                newImg.ImageUrl = news.Avatar;
+                newImg.Title = news.Name;
+                lstImage.Add(newImg);
                 lstNewsImage = lstImage.Select(x => new NewsImageFEModel(x)).ToList();
             }
             ViewBag.ListImage = lstNewsImage;
-            ViewBag.TitlePage = SEO.AddTitle(news.Name + " | " + Resource.CompanyNameDetail);
-            ViewBag.MetaDescription = SEO.AddMeta("description", news.Name + " " + Resource.ProductDetailMeta);
+            ViewBag.TitlePage = SEO.AddTitle(news.Name + "Nội Thất NT Home");
+            ViewBag.MetaDescription = SEO.AddMeta("description", news.Sapo);
             ViewBag.MetaFacebook = SEO.AddMetaImages(news.Avatar);
             ViewBag.MetaCanonical = SEO.MetaCanonical(StaticVariable.BaseUrl.TrimEnd('/') + Request.RawUrl.ToString());
             return View(news);

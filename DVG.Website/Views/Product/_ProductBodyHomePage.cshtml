@@ -59,7 +59,9 @@
                                                 </div>
                                                 <div class="price-wrapper">
                                                     <span class="price">
-                                                        <del>
+                                                        @if (!string.IsNullOrEmpty(product.PriceString) && !string.IsNullOrEmpty(product.PricePromotionString))
+                                                        {
+                                                             <del>
                                                             <span class="woocommerce-Price-amount amount">
                                                                 @product.PriceString<span class="woocommerce-Price-currencySymbol"></span>
                                                             </span>
@@ -70,6 +72,16 @@
                                                                 @product.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span>
                                                             </span>
                                                         </ins>
+                                                        }
+                                                        else { 
+                                                        <ins>
+                                                            <span class="woocommerce-Price-amount amount"
+                                                                  style="color:#ff6a00">
+                                                                @product.PriceString<span class="woocommerce-Price-currencySymbol"></span>
+                                                            </span>
+                                                        </ins>
+                                                        }
+
                                                     </span>
                                                 </div>
                                                 <div class="cart-wrapper"></div>

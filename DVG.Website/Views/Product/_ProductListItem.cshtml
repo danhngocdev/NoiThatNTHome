@@ -28,10 +28,16 @@
                 </div>
                 <div class="price-wrapper" style="height: 27.6406px;">
                     <span class="price">
-                        <del>
-                            <span class="woocommerce-Price-amount amount">@item.PricePromotion<span class="woocommerce-Price-currencySymbol"></span></span>
-                        </del>
-                        <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span></span></ins>
+                        @if (!string.IsNullOrEmpty(item.PricePromotionString) && !string.IsNullOrEmpty(item.PriceString))
+                        {
+                    <del>
+                        <span class="woocommerce-Price-amount amount">@item.PriceString<span class="woocommerce-Price-currencySymbol"></span></span>
+                    </del>
+                                        <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span></span></ins> }
+                                                        else
+                                                        {
+                                        <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PriceString<span class="woocommerce-Price-currencySymbol"></span></span></ins>}
+
                     </span>
                 </div>
                 <div class="cart-wrapper"></div>

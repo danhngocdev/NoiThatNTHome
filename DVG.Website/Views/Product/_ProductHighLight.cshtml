@@ -17,10 +17,10 @@
             <div class="box-image">
                 <div class="image-fade_in_back">
                     <a href="@item.Link">
-                        <img width="400" height="267" src="https://noithatngocchau.vn:443/Uploads/Product/tu-bep-canh-kinh-21.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="Tủ bếp inox cánh kính - 21" loading="lazy" sizes="(max-width: 400px) 100vw, 400px">
+                        <img src="@item.GetAvatar("crop/270x170/")" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="@item.Name" loading="lazy" sizes="(max-width: 400px) 100vw, 400px">
                     </a>
                 </div>
-                <a href="https://noithatngocchau.vn:443/Tu-bep-inox-canh-kinh-21-sp1165.html">
+                <a href="@item.Link">
                     <div class="image-tools is-small top right show-on-hover">
                     </div>
                     <div class="image-tools is-small hide-for-small bottom left show-on-hover">
@@ -31,19 +31,34 @@
             </div>
 
             <div class="box-text box-text-products text-center grid-style-2">
- <div class="title-wrapper"><a href="https://noithatngocchau.vn:443/Tu-bep-inox-canh-kinh-21-sp1165.html"></a>
-                <h2 class="name product-title">
-                <a href="https://noithatngocchau.vn:443/Tu-bep-inox-canh-kinh-21-sp1165.html">@item.Name</a></h2></div>
-        <div class="price-wrapper" style="height: 27.6406px;">
+                <div class="title-wrapper">
+                    <a href="@item.Link"></a>
+                    <h2 class="name product-title">
+                        <a href="" @item.Link>@item.Name</a>
+                    </h2>
+                </div>
+                <div class="price-wrapper" style="height: 27.6406px;">
                     <span class="price">
-                        <del>
-                        <span class="woocommerce-Price-amount amount">@item.PriceString<span class="woocommerce-Price-currencySymbol"></span></span></del> <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span></span></ins>
+                        @if (!string.IsNullOrEmpty(item.PriceString) && !string.IsNullOrEmpty(item.PricePromotionString))
+                        {
+                    <del>
+                        <span class="woocommerce-Price-amount amount">@item.PriceString<span class="woocommerce-Price-currencySymbol"></span></span>
+                    </del>
+                    <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PricePromotionString<span class="woocommerce-Price-currencySymbol"></span></span></ins>
+                }
+                else
+                {
+                    <ins><span class="woocommerce-Price-amount amount" style="color:#ff6a00">@item.PriceString<span class="woocommerce-Price-currencySymbol"></span></span></ins>
 
-            
+                }
+
+
                     </span>
-                </div><div class="cart-wrapper"></div>
+                </div>
+        
+        <div class="cart-wrapper"></div>
             </div><!-- box-text -->
         </div><!-- box -->
     </div><!-- .col-inner -->
 </div><!-- col --> <!-- col -->}
-            }
+}
